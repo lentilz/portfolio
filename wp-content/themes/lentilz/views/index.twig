@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <main class="page-content row">
+    <section class="post-list small-12 columns">
+      {% block post_list %}
+        {% for post in posts %}
+          {% include ['teaser-'~post.post_type~'.twig', 'teaser.twig'] %}
+        {% endfor %}
+      {% endblock %}
+    </section> <!-- /.post-list.small-12.columns -->
+  </main> <!-- /.page-content.row -->
+{% endblock %}

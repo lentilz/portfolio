@@ -1,0 +1,29 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <main id="content" class="row">
+    <div class="page-content small-12 large-8 columns">
+      <article id="post-{{post.ID}}" class="article post-type-{{post.post_type}}" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+        <header class="article-header">
+          {% block article_header %}
+            <h1 class="page-title">{{post.title}}</h1>
+          {% endblock %}
+        </header> <!-- /.article-header -->
+        <section class="entry-content" itemprop="articleBody">
+          {% if post.get_thumbnail %} 
+            <img src="{{post.thumbnail.src}}" alt="{{post.thumbnail.alt}}">
+          {% endif %}
+          {{post.content}}
+        </section> <!-- /.entry-content -->
+        {% block article_footer %}
+        {% endblock %}
+      </article> <!-- /.article -->
+    </div> <!-- /.page-content.small-12.large-8.columns -->
+
+    {% block sidebar %}
+      <aside class="page-sidebar small-12 large-4 columns">
+        {{sidebar}}
+      </aside> <!-- /.page-sidebar -->
+    {% endblock %}
+  </main> <!-- /#content -->
+{% endblock %}

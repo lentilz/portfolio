@@ -1,0 +1,25 @@
+/**
+* Quote/testimonial module
+*/
+
+.quote {
+    padding: 1em;
+}
+
+.quote__text {
+    font-size: 1.25em;
+    
+    &:before {
+        content: '\201C';
+    }
+
+    &:after {
+        content: '\201D';
+    }
+}
+
+.quote__attribution {
+    font-size: 0.75em;
+    font-style: italic;
+    color: $cite-color;
+}

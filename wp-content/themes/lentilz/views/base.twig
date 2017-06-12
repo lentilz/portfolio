@@ -1,0 +1,31 @@
+{% block html_head_container %}
+  {% include 'html-header.twig' %}
+    {% block head %}{% endblock %}
+  </head>
+{% endblock %}
+
+<body class="{{body_class}}" data-template="base.twig">
+
+    {% block content %}
+    <main role="main">
+      <section>
+        <figure>
+         <img src="../signature_tp.png" alt="Lentie Ward Signature graphic" title="Lentie Ward">
+        </figure>
+        <h1>Design-oriented front-end developer &amp; UX Enthusiast</h1>
+      </section>
+    </main>
+    {% endblock %}
+
+    {% block footer %}
+    <footer role="footer">
+      <a href="mailto:lentieward12@gmail.com" class="fa fa-envelope-o"></a> &nbsp;
+      <a href="https://www.github.com/lentilz" target="_blank" class="fa fa-github"></a> &nbsp;
+      <a href="http://codepen.io/lentilz/" target="_blank" class="fa fa-codepen"></a> &nbsp;
+      <a href="https://www.linkedin.com/in/lentie-ward-13653946/" target="_blank" class="fa fa-linkedin"></a> &nbsp;
+      <a href="https://www.instagram.com/guerrilla_fc/" class="fa fa-futbol-o" target="_blank"></a>
+    </footer>
+    {% endblock %}
+
+  {{ function('wp_footer') }}
+</body>

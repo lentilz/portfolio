@@ -1,0 +1,22 @@
+<aside class="primary-nav row" id="primaryNav" data-off-canvas data-position="right">
+  <div class="small-12 large-6 columns">
+    <h1 class="show-for-large"><a href="{{site.url}}">{{site.title}}</a></h1>
+  </div>
+  <div class="small-12 large-6 columns">
+    <ul class="menu vertical large-horizontal" data-responsive-menu="drilldown large-dropdown">
+    {% for item in menu.get_items %}
+      <li>
+        <a href="{{item.get_link}}">{{item.title}}</a>
+        {% if item.get_children %}
+        <ul class="nested menu submenu vertical">
+          <li class="back"><a href="#">Back</a></li>
+          {% for child in item.get_children %}
+            <li><a href="{{child.get_link}}">{{child.title}}</a></li>
+          {% endfor %}
+        </ul> <!-- /.menu.nested -->
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul> <!-- /.menu -->
+  </div>
+</aside> <!-- /.off-canvas -->

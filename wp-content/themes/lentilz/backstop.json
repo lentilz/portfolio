@@ -1,0 +1,43 @@
+{
+  "viewports": [
+    {
+      "name": "mobile",
+      "width": 320,
+      "height": 568
+    },
+    {
+      "name": "tablet_v",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "name": "desktop",
+      "width": 1366,
+      "height": 768
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "Page Description",
+      "url": "http://www.bluestatedigital.com",
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "selectors": [
+        "body"
+      ],
+      "readyEvent": null,
+      "delay": 500,
+      "misMatchThreshold" : 0.1
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "../../backstop_data/bitmaps_reference",
+    "bitmaps_test": "../../backstop_data/bitmaps_test",
+    "compare_data": "../../backstop_data/bitmaps_test/compare.json",
+    "casper_scripts": "../../backstop_data/casper_scripts"
+  },
+  "engine": "phantomjs",
+  "report": ["CLI", "browser"],
+  "cliExitOnFail": false,
+  "debug": false
+}

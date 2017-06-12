@@ -1,0 +1,14 @@
+.site-header {
+    .site-branding {
+        padding-left: 75px;
+        background: url('../img/logo.png' no-repeat 0/75px 75px);
+    }
+}
+
+.left-off-canvas-menu {
+    .row {
+        .button {
+            @extend .postfix; 
+        }
+    }
+}

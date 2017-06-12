@@ -1,0 +1,25 @@
+/**
+* Utility classes
+*/
+
+/**
+* Wordpress image alignment
+*/
+.alignright {
+    float: none;
+
+    @include breakpoint(large) {
+        float: right;
+    }
+}
+.alignleft {
+    float: none;
+
+    @include breakpoint(large) {
+        float: left;
+    }
+}
+.aligncenter {
+    max-width: 100%;
+    margin: 0 auto;
+}

@@ -1,0 +1,19 @@
+// Site Calls to Action
+.site-lightbox {
+    position: relative;
+    background: $white;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.meerkat-cta {
+    padding: rem-calc(20 0 30 0);
+    h1, p {
+        color: $white;
+    }
+    h1 {
+        line-height: 1;
+    }
+}
