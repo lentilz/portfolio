@@ -1,24 +1,31 @@
 /**
 * Utility classes
 */
-
+.col-padding {
+  @include rem(padding, 0 20px);
+}
+.unstyled-list {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+  }
+}
 /**
 * Wordpress image alignment
 */
 .alignright {
   float: none;
-
-  // @include breakpoint(large) {
-  //   float: right;
-  // }
+  @include desktop {
+    float: right;
+  }
 }
 
 .alignleft {
   float: none;
-
-  // @include breakpoint(large) {
-  //   float: left;
-  // }
+  @include desktop {
+    float: left;
+  }
 }
 
 .aligncenter {

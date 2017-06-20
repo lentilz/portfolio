@@ -3,7 +3,6 @@
 // `gulp`: watch, compile styles and scripts; Browserify
 // `gulp build`: default compile task
 
-
 // PLUGINS
 // --------
 var autoprefixer = require('gulp-autoprefixer'),
@@ -22,10 +21,8 @@ var autoprefixer = require('gulp-autoprefixer'),
     notify = require('gulp-notify'),
     p = require('./package.json'),
     path = require('path'),
-    // pixrem = require('gulp-pixrem'),
     rename = require('gulp-rename'),
     sass = require('gulp-sass'),
-    // styleguide = require('sc5-styleguide'),
     sourcemaps = require('gulp-sourcemaps'),
     sourcestream = require('vinyl-source-stream'),
     uglify = require('gulp-uglify');
@@ -124,30 +121,13 @@ gulp.task('images', function() {
         .pipe(notify({ message: 'Images task complete' }));
 });
 
-// Update reference screenshots
-// gulp.task('backstopjs:reference', function() {
-//     gulp.src('./node_modules/backstopjs/gulpfile.js')
-//     .pipe(chug({
-//         tasks: ['reference']
-//     }));
-// });
-
-// Test current screenshots against reference
-// gulp.task('backstopjs:test', function() {
-//     gulp.src('./node_modules/backstopjs/gulpfile.js')
-//     .pipe(chug({
-//         tasks: ['test']
-//     }));
-// });
-
-
 // BUILD TASKS
 // ------------
 
 // Watch
 gulp.task('default', function() {
     // Watch .scss files
-    gulp.watch(source+'scss/**/*.scss', 'styles_dev');
+    gulp.watch(source+'scss/**/*.scss', ['styles_dev']);
 
     // Watch .js files
     gulp.watch(source+'js/**/*.js', ['scripts']);
