@@ -2438,13 +2438,28 @@ img {
   background-size: cover;
   margin: 40px 0;
   margin: 4rem 0;
-  padding: 15px;
-  padding: 1.5rem;
+  padding: 40px 20px;
+  padding: 4rem 2rem;
+  position: relative;
   text-align: center; }
   @media (min-width: 1024px) {
     .cta {
+      margin: 40px 0 60px;
+      margin: 4rem 0 6rem;
       padding: 40px 20px;
       padding: 4rem 2rem; } }
+  .cta .row {
+    position: relative;
+    z-index: 1; }
+  .cta::after {
+    background: rgba(33, 33, 33, 0.1);
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0; }
 
 .cta-text {
   color: #fff;

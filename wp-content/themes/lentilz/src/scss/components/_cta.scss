@@ -2,10 +2,28 @@
   background: $blue center fixed no-repeat;
   background-size: cover;
   @include rem(margin, 40px 0);
-  @include rem(padding, 15px);
+  @include rem(padding, 40px 20px);
+  position: relative;
   text-align: center;
   @include desktop {
+    @include rem(margin, 40px 0 60px);
     @include rem(padding, 40px 20px);
+  }
+
+  .row {
+    position: relative;
+    z-index: 1;
+  }
+
+  &::after {
+    background: rgba($black, 0.1);
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
   }
 }
 

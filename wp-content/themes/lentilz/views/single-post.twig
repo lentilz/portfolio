@@ -1,5 +1,17 @@
 {% extends "base.twig" %}
 
+{% block head %}
+<style>
+  .cta {
+    background-image: url('{{ TimberImage(post.port_url_background).src|resize(680) }}');
+  }
+  @media (min-width: 1024px) {
+    .cta {
+      background-image: url('{{ TimberImage(post.port_url_background).src|resize(1440) }}');
+    }
+  }
+</style>
+{% endblock %}
 {% block layout 'layout--interior' %}
 
 {% block page_header %}
@@ -38,10 +50,11 @@
           </div>
         </div>
       </div> <!-- /.browser -->
-
+      {% if post.port_vimeo_video %}
       <div class="flex-video video--vimeo">
         <iframe src="http://player.vimeo.com/video/{{ post.port_vimeo_video }}?byline=0&amp;portrait=0&amp;color=ffffff" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div> <!--- /.flex-video -->
+      {% endif %}
     </div> <!-- /.featured-media -->
     {% endif %}
 
@@ -77,7 +90,7 @@
     </div>
   </div> <!-- /.row -->
   {% if post.port_live_url %}
-  <div class="cta" style="background-image: url('{{ TimberImage(post.port_url_background).src }}')">
+  <div class="cta">
     <div class="row">
       <a href="{{ post.port_live_url }}" class="cta-text" target="_blank">View Site <i class="fa fa-angle-right"></i></a>
     </div>
