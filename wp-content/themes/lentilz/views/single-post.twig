@@ -1,0 +1,97 @@
+{% extends "base.twig" %}
+
+{% block layout 'layout--interior' %}
+
+{% block page_header %}
+<a href="/work" class="icon-link">
+  <svg version="1.1" class="arrow--left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="128px" height="90.002px" viewBox="192 210.999 128 90.002" enable-background="new 192 210.999 128 90.002" xml:space="preserve">
+    <path class="arrow-path" fill="#FFFFFF" d="M233.806,299.648c1.744,1.805,4.646,1.805,6.451,0c1.744-1.744,1.744-4.646,0-6.386l-32.709-32.709h107.936
+  	c2.516-0.004,4.516-2.004,4.516-4.52c0-2.516-2-4.581-4.516-4.581H207.548l32.709-32.648c1.744-1.805,1.744-4.711,0-6.451
+  	c-1.805-1.805-4.711-1.805-6.451,0l-40.453,40.453c-1.805,1.744-1.805,4.646,0,6.386L233.806,299.648z"/>
+  </svg>
+</a>
+{% endblock %}
+
+{% block content %}
+<article id="post-{{post.ID}}" class="page-content" role="article">
+  <div class="row">
+    {% if post.port_featured_video or post.port_vimeo_video %}
+    <div class="featured-media">
+      <div class="browser">
+        <div class="browser-topbar">
+          <div class="browser-btn"></div>
+          <div class="browser-btn"></div>
+          <div class="browser-btn"></div>
+
+          <div class="address-bar">
+            {% if post.port_live_url %}
+            <a href="{{ post.port_live_url }}" target="_blank" class="address-bar_url"> <i class="address-bar_url fa fa-external-link"></i> {{ post.port_live_url }}</a>
+            {% endif %}
+          </div>
+        </div> <!-- /.browser_topbar -->
+
+        <div class="browser-content">
+          <div class="flex-video">
+            <video autoplay="true" loop="true" preload="preload" poster="{{ post.thumbnail.src|resize(800) }}">
+              <source src="{{ post.get_field('port_featured_video').url }}" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div> <!-- /.browser -->
+
+      <div class="flex-video video--vimeo">
+        <iframe src="http://player.vimeo.com/video/{{ post.port_vimeo_video }}?byline=0&amp;portrait=0&amp;color=ffffff" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div> <!--- /.flex-video -->
+    </div> <!-- /.featured-media -->
+    {% endif %}
+
+    <div class="flex-row">
+      <div class="flex-col flex-reorder col-padding">
+        <h1 class="page-title">{{post.title}}</h1>
+
+        <div class="page-summary">
+          {{post.content}}
+        </div>
+      </div>
+      <div class="flex-col col-large-rev col-padding">
+        {% if post.port_swatches %}
+        <ul class="swatches unstyled-list">
+          {% for color in post.get_field('port_swatches') %}
+          <li class="swatch" title="Project swatch: {{color.swatch }}" style="background-color: {{color.swatch }};"> &nbsp; </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <h4>{{ post.port_project_date }}</h4>
+        <p><strong>Role:</strong> {{ post.port_project_role }}</p>
+
+        {% if post.tags %}
+        <ul class="unstyled-list tags-list">
+          {% for tag in post.tags %}
+          <li class="tags-label">
+            {{ tag.name }}
+          </li>
+          {% endfor %}
+        </ul> <!-- /.tags-list -->
+        {% endif %}
+      </div>
+    </div>
+  </div> <!-- /.row -->
+  {% if post.port_live_url %}
+  <div class="cta" style="background-image: url('{{ TimberImage(post.port_url_background).src }}')">
+    <div class="row">
+      <a href="{{ post.port_live_url }}" class="cta-text" target="_blank">View Site <i class="fa fa-angle-right"></i></a>
+    </div>
+  </div> <!-- /.cta -->
+  {% endif %}
+
+  <div class="row col-padding">
+    {% for image in post.get_field('port_images') %}
+    <figure>
+      <img src="{{ TimberImage(image.image).src|resize(800) }}" alt="{{ image.image.alt }}">
+      <!-- // should use srcset -->
+      <figcaption>{{ image.image.caption }}</figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</article> <!-- /.page-content -->
+{% endblock %}

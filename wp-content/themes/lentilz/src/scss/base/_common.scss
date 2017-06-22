@@ -1,0 +1,59 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -webkit-backface-visibility: hidden;
+}
+
+::-moz-selection,
+::selection {
+  background: $selected-text-background;
+  color: $selected-text-color;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: $lightgray;
+  color: $black;
+  font-family: $sans;
+  font-weight: $sansLight;
+  @include rem(font-size, 16px);
+  line-height: 1.3;
+}
+
+.row {
+  @include rem(max-width, $gridWidth);
+  margin-left: auto;
+  margin-right: auto;
+
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+}
+
+.icon-link {
+  display: inline-block;
+
+  .arrow--left {
+    display: inline-block;
+    @include rem(height, 40px);
+    margin: 0;
+    @include rem(width, 70px);
+  }
+  .arrow-path {
+    fill: $black;
+    transition: all 300ms ease;
+  }
+
+  &:hover,
+  &:focus {
+    .arrow-path {
+      fill: $blue;
+    }
+  }
+}

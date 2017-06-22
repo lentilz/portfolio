@@ -1,12 +1,30 @@
 // Site Variables
 //
 
-$black: #000;
+$black: #212121;
+$lightgray: #f1f1f1;
 $white: #fff;
+$blue: #0072bc;
+$darkblue: #0063a3;
+$teal: #00a1bc;
+$red: #ff3434;
+$yellow: #ffc100;
+$green: #67b678;
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+$serif: 'Playfair Display', serif;
+$sans: 'Overpass', sans-serif;
+
+$serifBold: 700;
+$serifBlack: 900;
+$sansLight: 300;
+$sansSemibold: 600;
 
 $fa-font-path: "assets/fonts";
 
-//////////////////////////////
-// Menu
-/////////////////////////////
-$offcanvas-fixed-reveal: false;
+$selected-text-background: $blue;
+$selected-text-color: $white;
+
+$gridWidth: 1200px;

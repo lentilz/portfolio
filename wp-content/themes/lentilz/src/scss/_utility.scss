@@ -3,14 +3,11 @@
 */
 .col-padding {
   @include rem(padding, 0 20px);
-}
-.unstyled-list {
-  margin: 0;
-  padding: 0;
-  li {
-    list-style: none;
+  @include desktop {
+    @include rem(padding, 0 30px);
   }
 }
+
 /**
 * Wordpress image alignment
 */

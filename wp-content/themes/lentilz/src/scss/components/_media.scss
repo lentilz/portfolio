@@ -1,0 +1,112 @@
+.flex-video {
+  height: 0;
+  @include rem(margin-bottom, 30px);
+  padding-bottom: 54%;
+  position: relative;
+  overflow: hidden;
+  @include desktop {
+    @include rem(margin-bottom, 60px);
+  }
+
+  &.video--vimeo {
+    padding-bottom: 57%;
+  }
+
+  iframe,
+  video {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.featured-media {
+  margin-left: auto;
+  margin-right: auto;
+  @include rem(max-width, 1000px);
+  @include rem(margin-top, -55px);
+  @include rem(padding, 0 10px);
+  @include desktop {
+    @include rem(margin-top, -75px);
+  }
+}
+
+figure {
+  @include rem(margin, 0 0 20px 0);
+  padding: 0;
+  position: relative;
+}
+img {
+  display: inline-block;
+  max-width: 100%;
+  width: auto;
+}
+
+.browser {
+  background: $black;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 3px 10px rgba(black, 0.5);
+  padding: 0;
+  transition: all ease 250ms;
+  width: 100%;
+}
+
+.browser-topbar {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  @include rem(padding, 10px 10px 5px);
+  position: relative;
+}
+
+.browser-btn {
+  background: $black;
+  border: solid 1px $black;
+  border-radius: 50%;
+  height: 13px;
+  display: inline-block;
+  margin: 0 3px;
+  transition: 300ms background ease;
+  width: 13px;
+
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+
+  &:nth-of-type(1) {
+    background: $red;
+    border-color: darken($red, 20%);
+  }
+  &:nth-of-type(2) {
+    background: $yellow;
+    border-color: darken($yellow, 20%);
+  }
+  &:nth-of-type(3) {
+    background: $green;
+    border-color: darken($green, 20%);
+  }
+}
+
+.address-bar {
+  background: rgba(white, 0.9);
+  border: solid thin $black;
+  border-radius: 3px;
+  flex-grow: 1;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 2px 8px;
+
+  &_url {
+    color: $black;
+    text-decoration: none;
+    vertical-align: middle;
+
+    &:hover,
+    &:focus {
+      color: $blue;
+    }
+  }
+}

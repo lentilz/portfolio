@@ -1,0 +1,36 @@
+// Page layout setup
+.page-header {
+  @include rem(padding, 20px);
+}
+.page-content {
+  background: $white;
+  @include rem(padding-bottom, 20px);
+  @include desktop {
+    @include rem(padding-bottom, 60px);
+  }
+}
+.layout--interior {
+  @include rem(padding-top, 60px);
+}
+
+.flex-row {
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-col {
+  width: 100%;
+  @include desktop {
+    width: 50%;
+  }
+}
+.flex-reorder {
+  @include desktop {
+    order: 1;
+  }
+  &:nth-of-type {
+    @include desktop {
+      order: 2;
+    }
+  }
+}

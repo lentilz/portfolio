@@ -5,27 +5,57 @@
 {% endblock %}
 
 <body class="{{body_class}}" data-template="base.twig">
-
+  <header class="page-header">
+    {% block page_header %}
+    <figure>
+     <img src="/wp-content/themes/lentilz/assets/img/signature_tp.png" alt="Lentie Ward Signature graphic" title="Lentie Ward">
+     <figcaption>Design-oriented front-end developer &amp; UX Enthusiast</figcaption>
+    </figure>
+  {% endblock %}
+  </header>
+  <main role="main" class="{% block layout %}layout--main{% endblock %}">
     {% block content %}
-    <main role="main">
-      <section>
-        <figure>
-         <img src="../signature_tp.png" alt="Lentie Ward Signature graphic" title="Lentie Ward">
-        </figure>
-        <h1>Design-oriented front-end developer &amp; UX Enthusiast</h1>
-      </section>
-    </main>
+    <article class="page-content">
+      {{ post.content }}
+    </article>
     {% endblock %}
 
-    {% block footer %}
-    <footer role="footer">
-      <a href="mailto:lentieward12@gmail.com" class="fa fa-envelope-o"></a> &nbsp;
-      <a href="https://www.github.com/lentilz" target="_blank" class="fa fa-github"></a> &nbsp;
-      <a href="http://codepen.io/lentilz/" target="_blank" class="fa fa-codepen"></a> &nbsp;
-      <a href="https://www.linkedin.com/in/lentie-ward-13653946/" target="_blank" class="fa fa-linkedin"></a> &nbsp;
-      <a href="https://www.instagram.com/guerrilla_fc/" class="fa fa-futbol-o" target="_blank"></a>
-    </footer>
+    {% block content_pagination %}
+    <nav class="pagination-block">
+      <ul class="pagination">
+        {% if pagination.prev %}
+        <li>
+          <a href="{{pagination.prev.link}}" class="prev {{pagination.prev.link|length ? '' : 'invisible'}}"> < Previous</a>
+        </li>
+        {% endif %}
+        {% for page in pagination.pages %}
+        <li>
+          {% if page.link %}
+          <a href="{{page.link}}" class="{{page.class}}">{{page.title}}</a>
+          {% else %}
+          <span class="{{page.class}}">{{page.title}}</span>
+          {% endif %}
+        </li>
+        {% endfor %}
+        {% if pagination.next %}
+        <li>
+          <a href="{{pagination.next.link}}" class="next {{pagination.next.link|length ? '' : 'invisible'}}">Next ></a>
+        </li>
+        {% endif %}
+      </ul> <!-- /.pagination -->
+    </nav> <!-- /.pagination-block -->
     {% endblock %}
+  </main>
 
-  {{ function('wp_footer') }}
+  {% block footer %}
+  <footer role="footer">
+    <a href="mailto:lentieward12@gmail.com" class="fa fa-envelope-o"></a> &nbsp;
+    <a href="https://www.github.com/lentilz" target="_blank" class="fa fa-github"></a> &nbsp;
+    <a href="http://codepen.io/lentilz/" target="_blank" class="fa fa-codepen"></a> &nbsp;
+    <a href="https://www.linkedin.com/in/lentie-ward-13653946/" target="_blank" class="fa fa-linkedin"></a> &nbsp;
+    <a href="https://www.instagram.com/guerrilla_fc/" class="fa fa-futbol-o" target="_blank"></a>
+  </footer>
+  {% endblock %}
+
+{{ function('wp_footer') }}
 </body>

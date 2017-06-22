@@ -3,10 +3,10 @@
     "title": "Portfolio",
     "fields": [
         {
-            "key": "field_591f3cf865be7",
-            "label": "Project Type",
-            "name": "port_project_type",
-            "type": "select",
+            "key": "field_59473f6d177d3",
+            "label": "Featured Video",
+            "name": "port_featured_video",
+            "type": "file",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -15,27 +15,18 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "web": "Web Site",
-                "mobile": "Mobile",
-                "graphic": "Graphic"
-            },
-            "default_value": [
-
-            ],
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "ajax": 0,
-            "return_format": "value",
-            "placeholder": ""
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
         },
         {
-            "key": "field_591f3fe365be8",
-            "label": "Project Date",
-            "name": "port_project_date",
+            "key": "field_5945a87a981bf",
+            "label": "Featured Vimeo Video",
+            "name": "port_vimeo_video",
             "type": "text",
-            "instructions": "Season, ie: Fall 2012",
+            "instructions": "Vimeo video ID",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -48,6 +39,165 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_591f3cf865be7",
+            "label": "Project Role",
+            "name": "port_project_role",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_591f3fe365be8",
+            "label": "Project Date",
+            "name": "port_project_date",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5945a9e4981c2",
+            "label": "Live URL",
+            "name": "port_live_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5948b4105fd8f",
+            "label": "URL background",
+            "name": "port_url_background",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5946f830f2a37",
+            "label": "Swatches",
+            "name": "port_swatches",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 5,
+            "layout": "block",
+            "button_label": "Add Swatch",
+            "sub_fields": [
+                {
+                    "key": "field_5946f83ff2a38",
+                    "label": "swatch",
+                    "name": "swatch",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                }
+            ]
+        },
+        {
+            "key": "field_5945a8ab981c0",
+            "label": "Additional Images",
+            "name": "port_images",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Image",
+            "sub_fields": [
+                {
+                    "key": "field_5945a8c6981c1",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -66,9 +216,11 @@
     "instruction_placement": "label",
     "hide_on_screen": [
         "excerpt",
+        "custom_fields",
         "discussion",
         "comments",
         "revisions",
+        "slug",
         "author",
         "format",
         "tags",
@@ -76,5 +228,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1495225428
+    "modified": 1497941659
 }

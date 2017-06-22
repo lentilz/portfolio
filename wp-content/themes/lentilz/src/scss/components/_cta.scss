@@ -1,0 +1,27 @@
+.cta {
+  background: $blue center fixed no-repeat;
+  background-size: cover;
+  @include rem(margin, 40px 0);
+  @include rem(padding, 15px);
+  text-align: center;
+  @include desktop {
+    @include rem(padding, 40px 20px);
+  }
+}
+
+.cta-text {
+  color: $white;
+  font-family: $sans;
+  @include rem(font-size, 18px);
+  font-weight: $sansSemibold;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 300ms ease;
+  @include desktop {
+    @include rem(font-size, 22px);
+  }
+  &:hover,
+  &:focus {
+    letter-spacing: 2px;
+  }
+}

@@ -1,0 +1,43 @@
+h1, .h1 {
+  font-family: $serif;
+  font-weight: $serifBlack;
+  line-height: 1.2;
+  margin: 0 0 15px 0;
+  @include desktop {
+    @include rem(margin-bottom, 30);
+  }
+}
+
+h2, .h2,
+h3, .h3 {
+  font-family: $serif;
+  font-weight: $serifBold;
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+}
+
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: $sans;
+  font-weight: $sansSemibold;
+  margin: 0 0 15px 0;
+}
+
+strong {
+  font-weight: 600;
+}
+.page-title {
+  @extend h1;
+  font-size: 32px;
+  @include desktop {
+    @include rem(font-size, 55px);
+  }
+}
+
+.page-summary {
+  @include rem(font-size, 17px);
+  @include desktop {
+    @include rem(font-size, 20px);
+  }
+}
