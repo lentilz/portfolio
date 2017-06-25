@@ -44,6 +44,44 @@ img {
   width: auto;
 }
 
+.image-block {
+  // outline: solid thin crimson;
+  text-align: center;
+  @include desktop {
+    align-items: center;
+    display: flex;
+    @include rem(margin, 40px);
+  }
+  // &.has-caption:nth-of-type(even) {
+  //   img {
+  //     @include desktop {
+  //       order: 2;
+  //     }
+  //   }
+  //   .image-block__caption {
+  //     @include desktop {
+  //       @include rem(margin-right, -100px);
+  //       order: 1;
+  //     }
+  //   }
+  // }
+
+  img {
+    margin: auto;
+  }
+}
+.image-block__caption {
+  @include rem(padding,  5px 10px 10px);
+
+  @include desktop {
+    background: $black;
+    border-radius: 5px;
+    color: $white;
+    @include rem(margin-left, -100px);
+    @include rem(padding, 20px 10px);
+  }
+}
+
 .browser {
   background: $black;
   border-radius: 5px 5px 0 0;
