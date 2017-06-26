@@ -2,6 +2,10 @@
 .page-header {
   @include rem(padding, 20px);
 }
+.page-header__logo {
+  max-width: 200px;
+  margin: 0 auto;
+}
 .page-content {
   background: $white;
   @include rem(padding-bottom, 20px);

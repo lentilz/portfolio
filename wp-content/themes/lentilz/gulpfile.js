@@ -116,7 +116,7 @@ gulp.task('clean', function(cb) {
 // Images
 gulp.task('images', function() {
     return gulp.src(source+'img/**/*')
-        .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
+        .pipe( imagemin({ optimizationLevel: 5, progressive: true, interlaced: true }))
         .pipe(gulp.dest(dist+'img'))
         .pipe(notify({ message: 'Images task complete' }));
 });

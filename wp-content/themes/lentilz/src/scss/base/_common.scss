@@ -28,6 +28,7 @@ body {
   @include rem(max-width, $gridWidth);
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 
   &:before,
   &:after {

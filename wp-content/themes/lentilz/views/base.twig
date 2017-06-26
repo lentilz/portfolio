@@ -7,43 +7,16 @@
 <body class="{{body_class}}" data-template="base.twig">
   <header class="page-header">
     {% block page_header %}
-    <figure>
+    <h1 class="page-header__logo">
      <img src="/wp-content/themes/lentilz/assets/img/signature_tp.png" alt="Lentie Ward Signature graphic" title="Lentie Ward">
-     <figcaption>Design-oriented front-end developer &amp; UX Enthusiast</figcaption>
-    </figure>
-  {% endblock %}
+    </h1>
+    {% endblock %}
   </header>
   <main role="main" class="{% block layout %}layout--main{% endblock %}">
     {% block content %}
     <article class="page-content">
       {{ post.content }}
     </article>
-    {% endblock %}
-
-    {% block content_pagination %}
-    <nav class="pagination-block">
-      <ul class="pagination">
-        {% if pagination.prev %}
-        <li>
-          <a href="{{pagination.prev.link}}" class="prev {{pagination.prev.link|length ? '' : 'invisible'}}"> < Previous</a>
-        </li>
-        {% endif %}
-        {% for page in pagination.pages %}
-        <li>
-          {% if page.link %}
-          <a href="{{page.link}}" class="{{page.class}}">{{page.title}}</a>
-          {% else %}
-          <span class="{{page.class}}">{{page.title}}</span>
-          {% endif %}
-        </li>
-        {% endfor %}
-        {% if pagination.next %}
-        <li>
-          <a href="{{pagination.next.link}}" class="next {{pagination.next.link|length ? '' : 'invisible'}}">Next ></a>
-        </li>
-        {% endif %}
-      </ul> <!-- /.pagination -->
-    </nav> <!-- /.pagination-block -->
     {% endblock %}
   </main>
 

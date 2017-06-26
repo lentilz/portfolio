@@ -41,6 +41,25 @@
             "maxlength": ""
         },
         {
+            "key": "field_5950295d44aed",
+            "label": "Project Type",
+            "name": "port_project_type",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_591f3cf865be7",
             "label": "Project Role",
             "name": "port_project_role",
@@ -228,5 +247,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1497941659
+    "modified": 1498425095
 }

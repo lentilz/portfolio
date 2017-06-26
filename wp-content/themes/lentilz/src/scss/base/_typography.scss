@@ -27,6 +27,17 @@ h6, .h6 {
 strong {
   font-weight: 600;
 }
+
+a {
+  color: $white;
+  text-decoration: none;
+  transition: color 200ms ease;
+
+  &:hover,
+  &:focus {
+    color: $darkblue;
+  }
+}
 .page-title {
   @extend h1;
   font-size: 32px;

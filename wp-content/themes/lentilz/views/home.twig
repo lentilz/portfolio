@@ -1,12 +1,45 @@
 {% extends "base.twig" %}
 
+{% block head %}
+<style>
+  {% for work in post.get_field('hp_portfolio_items') %}
+    {% for project in work.project %}
+    .panel-showcase-{{ project.slug }}:before {
+      background-image: url('{{ work.preview.url }}');
+      background-blend-mode: multiply;
+      opacity: 0.6;
+      {% for color in project.get_field('port_swatches')|slice(0, 1) %} background-color: {{ color.swatch }};
+      {% endfor %}
+    }
+    {% endfor %}
+  {% endfor %}
+</style>
+{% endblock %}
+
+{% block layout 'layout--home' %}
+
+{% block page_header %}
+<h1 class="page-header__logo">
+ <img src="/wp-content/themes/lentilz/assets/img/signature_tp.png" alt="Lentie Ward Signature graphic" title="Lentie Ward">
+</h1>
+{% if post.subhead %}
+<p class="page-subhead">{{ post.subhead }}</p>
+{% endif %}
+{% endblock %}
+
 {% block content %}
-<main role="main">
-  <section>
-    <figure>
-     <!-- <img src="../signature_tp.png" alt="Lentie Ward Signature graphic" title="Lentie Ward"> -->
-    </figure>
-    {# post.content #}
-  </section>
-</main>
+<span id="work"></span>
+{% for work in post.get_field('hp_portfolio_items') %}
+{% for project in work.project %}
+<section class="panel panel-showcase-{{ project.slug }}"{% for color in project.get_field('port_swatches')|slice(0, 1) %} style="background-color: {{ color.swatch }};"{% endfor %}>
+  <div class="row row--narrow">
+    <!-- <img src="{{ work.preview.url }}" alt="{{ work.preview.alt }}" class="panel-image"> -->
+    <a href="{{ project.link}}"><h2 class="panel-title panel-link">{{ project.title }}</h2></a>
+    <!-- <h3 class="panel-subtitle">{{ project.port_project_type }}</h3> -->
+  </div>
+
+</section> <!-- /.showcase-panel -->
+{% endfor%}
+{% endfor %}
+
 {% endblock %}
