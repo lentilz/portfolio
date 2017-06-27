@@ -1,6 +1,13 @@
 // Page layout setup
 .page-header {
   @include rem(padding, 20px);
+
+  .home & {
+    align-items: center;
+    display: flex;
+    min-height: 95vh;
+    text-align: center;
+  }
 }
 .page-header__logo {
   max-width: 200px;

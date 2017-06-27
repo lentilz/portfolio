@@ -16,15 +16,17 @@
 </style>
 {% endblock %}
 
-{% block layout 'layout--home' %}
+{% block layout 'layout--home grid-panel' %}
 
 {% block page_header %}
-<h1 class="page-header__logo">
- <img src="/wp-content/themes/lentilz/assets/img/signature_tp.png" alt="Lentie Ward Signature graphic" title="Lentie Ward">
-</h1>
-{% if post.subhead %}
-<p class="page-subhead">{{ post.subhead }}</p>
-{% endif %}
+<div class="row row--narrow">
+  <h1 class="page-header__logo-x">
+   <img src="/wp-content/themes/lentilz/assets/img/signature_tp.png" alt="Lentie Ward Signature graphic" title="Lentie Ward">
+  </h1>
+  {% if post.hp_subhead %}
+  <p class="page-subhead">{{ post.hp_subhead }}</p>
+  {% endif %}
+</div>
 {% endblock %}
 
 {% block content %}

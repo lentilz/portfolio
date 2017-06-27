@@ -2307,6 +2307,13 @@ a {
 .page-header {
   padding: 20px;
   padding: 2rem; }
+  .home .page-header {
+    -ms-flex-align: center;
+        align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 95vh;
+    text-align: center; }
 
 .page-header__logo {
   max-width: 200px;
@@ -2559,6 +2566,14 @@ img {
   padding: 5px 10px;
   text-transform: capitalize; }
 
+.grid-panel {
+  -ms-flex-align: stretch;
+      align-items: stretch;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
 .panel {
   -ms-flex-align: center;
       align-items: center;
@@ -2574,8 +2589,14 @@ img {
   padding: 4rem 2rem;
   position: relative;
   text-align: center; }
+  .grid-panel .panel {
+    min-height: 65vh;
+    width: 100%; }
+    @media (min-width: 1024px) {
+      .grid-panel .panel {
+        width: 50%; } }
   .panel:before {
-    background: transparent -20% 50% fixed no-repeat;
+    background: transparent 49.8% 50% fixed no-repeat;
     background-size: 75%;
     content: '';
     height: 100%;
@@ -2585,12 +2606,13 @@ img {
     width: 100%;
     z-index: 0; }
   .panel .row {
+    max-width: 95%;
     position: relative; }
 
 .panel-title {
   color: #fff;
-  font-size: 28px;
-  font-size: 2.8rem;
+  font-size: 40px;
+  font-size: 4rem;
   text-shadow: 0 1px 3px rgba(33, 33, 33, 0.3);
   transition: all 300ms ease; }
   @media (min-width: 1024px) {
@@ -2616,14 +2638,19 @@ img {
     background-size: contain;
     content: '';
     display: inline-block;
-    height: 30px;
-    opacity: 0;
-    transform: translateX(-40px) rotate(180deg);
+    height: 20px;
+    transform: rotate(180deg);
     transition: all 300ms ease;
-    width: 50px; }
-  .panel-link:hover, .panel-link:focus {
+    width: 40px; }
+    @media (min-width: 1024px) {
+      .panel-link:after {
+        height: 30px;
+        opacity: 0;
+        transform: translateX(-40px) rotate(180deg);
+        width: 50px; } }
+  .no-touchevents .panel-link:hover, .no-touchevents .panel-link:focus {
     letter-spacing: 2px; }
-    .panel-link:hover:after, .panel-link:focus:after {
+    .no-touchevents .panel-link:hover:after, .no-touchevents .panel-link:focus:after {
       opacity: 1;
       transform: translateX(10px) rotate(180deg); }
 
