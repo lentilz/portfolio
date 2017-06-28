@@ -21,13 +21,10 @@
   </main>
 
   {% block footer %}
-  <footer role="footer">
-    <a href="mailto:lentieward12@gmail.com" class="fa fa-envelope-o"></a> &nbsp;
-    <a href="https://www.github.com/lentilz" target="_blank" class="fa fa-github"></a> &nbsp;
-    <a href="http://codepen.io/lentilz/" target="_blank" class="fa fa-codepen"></a> &nbsp;
-    <a href="https://www.linkedin.com/in/lentie-ward-13653946/" target="_blank" class="fa fa-linkedin"></a> &nbsp;
-    <a href="https://www.instagram.com/guerrilla_fc/" class="fa fa-futbol-o" target="_blank"></a>
+  <footer role="footer" class="page-footer">
+    {% include 'footer.twig' %}
   </footer>
+  <hr>
   {% endblock %}
 
 {{ function('wp_footer') }}

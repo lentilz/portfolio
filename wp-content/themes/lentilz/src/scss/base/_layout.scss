@@ -20,6 +20,11 @@
     @include rem(padding-bottom, 60px);
   }
 }
+.page-footer {
+  background: $black;
+  text-align: center;
+}
+
 .layout--interior {
   @include rem(padding-top, 60px);
 }

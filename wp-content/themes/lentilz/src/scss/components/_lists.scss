@@ -6,6 +6,15 @@
   }
 }
 
+.inline-list {
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    list-style: none;
+  }
+}
+
 .swatches {
   align-items: stretch;
   display: flex;
@@ -31,4 +40,12 @@
   letter-spacing: 1px;
   padding: 5px 10px;
   text-transform: capitalize;
+}
+
+.footer-links {
+  @include rem(padding, 30px 20px);
+  .footer-link-item {
+    font-size: 1.75rem;
+    margin: 0 10px;
+  }
 }

@@ -2180,6 +2180,9 @@ template {
       padding: 0 30px;
       padding: 0 3rem; } }
 
+.hide {
+  display: none; }
+
 /**
 * Wordpress image alignment
 */
@@ -2259,6 +2262,14 @@ body {
   .icon-link:hover .arrow-path, .icon-link:focus .arrow-path {
     fill: #0072bc; }
 
+hr {
+  background: #0072bc;
+  background: linear-gradient(135deg, #00a1bc 2%, #0072bc 47%, #0063a3 93%);
+  border: none;
+  display: block;
+  height: 5px;
+  margin: 0 auto; }
+
 h1, .page-title, .h1 {
   font-family: "Playfair Display", serif;
   font-weight: 900;
@@ -2327,6 +2338,10 @@ a {
     .page-content {
       padding-bottom: 60px;
       padding-bottom: 6rem; } }
+
+.page-footer {
+  background: #212121;
+  text-align: center; }
 
 .layout--interior {
   padding-top: 60px;
@@ -2485,7 +2500,7 @@ img {
       color: #0072bc; }
 
 .cta {
-  background: #0072bc center fixed no-repeat;
+  background: #212121 center fixed no-repeat;
   background-size: cover;
   margin: 40px 0;
   margin: 4rem 0;
@@ -2535,6 +2550,13 @@ img {
   .unstyled-list li {
     list-style: none; }
 
+.inline-list {
+  margin: 0;
+  padding: 0; }
+  .inline-list li {
+    display: inline-block;
+    list-style: none; }
+
 .swatches {
   -ms-flex-align: stretch;
       align-items: stretch;
@@ -2565,6 +2587,13 @@ img {
   letter-spacing: 1px;
   padding: 5px 10px;
   text-transform: capitalize; }
+
+.footer-links {
+  padding: 30px 20px;
+  padding: 3rem 2rem; }
+  .footer-links .footer-link-item {
+    font-size: 1.75rem;
+    margin: 0 10px; }
 
 .grid-panel {
   -ms-flex-align: stretch;

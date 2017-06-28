@@ -1,8 +1,33 @@
 <div class="row">
-  <div class="small-12 medium-4 columns">
-    {{footer_widgets}}
-  </div> <!-- /.small-12.medium-4.columns -->
-  <div class="small-12 medium-4 columns">
-    <p class="copyright">&copy; {{"now"|date('Y')}}
-  </div> <!-- /.small-12.medium-4.columns -->
+  <ul class="footer-links inline-list">
+    {% if options.social_url_email %}
+    <li class="footer-link-item">
+      <a href="mailto:{{options.social_url_email}}" class="social-icon fa fa-envelope-o" target="_blank"> <span class="hide">email</span> </a>
+    </li>
+    {% endif %}
+
+    {% if options.social_url_github %}
+    <li class="footer-link-item">
+      <a href="{{options.social_url_github}}" class="social-icon fa fa-github" target="_blank"> <span class="hide">github</span> </a>
+    </li>
+    {% endif %}
+
+    {% if options.social_url_codepen %}
+    <li class="footer-link-item">
+      <a href="{{options.social_url_codepen}}" class="social-icon fa fa-codepen" target="_blank"> <span class="hide">codepen</span> </a>
+    </li>
+    {% endif %}
+
+    {% if options.social_url_linkedin %}
+    <li class="footer-link-item">
+      <a href="{{options.social_url_linkedin}}" class="social-icon fa fa-linkedin" target="_blank"> <span class="hide">linkedin</span> </a>
+    </li>
+    {% endif %}
+
+    {% if options.social_url_instagram %}
+    <li class="footer-link-item">
+      <a href="{{options.social_url_instagram}}" class="social-icon fa fa-futbol-o" target="_blank"> <span class="hide">instagram</span> </a>
+    </li>
+    {% endif %}
+  </ul>
 </div> <!-- /.row -->

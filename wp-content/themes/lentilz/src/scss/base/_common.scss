@@ -69,3 +69,12 @@ body {
     }
   }
 }
+
+hr {
+  background: $blue;
+  background: linear-gradient(135deg, $teal 2%, $blue 47%, $darkblue 93%);
+  border: none;
+  display: block;
+  height: 5px;
+  margin: 0 auto;
+}

@@ -38,7 +38,8 @@ class PortfolioSite extends TimberSite {
   function add_to_context ( $context ) {
     $context['footer_menu'] = new TimberMenu('footer-menu');
     $context['site'] = $this;
-    $context['footer_widgets'] = Timber::get_widgets('footer_widgets');
+    $context['options'] = get_fields('options');
+    // $context['footer_widgets'] = Timber::get_widgets('footer_widgets');
 
     return $context;
   }
@@ -71,9 +72,21 @@ class PortfolioSite extends TimberSite {
       )
     );
   }
+
 }
 
 new PortfolioSite();
 
 // Custom Shortcodes
 // require_once(get_template_directory() . '/includes/shortcodes.php');
+
+// Create Global Options page
+if( function_exists('acf_add_options_page') ) {
+  acf_add_options_page(array(
+    'page_title'  => 'Global Variables',
+    'menu_title'  => 'Global Variables',
+    'menu_slug'   => 'global-variables',
+    'capability'  => 'edit_posts',
+    'redirect'    => false
+  ));
+}
