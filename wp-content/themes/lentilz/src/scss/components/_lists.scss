@@ -38,6 +38,7 @@
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 1px;
+  margin-bottom: 10px;
   padding: 5px 10px;
   text-transform: capitalize;
 }
@@ -45,7 +46,12 @@
 .footer-links {
   @include rem(padding, 30px 20px);
   .footer-link-item {
+    color: $white;
     font-size: 1.75rem;
     margin: 0 10px;
+    &:hover,
+    &:focus {
+      color: $blue;
+    }
   }
 }

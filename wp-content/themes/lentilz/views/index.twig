@@ -3,11 +3,13 @@
 {% block content %}
   <main class="page-content row">
     <section class="post-list small-12 columns">
-      {% block post_list %}
-        {% for post in posts %}
-          {% include ['teaser-'~post.post_type~'.twig', 'teaser.twig'] %}
-        {% endfor %}
-      {% endblock %}
+    {% for post in posts %}
+      <div class="panel panel-showcase-{{ post.slug }}"{% for color in post.get_field('port_swatches')|slice(0, 1) %} style="background-color: {{ color.swatch }};"{% endfor %}>
+        <div class="row row--narrow">
+          <a href="{{ post.link}}"><h2 class="panel-title panel-link">{{ post.title }}</h2></a>
+        </div>
+      </div> <!-- /.showcase-panel -->
+    {% endfor %}
     </section> <!-- /.post-list.small-12.columns -->
   </main> <!-- /.page-content.row -->
 {% endblock %}

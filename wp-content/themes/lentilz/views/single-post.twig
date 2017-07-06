@@ -27,8 +27,13 @@
 {% block content %}
 <article id="post-{{post.ID}}" class="page-content" role="article">
   <div class="row">
-    {% if post.port_featured_video or post.port_vimeo_video %}
+    {% if post.port_featured_video or post.port_vimeo_video or post.get_thumbnail %}
     <div class="featured-media">
+      {% if post.port_vimeo_video %}
+      <div class="flex-video video--vimeo">
+        <iframe src="http://player.vimeo.com/video/{{ post.port_vimeo_video }}?byline=0&amp;portrait=0&amp;color=ffffff" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div> <!--- /.flex-video -->
+      {% elseif post.port_featured_video or post.get_thumbnail %}
       <div class="browser">
         <div class="browser-topbar">
           <div class="browser-btn"></div>
@@ -39,21 +44,23 @@
             {% if post.port_live_url %}
             <a href="{{ post.port_live_url }}" target="_blank" class="address-bar_url"> <i class="address-bar_url fa fa-external-link"></i> {{ post.port_live_url }}</a>
             {% endif %}
+            &nbsp;
           </div>
         </div> <!-- /.browser_topbar -->
 
         <div class="browser-content">
-          <div class="flex-video">
+          {% if post.port_featured_video %}
+          <div class="flex-video desktop-media">
             <video autoplay="true" loop="true" preload="preload" poster="{{ post.thumbnail.src|resize(800) }}">
               <source src="{{ post.get_field('port_featured_video').url }}" type="video/mp4">
             </video>
           </div>
+          {% endif %}
+          <figure class="feature-img{% if post.port_featured_video %} mobile-media{% endif %}">
+            <img srcset="{{post.thumbnail.src}} 320w, {{post.thumbnail.src}} 680w, {{post.thumbnail.src}} 720w" sizes="(min-width:64em) 980px, 100vw" src="{{post.thumbnail.src}}" alt="{{post.thumbnail.alt}}">
+          </figure>
         </div>
       </div> <!-- /.browser -->
-      {% if post.port_vimeo_video %}
-      <div class="flex-video video--vimeo">
-        <iframe src="http://player.vimeo.com/video/{{ post.port_vimeo_video }}?byline=0&amp;portrait=0&amp;color=ffffff" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-      </div> <!--- /.flex-video -->
       {% endif %}
     </div> <!-- /.featured-media -->
     {% endif %}
@@ -62,7 +69,7 @@
       <div class="flex-col flex-reorder col-padding">
         <h1 class="page-title">{{post.title}}</h1>
 
-        <div class="page-summary">
+        <div class="page-summary rte">
           {{post.content}}
         </div>
       </div>
@@ -96,11 +103,11 @@
     </div>
   </div> <!-- /.cta -->
   {% endif %}
-
+  {% if post.port_images %}
   <div class="row row--narrow col-padding">
     {% for image in post.get_field('port_images') %}
     <figure class="image-block{% if image.image.caption%} has-caption{% endif %}">
-      <img src="{{ TimberImage(image.image).src|resize(800) }}" alt="{{ image.image.alt }}">
+      <img src="{{ TimberImage(image.image).src }}" alt="{{ image.image.alt }}">
       <!-- // should use srcset -->
       {% if image.image.caption %}
       <figcaption class="image-block__caption">{{ image.image.caption }}</figcaption>
@@ -108,5 +115,7 @@
     </figure>
     {% endfor %}
   </div>
+  {% endif %}
 </article> <!-- /.page-content -->
+
 {% endblock %}

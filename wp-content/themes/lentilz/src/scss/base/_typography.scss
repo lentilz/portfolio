@@ -37,6 +37,33 @@ a {
   &:focus {
     color: $darkblue;
   }
+
+  .rte & {
+    color: $black;
+    position: relative;
+    white-space: nowrap;
+    z-index: 1;
+
+    &:before {
+      background: $blue;
+      bottom: -3px;
+      content: '';
+      height: 3px;
+      left: -2px;
+      position: absolute;
+      transition: height 200ms ease;
+      width: 102%;
+      z-index: -1;
+    }
+
+    &:hover,
+    &:focus {
+      color: $white;
+      &:before {
+        height: 103%;
+      }
+    }
+  }
 }
 .page-title {
   @extend h1;

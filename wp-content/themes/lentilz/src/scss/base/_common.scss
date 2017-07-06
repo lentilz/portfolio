@@ -6,11 +6,15 @@
   -webkit-backface-visibility: hidden;
 }
 
-::-moz-selection,
+::-moz-selection {
+  background: $selected-text-background;
+  color: $selected-text-color;
+}
 ::selection {
   background: $selected-text-background;
   color: $selected-text-color;
 }
+
 html {
   font-size: 62.5%;
 }
