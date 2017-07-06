@@ -26,8 +26,11 @@
   }
 }
 .swatch {
-  @include rem(height, 8px);
+  @include rem(height, 14px);
   width: 100%;
+  @include desktop {
+    @include rem(height, 8px);
+  }
 }
 
 .tags-label {

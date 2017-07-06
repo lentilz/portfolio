@@ -65,6 +65,7 @@ img {
 }
 
 .image-block {
+  margin-top: 20px;
   // outline: solid thin crimson;
   text-align: center;
   @include desktop {
@@ -125,10 +126,14 @@ img {
   border: solid 1px $black;
   border-radius: 50%;
   height: 13px;
-  display: inline-block;
+  display: none;
   margin: 0 3px;
   transition: 300ms background ease;
   width: 13px;
+
+  @include desktop {
+    display: inline-block;
+  }
 
   &:hover,
   &:focus {
@@ -154,9 +159,14 @@ img {
   border: solid thin $black;
   border-radius: 3px;
   flex-grow: 1;
-  font-size: 14px;
-  margin-left: 10px;
+  font-size: 12px;
+  margin-bottom: 5px;
   padding: 2px 8px;
+  word-break: break-all;
+  @include desktop {
+    font-size: 14px;
+    margin-left: 10px;
+  }
 
   &_url {
     color: $black;

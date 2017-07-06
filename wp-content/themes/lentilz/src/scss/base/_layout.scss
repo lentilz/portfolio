@@ -3,7 +3,9 @@
   @include rem(padding, 20px);
 
   .home & {
+    -webkit-align-items: center;
     align-items: center;
+    display: -webkit-flex;
     display: flex;
     min-height: 75vh;
     text-align: center;

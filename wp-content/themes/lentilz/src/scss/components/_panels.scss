@@ -1,13 +1,18 @@
 .grid-panel {
-  align-items: stretch;
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
+  @include desktop {
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 .panel {
+  -webkit-align-items: center;
   align-items: center;
-  background: transparent center fixed no-repeat;
+  background: transparent center no-repeat;
   background-size: cover;
   color: $white;
+  display: -webkit-flex;
   display: flex;
   flex-wrap: nowrap;
   min-height: 100vh;
@@ -33,6 +38,10 @@
     top: 0;
     width: 100%;
     z-index: 0;
+
+    .touchevents & {
+      background-attachment: scroll;
+    }
   }
 
   .row {
@@ -70,13 +79,13 @@
     content:'';
     display: inline-block;
     height: 20px;
-    transform: rotate(180deg);
+    // transform: rotate(180deg);
     transition: all 300ms ease;
     width: 40px;
     @include desktop {
       height: 30px;
       opacity: 0;
-      transform: translateX(-40px) rotate(180deg);
+      transform: translateX(-40px);
       width: 50px;
     }
   }
@@ -88,7 +97,7 @@
 
       &:after {
         opacity: 1;
-        transform: translateX(10px) rotate(180deg);
+        transform: translateX(10px);
       }
     }
   }
