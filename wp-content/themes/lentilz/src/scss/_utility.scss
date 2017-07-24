@@ -8,13 +8,21 @@
   }
 }
 
-// quick fix for autoprefixer flexbox-inconsistency on newer iOS. 
+// quick fix for autoprefixer flexbox-inconsistency on newer iOS.
 .helper-padding {
   padding: 80px 0;
 }
 
 .hide {
   display: none;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
 }
 
 /**

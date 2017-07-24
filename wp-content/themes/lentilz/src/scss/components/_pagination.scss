@@ -1,0 +1,35 @@
+.pagination-block {
+  @include rem(padding, 30px 20px);
+  @include desktop {
+    @include rem(padding, 40px 20px 30px);
+  }
+}
+
+.pagination-list {
+  align-items: center;
+}
+
+.pagination-link {
+  color: $black;
+  font-weight: $sansSemibold;
+
+  svg {
+    vertical-align: middle;
+  }
+
+  &.next {
+    svg {
+      margin-left: -15px;
+    }
+  }
+  &.prev {
+    svg {
+      margin-right: -15px;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: $blue;
+  }
+}

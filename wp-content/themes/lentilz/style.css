@@ -2186,6 +2186,12 @@ template {
 .hide {
   display: none; }
 
+.text-right {
+  text-align: right; }
+
+.text-left {
+  text-align: left; }
+
 /**
 * Wordpress image alignment
 */
@@ -2360,8 +2366,10 @@ a {
   padding-bottom: 2rem; }
   @media (min-width: 1024px) {
     .page-content {
-      padding-bottom: 60px;
-      padding-bottom: 6rem; } }
+      padding-bottom: 40px;
+      padding-bottom: 4rem; } }
+  .layout--interior .page-content {
+    padding-bottom: 0; }
 
 .page-footer {
   background: #212121;
@@ -2556,16 +2564,16 @@ img {
 .cta {
   background: #212121 center no-repeat;
   background-size: cover;
-  margin: 40px 0;
-  margin: 4rem 0;
+  margin: 40px 0 0;
+  margin: 4rem 0 0;
   padding: 40px 20px;
   padding: 4rem 2rem;
   position: relative;
   text-align: center; }
   @media (min-width: 1024px) {
     .cta {
-      margin: 70px 0 40px;
-      margin: 7rem 0 4rem;
+      margin: 70px 0 0;
+      margin: 7rem 0 0;
       padding: 50px 20px;
       padding: 5rem 2rem; } }
   .cta .row {
@@ -2751,5 +2759,29 @@ img {
   position: absolute;
   left: 0;
   max-width: 50%; }
+
+.pagination-block {
+  padding: 30px 20px;
+  padding: 3rem 2rem; }
+  @media (min-width: 1024px) {
+    .pagination-block {
+      padding: 40px 20px 30px;
+      padding: 4rem 2rem 3rem; } }
+
+.pagination-list {
+  -ms-flex-align: center;
+      align-items: center; }
+
+.pagination-link {
+  color: #212121;
+  font-weight: 600; }
+  .pagination-link svg {
+    vertical-align: middle; }
+  .pagination-link.next svg {
+    margin-left: -15px; }
+  .pagination-link.prev svg {
+    margin-right: -15px; }
+  .pagination-link:hover, .pagination-link:focus {
+    color: #0072bc; }
 
 /*# sourceMappingURL=style.css.map */

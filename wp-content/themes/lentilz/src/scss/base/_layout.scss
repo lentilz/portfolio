@@ -23,7 +23,11 @@
   min-height: 60vh;
   @include rem(padding-bottom, 20px);
   @include desktop {
-    @include rem(padding-bottom, 60px);
+    @include rem(padding-bottom, 40px);
+  }
+
+  .layout--interior & {
+    padding-bottom: 0;
   }
 }
 .page-footer {

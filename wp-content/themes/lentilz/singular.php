@@ -17,4 +17,7 @@ if ( is_front_page() ) {
   array_unshift( $templates, 'home.twig' );
 }
 
+$context['prev_page'] = get_previous_post();
+$context['next_page'] = get_next_post();
+
 Timber::render( $templates, $context );

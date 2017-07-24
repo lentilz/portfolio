@@ -1,12 +1,12 @@
 .cta {
   background: $black center no-repeat;
   background-size: cover;
-  @include rem(margin, 40px 0);
+  @include rem(margin, 40px 0 0);
   @include rem(padding, 40px 20px);
   position: relative;
   text-align: center;
   @include desktop {
-    @include rem(margin, 70px 0 40px);
+    @include rem(margin, 70px 0 0);
     @include rem(padding, 50px 20px);
   }
 
