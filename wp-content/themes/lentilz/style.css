@@ -2782,6 +2782,7 @@ img {
   color: #212121;
   font-weight: 600; }
   .pagination-link svg {
+    transition: all 300ms ease;
     vertical-align: middle; }
   .pagination-link.next svg {
     margin-left: -15px; }
@@ -2789,5 +2790,9 @@ img {
     margin-right: -15px; }
   .pagination-link:hover, .pagination-link:focus {
     color: #0072bc; }
+    .pagination-link:hover.next svg, .pagination-link:focus.next svg {
+      transform: translateX(10px); }
+    .pagination-link:hover.prev svg, .pagination-link:focus.prev svg {
+      transform: translateX(-10px); }
 
 /*# sourceMappingURL=style.css.map */

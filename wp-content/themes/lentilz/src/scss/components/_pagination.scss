@@ -14,6 +14,7 @@
   font-weight: $sansSemibold;
 
   svg {
+    transition: all 300ms ease;
     vertical-align: middle;
   }
 
@@ -31,5 +32,16 @@
   &:hover,
   &:focus {
     color: $blue;
+
+    &.next {
+      svg {
+        transform: translateX(10px);
+      }
+    }
+    &.prev {
+      svg {
+        transform: translateX(-10px);
+      }
+    }
   }
 }
