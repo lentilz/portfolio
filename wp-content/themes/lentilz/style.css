@@ -2180,6 +2180,9 @@ template {
       padding: 0 30px;
       padding: 0 3rem; } }
 
+.col-centered {
+  margin: auto; }
+
 .helper-padding {
   padding: 80px 0; }
 
@@ -2392,6 +2395,9 @@ a {
   @media (min-width: 1024px) {
     .flex-col {
       width: 50%; } }
+  @media (min-width: 1024px) {
+    .flex-col.col-centered {
+      width: 60%; } }
 
 @media (min-width: 1024px) {
   .flex-reorder {

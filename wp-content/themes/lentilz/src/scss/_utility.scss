@@ -8,6 +8,10 @@
   }
 }
 
+.col-centered {
+  margin: auto;
+}
+
 // quick fix for autoprefixer flexbox-inconsistency on newer iOS.
 .helper-padding {
   padding: 80px 0;

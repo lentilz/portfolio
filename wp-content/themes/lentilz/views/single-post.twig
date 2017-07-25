@@ -66,6 +66,7 @@
     {% endif %}
 
     <div class="flex-row">
+      {% if post.content %}
       <div class="flex-col flex-reorder col-padding">
         <h1 class="page-title">{{post.title}}</h1>
 
@@ -73,7 +74,12 @@
           {{post.content}}
         </div>
       </div>
-      <div class="flex-col col-large-rev col-padding">
+      {% endif %}
+      <div class="flex-col col-large-rev col-padding{% if not post.content %} col-centered{% endif %}">
+        {% if not post.content %}
+        <h1 class="page-title">{{post.title}}</h1>
+        {% endif %}
+
         {% if post.port_swatches %}
         <ul class="swatches unstyled-list">
           {% for color in post.get_field('port_swatches') %}

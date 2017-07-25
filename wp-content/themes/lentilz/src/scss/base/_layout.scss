@@ -49,6 +49,11 @@
   @include desktop {
     width: 50%;
   }
+  &.col-centered {
+    @include desktop {
+      width: 60%;
+    }
+  }
 }
 .flex-reorder {
   @include desktop {
