@@ -65,13 +65,12 @@ img {
 }
 
 .image-block {
-  margin-top: 20px;
-  // outline: solid thin crimson;
+  @include rem(margin, 40px 0);
   text-align: center;
   @include desktop {
     align-items: center;
     display: flex;
-    @include rem(margin, 40px);
+    @include rem(margin, 60px 40px);
   }
   // &.has-caption:nth-of-type(even) {
   //   img {

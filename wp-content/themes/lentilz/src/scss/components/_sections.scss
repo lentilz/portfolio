@@ -1,0 +1,12 @@
+.section {
+  @include rem(padding, 20px);
+  width: 100%;
+
+  @include desktop {
+    @include rem(padding, 60px 20px);
+  }
+}
+
+.section--gray {
+  background-color: $gray;
+}

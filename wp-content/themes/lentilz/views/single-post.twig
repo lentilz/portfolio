@@ -109,6 +109,13 @@
     </div>
   </div> <!-- /.cta -->
   {% endif %}
+  {% if post.port_mobile_feature %}
+  <section class="section section--gray">
+    <div class="row">
+      <img class="centered-block" src="{{ TimberImage(post.port_mobile_feature).src }}" alt="{{ post.port_mobile_feature.alt }}">
+    </div>
+  </section>
+  {% endif %}
   {% if post.port_images %}
   <div class="row row--narrow col-padding">
     {% for image in post.get_field('port_images') %}

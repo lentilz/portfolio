@@ -2183,6 +2183,10 @@ template {
 .col-centered {
   margin: auto; }
 
+.centered-block {
+  display: block;
+  margin: 0 auto; }
+
 .helper-padding {
   padding: 80px 0; }
 
@@ -2475,7 +2479,8 @@ img {
   width: auto; }
 
 .image-block {
-  margin-top: 20px;
+  margin: 40px 0;
+  margin: 4rem 0;
   text-align: center; }
   @media (min-width: 1024px) {
     .image-block {
@@ -2483,8 +2488,8 @@ img {
           align-items: center;
       display: -ms-flexbox;
       display: flex;
-      margin: 40px;
-      margin: 4rem; } }
+      margin: 60px 40px;
+      margin: 6rem 4rem; } }
   .image-block img {
     margin: auto; }
 
@@ -2765,6 +2770,18 @@ img {
   position: absolute;
   left: 0;
   max-width: 50%; }
+
+.section {
+  padding: 20px;
+  padding: 2rem;
+  width: 100%; }
+  @media (min-width: 1024px) {
+    .section {
+      padding: 60px 20px;
+      padding: 6rem 2rem; } }
+
+.section--gray {
+  background-color: #ebebeb; }
 
 .pagination-block {
   padding: 30px 20px;
