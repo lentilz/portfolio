@@ -119,7 +119,7 @@
   {% if post.port_images %}
   <div class="row row--narrow col-padding">
     {% for image in post.get_field('port_images') %}
-    <figure class="image-block{% if image.image.caption%} has-caption{% endif %}">
+    <figure class="js-reveal image-block{% if image.image.caption%} has-caption{% endif %}">
       <img src="{{ TimberImage(image.image).src }}" alt="{{ image.image.alt }}">
       <!-- // should use srcset -->
       {% if image.image.caption %}

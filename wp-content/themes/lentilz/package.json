@@ -51,5 +51,8 @@
     "gulp-util": "^3.0.6",
     "sc5-styleguide": "^0.3.28",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "scrollreveal": "^3.3.6"
   }
 }

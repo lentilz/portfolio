@@ -1,9 +1,13 @@
-/* eslint-env browser */
-'use strict';
+(function () {
+   'use strict';
+}());
 
 import jquery from 'jquery';
 require('./vendor/modernizr.js');
 
-(function($) {
+import scrollReveal from './modules/scrollReveal.js';
 
+(function($) {
+  // Init scroll reveal Elements
+  scrollReveal();
 })(jquery);
