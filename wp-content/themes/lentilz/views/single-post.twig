@@ -81,7 +81,7 @@
         {% endif %}
 
         {% if post.port_swatches %}
-        <ul class="swatches unstyled-list">
+        <ul class="swatch-list unstyled-list">
           {% for color in post.get_field('port_swatches') %}
           <li class="swatch" title="Project swatch: {{color.swatch }}" style="background-color: {{color.swatch }};"> &nbsp; </li>
           {% endfor %}

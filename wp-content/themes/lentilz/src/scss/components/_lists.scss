@@ -15,22 +15,26 @@
   }
 }
 
-.swatches {
+.swatch-list {
   align-items: stretch;
   display: flex;
   justify-content: space-between;
-  @include rem(margin, 20px 0);
+  margin: 20px 0;
   width: 100%;
+
   @include desktop {
-    @include rem(margin, 17px 0 30px 0);
+    margin: 17px 0 25px;
   }
 }
+
 .swatch {
-  @include rem(height, 14px);
+  appearance: none;
+  background: none;
+  border: none;
+  display: block;
+  height: 16px;
+  padding: 0;
   width: 100%;
-  @include desktop {
-    @include rem(height, 8px);
-  }
 }
 
 .tags-label {

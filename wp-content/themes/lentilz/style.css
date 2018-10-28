@@ -2630,7 +2630,7 @@ img {
     display: inline-block;
     list-style: none; }
 
-.swatches {
+.swatch-list {
   -ms-flex-align: stretch;
       align-items: stretch;
   display: -ms-flexbox;
@@ -2638,21 +2638,21 @@ img {
   -ms-flex-pack: justify;
       justify-content: space-between;
   margin: 20px 0;
-  margin: 2rem 0;
   width: 100%; }
   @media (min-width: 1024px) {
-    .swatches {
-      margin: 17px 0 30px 0;
-      margin: 1.7rem 0 3rem 0; } }
+    .swatch-list {
+      margin: 17px 0 25px; } }
 
 .swatch {
-  height: 14px;
-  height: 1.4rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: none;
+  border: none;
+  display: block;
+  height: 16px;
+  padding: 0;
   width: 100%; }
-  @media (min-width: 1024px) {
-    .swatch {
-      height: 8px;
-      height: 0.8rem; } }
 
 .tags-label {
   background: #3b3b3b;
