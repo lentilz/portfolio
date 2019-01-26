@@ -2199,6 +2199,9 @@ template {
 .text-left {
   text-align: left; }
 
+.text-center {
+  text-align: center; }
+
 /**
 * Wordpress image alignment
 */
@@ -2332,6 +2335,10 @@ a {
     @media (min-width: 1024px) {
       .layout--single .page-title {
         margin-top: 40px; } }
+  .layout--404 .page-title {
+    font-size: 20vw;
+    line-height: 0.8;
+    margin: 0 0 5.5vw; }
 
 .page-summary {
   font-size: 17px;
@@ -2428,6 +2435,25 @@ a {
   .flex-reorder:nth-of-type {
     -ms-flex-order: 2;
         order: 2; } }
+
+.layout--404 .page-content {
+  -ms-flex-align: center;
+      align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 100%;
+  -ms-flex-pack: center;
+      justify-content: center; }
+
+.content-404 {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  text-align: center; }
 
 .flex-video {
   height: 0;

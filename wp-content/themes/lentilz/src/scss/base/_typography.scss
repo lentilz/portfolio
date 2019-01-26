@@ -81,6 +81,12 @@ a {
       margin-top: 40px;
     }
   }
+
+  .layout--404 & {
+    font-size: 20vw;
+    line-height: 0.8;
+    margin: 0 0 5.5vw;
+  }
 }
 
 .page-summary {
