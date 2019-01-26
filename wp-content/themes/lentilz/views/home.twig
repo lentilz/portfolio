@@ -16,7 +16,7 @@
 </style>
 {% endblock %}
 
-{% block layout 'layout--home grid-panel' %}
+{% block layout 'layout--home' %}
 
 {% block page_header %}
 <div class="row row--narrow helper-padding js-reveal">
@@ -30,17 +30,17 @@
 {% endblock %}
 
 {% block content %}
-<span id="work"></span>
-{% for work in post.get_field('hp_portfolio_items') %}
-{% for project in work.project %}
-<section class="panel panel-showcase-{{ project.slug }}"{% for color in project.get_field('port_swatches')|slice(0, 1) %} style="background-color: {{ color.swatch }};"{% endfor %}>
-  <div class="row row--narrow helper-padding">
-    <a href="{{ project.link}}"><h2 class="panel-title panel-link js-reveal">{{ project.title }}</h2></a>
-    {# <h3 class="panel-subtitle">{{ project.port_project_type }}</h3> #}
-  </div>
-
-</section> <!-- /.showcase-panel -->
-{% endfor%}
-{% endfor %}
-
+<section class="grid-panel">
+  <span id="work"></span>
+  {% for work in post.get_field('hp_portfolio_items') %}
+    {% for project in work.project %}
+    <article class="panel panel-showcase-{{ project.slug }}"{% for color in project.get_field('port_swatches')|slice(0, 1) %} style="background-color: {{ color.swatch }};"{% endfor %}>
+      <div class="row row--narrow helper-padding">
+        <a href="{{ project.link}}"><h2 class="panel-title panel-link js-reveal">{{ project.title }}</h2></a>
+        {# <h3 class="panel-subtitle">{{ project.port_project_type }}</h3> #}
+      </div>
+    </article> <!-- /.showcase-panel -->
+    {% endfor%}
+  {% endfor %}
+</section>
 {% endblock %}
