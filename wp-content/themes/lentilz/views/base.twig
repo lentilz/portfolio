@@ -4,18 +4,22 @@
   </head>
 {% endblock %}
 
-<body class="{{body_class}}" data-template="base.twig">
+<body class="{{body_class}} {% block layout %}layout--base{% endblock %}" data-template="base.twig">
   <header class="page-header">
     {% block page_header %}
     <h1 class="page-header__logo">
-     <img src="/wp-content/themes/lentilz/assets/img/signature_tp.png" alt="Lentie Ward Signature graphic" title="Lentie Ward">
+     {{ post.title }}
     </h1>
     {% endblock %}
   </header>
-  <main role="main" class="{% block layout %}layout--main{% endblock %}">
+  <main role="main" class="main">
     {% block content %}
     <article class="page-content">
-      {{ post.content }}
+      <div class="row">
+        <div class="col-padding">
+          {{ post.content }}
+        </div>
+      </div>
     </article>
     {% endblock %}
   </main>
@@ -29,3 +33,4 @@
 
 {{ function('wp_footer') }}
 </body>
+</html>

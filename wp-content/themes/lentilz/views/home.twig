@@ -35,9 +35,8 @@
 {% for project in work.project %}
 <section class="panel panel-showcase-{{ project.slug }}"{% for color in project.get_field('port_swatches')|slice(0, 1) %} style="background-color: {{ color.swatch }};"{% endfor %}>
   <div class="row row--narrow helper-padding">
-    <!-- <img src="{{ work.preview.url }}" alt="{{ work.preview.alt }}" class="panel-image"> -->
     <a href="{{ project.link}}"><h2 class="panel-title panel-link js-reveal">{{ project.title }}</h2></a>
-    <!-- <h3 class="panel-subtitle">{{ project.port_project_type }}</h3> -->
+    {# <h3 class="panel-subtitle">{{ project.port_project_type }}</h3> #}
   </div>
 
 </section> <!-- /.showcase-panel -->

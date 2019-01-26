@@ -68,8 +68,18 @@ a {
 .page-title {
   @extend h1;
   font-size: 32px;
+
   @include desktop {
     @include rem(font-size, 55px);
+  }
+
+  .layout--single & {
+    margin-top: 20px;
+    text-align: center;
+
+    @include desktop {
+      margin-top: 40px;
+    }
   }
 }
 

@@ -1,4 +1,26 @@
 // Page layout setup
+.row {
+  @include rem(max-width, $gridWidth);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &.row--narrow {
+    @include rem(max-width, 1000px);
+  }
+
+  .column {
+    margin: 0 auto;
+    max-width: 760px;
+  }
+}
+
 .page-header {
   @include rem(padding, 20px);
 
@@ -20,8 +42,9 @@
 }
 .page-content {
   background: $white;
-  min-height: 60vh;
+  min-height: 75vh;
   @include rem(padding-bottom, 20px);
+
   @include desktop {
     @include rem(padding-bottom, 40px);
   }
@@ -36,7 +59,21 @@
 }
 
 .layout--interior {
-  @include rem(padding-top, 60px);
+  .main {
+    padding-top: 60px;
+  }
+}
+
+.layout--single {
+  .icon-link .arrow--left {
+    height: 20px;
+    width: 35px;
+
+    @include desktop {
+      height: 35px;
+      width: 50px;
+    }
+  }
 }
 
 .flex-row {

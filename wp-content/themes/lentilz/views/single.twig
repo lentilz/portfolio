@@ -1,13 +1,28 @@
-{% extends "base.twig" %}
+{% extends "index.twig" %}
+
+{% block layout 'layout--single' %}
+
+{% block head %}
+<style>
+  .featured-image {
+    background-image: url('{{ post.get_thumbnail.src }}');
+  }
+</style>
+{% endblock %}
 
 {% block content %}
-<article id="post-{{post.ID}}" class="page-content post-{{post.slug}}" role="article">
+<article id="post-{{post.ID}}" class="page-content" role="article">
   <div class="row">
-    <h1 class="page-title">{{post.title}}</h1>
-    {% if post.get_thumbnail %}
-      <img src="{{post.thumbnail.src}}" alt="{{post.thumbnail.alt}}">
-    {% endif %}
-    {{post.content}}
+    <div class="col-padding column rte">
+      <h1 class="page-title">{{post.title}}</h1>
+
+      {% if post.get_thumbnail %}
+      <div class="featured-image"></div> <!-- /.featured-image -->
+      {% endif %}
+
+
+      {{post.content}}
+    </div> <!-- /.content -->
   </div> <!-- /.row -->
 </article> <!-- /.page-content -->
 {% endblock %}
