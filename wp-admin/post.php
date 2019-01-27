@@ -16,7 +16,9 @@ $submenu_file = 'edit.php';
 
 wp_reset_vars( array( 'action' ) );
 
-if ( isset( $_GET['post'] ) )
+if ( isset( $_GET['post'] ) && isset( $_POST['post_ID'] ) && (int) $_GET['post'] !== (int) $_POST['post_ID'] )
+	wp_die( __( 'A post ID mismatch has been detected.' ), __( 'Sorry, you are not allowed to edit this item.' ), 400 );
+elseif ( isset( $_GET['post'] ) )
  	$post_id = $post_ID = (int) $_GET['post'];
 elseif ( isset( $_POST['post_ID'] ) )
  	$post_id = $post_ID = (int) $_POST['post_ID'];
@@ -36,6 +38,10 @@ if ( $post_id )
 if ( $post ) {
 	$post_type = $post->post_type;
 	$post_type_object = get_post_type_object( $post_type );
+}
+
+if ( isset( $_POST['post_type'] ) && $post && $post_type !== $_POST['post_type'] ) {
+	wp_die( __( 'A post type mismatch has been detected.' ), __( 'Sorry, you are not allowed to edit this item.' ), 400 );
 }
 
 if ( isset( $_POST['deletepost'] ) )
@@ -107,7 +113,7 @@ case 'edit':
 		wp_die( __( 'You attempted to edit an item that doesn&#8217;t exist. Perhaps it was deleted?' ) );
 
 	if ( ! $post_type_object )
-		wp_die( __( 'Unknown post type.' ) );
+		wp_die( __( 'Invalid post type.' ) );
 
 	if ( ! in_array( $typenow, get_post_types( array( 'show_ui' => true ) ) ) ) {
 		wp_die( __( 'Sorry, you are not allowed to edit posts in this post type.' ) );
@@ -144,6 +150,25 @@ case 'edit':
 		$post_new_file = "post-new.php?post_type=$post_type";
 	}
 
+	$title = $post_type_object->labels->edit_item;
+
+	/**
+	 * Allows replacement of the editor.
+	 *
+	 * @since 4.9.0
+	 *
+	 * @param boolean      Whether to replace the editor. Default false.
+	 * @param object $post Post object.
+	 */
+	if ( apply_filters( 'replace_editor', false, $post ) === true ) {
+		break;
+	}
+
+	if ( use_block_editor_for_post( $post ) ) {
+		include( ABSPATH . 'wp-admin/edit-form-blocks.php' );
+		break;
+	}
+
 	if ( ! wp_check_post_lock( $post->ID ) ) {
 		$active_post_lock = wp_set_post_lock( $post->ID );
 
@@ -151,19 +176,7 @@ case 'edit':
 			wp_enqueue_script('autosave');
 	}
 
-	if ( is_multisite() ) {
-		add_action( 'admin_footer', '_admin_notice_post_locked' );
-	} else {
-		$check_users = get_users( array( 'fields' => 'ID', 'number' => 2 ) );
-
-		if ( count( $check_users ) > 1 )
-			add_action( 'admin_footer', '_admin_notice_post_locked' );
-
-		unset( $check_users );
-	}
-
-	$title = $post_type_object->labels->edit_item;
-	$post = get_post($post_id, OBJECT, 'edit');
+	$post = get_post( $post_id, OBJECT, 'edit' );
 
 	if ( post_type_supports($post_type, 'comments') ) {
 		wp_enqueue_script('admin-comments');
@@ -183,7 +196,7 @@ case 'editattachment':
 
 	// Update the thumbnail filename
 	$newmeta = wp_get_attachment_metadata( $post_id, true );
-	$newmeta['thumb'] = $_POST['thumb'];
+	$newmeta['thumb'] = wp_basename( $_POST['thumb'] );
 
 	wp_update_attachment_metadata( $post_id, $newmeta );
 
@@ -208,7 +221,7 @@ case 'trash':
 		wp_die( __( 'The item you are trying to move to the Trash no longer exists.' ) );
 
 	if ( ! $post_type_object )
-		wp_die( __( 'Unknown post type.' ) );
+		wp_die( __( 'Invalid post type.' ) );
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
 		wp_die( __( 'Sorry, you are not allowed to move this item to the Trash.' ) );
@@ -231,7 +244,7 @@ case 'untrash':
 		wp_die( __( 'The item you are trying to restore from the Trash no longer exists.' ) );
 
 	if ( ! $post_type_object )
-		wp_die( __( 'Unknown post type.' ) );
+		wp_die( __( 'Invalid post type.' ) );
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
 		wp_die( __( 'Sorry, you are not allowed to restore this item from the Trash.' ) );
@@ -249,7 +262,7 @@ case 'delete':
 		wp_die( __( 'This item has already been deleted.' ) );
 
 	if ( ! $post_type_object )
-		wp_die( __( 'Unknown post type.' ) );
+		wp_die( __( 'Invalid post type.' ) );
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
 		wp_die( __( 'Sorry, you are not allowed to delete this item.' ) );
@@ -272,6 +285,18 @@ case 'preview':
 	$url = post_preview();
 
 	wp_redirect($url);
+	exit();
+
+case 'toggle-custom-fields':
+	check_admin_referer( 'toggle-custom-fields' );
+
+	$current_user_id = get_current_user_id();
+	if ( $current_user_id ) {
+		$enable_custom_fields = (bool) get_user_meta( $current_user_id, 'enable_custom_fields', true );
+		update_user_meta( $current_user_id, 'enable_custom_fields', ! $enable_custom_fields );
+	}
+
+	wp_safe_redirect( wp_get_referer() );
 	exit();
 
 default:

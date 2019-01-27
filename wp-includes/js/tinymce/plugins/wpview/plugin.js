@@ -88,17 +88,11 @@
 				}
 			}
 
-			event.content = wp.mce.views.setMarkers( event.content );
+			event.content = wp.mce.views.setMarkers( event.content, editor );
 		} );
 
 		// Replace any new markers nodes with views.
-		editor.on( 'setcontent', function( event ) {
-			if ( event.load && ! event.initial && editor.quirks.refreshContentEditable ) {
-				// Make sure there is a selection in Gecko browsers.
-				// Or it will refresh the content internally which resets the iframes.
-				editor.quirks.refreshContentEditable();
-			}
-
+		editor.on( 'setcontent', function() {
 			wp.mce.views.render();
 		} );
 
@@ -161,7 +155,7 @@
 		} );
 
 		editor.addButton( 'wp_view_edit', {
-			tooltip: 'Edit ', // trailing space is needed, used for context
+			tooltip: 'Edit|button', // '|button' is not displayed, only used for context
 			icon: 'dashicon dashicons-edit',
 			onclick: function() {
 				var node = editor.selection.getNode();
@@ -190,7 +184,7 @@
 				] );
 
 				editor.on( 'wptoolbar', function( event ) {
-					if ( isView( event.element ) ) {
+					if ( ! event.collapsed && isView( event.element ) ) {
 						event.toolbar = toolbar;
 					}
 				} );

@@ -30,7 +30,7 @@ add_meta_box('linktargetdiv', __('Target'), 'link_target_meta_box', null, 'norma
 add_meta_box('linkxfndiv', __('Link Relationship (XFN)'), 'link_xfn_meta_box', null, 'normal', 'core');
 add_meta_box('linkadvanceddiv', __('Advanced'), 'link_advanced_meta_box', null, 'normal', 'core');
 
-/** This action is documented in wp-admin/edit-form-advanced.php */
+/** This action is documented in wp-admin/includes/meta-boxes.php */
 do_action( 'add_meta_boxes', 'link', $link );
 
 /**
@@ -42,11 +42,11 @@ do_action( 'add_meta_boxes', 'link', $link );
  */
 do_action( 'add_meta_boxes_link', $link );
 
-/** This action is documented in wp-admin/edit-form-advanced.php */
+/** This action is documented in wp-admin/includes/meta-boxes.php */
 do_action( 'do_meta_boxes', 'link', 'normal', $link );
-/** This action is documented in wp-admin/edit-form-advanced.php */
+/** This action is documented in wp-admin/includes/meta-boxes.php */
 do_action( 'do_meta_boxes', 'link', 'advanced', $link );
-/** This action is documented in wp-admin/edit-form-advanced.php */
+/** This action is documented in wp-admin/includes/meta-boxes.php */
 do_action( 'do_meta_boxes', 'link', 'side', $link );
 
 add_screen_option('layout_columns', array('max' => 2, 'default' => 2) );
@@ -70,7 +70,13 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
-<h1><?php echo esc_html( $title ); ?>  <a href="link-add.php" class="page-title-action"><?php echo esc_html_x('Add New', 'link'); ?></a></h1>
+<h1 class="wp-heading-inline"><?php
+echo esc_html( $title );
+?></h1>
+
+<a href="link-add.php" class="page-title-action"><?php echo esc_html_x( 'Add New', 'link' ); ?></a>
+
+<hr class="wp-header-end">
 
 <?php if ( isset( $_GET['added'] ) ) : ?>
 <div id="message" class="updated notice is-dismissible"><p><?php _e('Link added.'); ?></p></div>

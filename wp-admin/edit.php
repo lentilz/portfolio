@@ -36,7 +36,7 @@ if ( ! $post_type_object )
 
 if ( ! current_user_can( $post_type_object->cap->edit_posts ) ) {
 	wp_die(
-		'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
+		'<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
 		'<p>' . __( 'Sorry, you are not allowed to edit posts in this post type.' ) . '</p>',
 		403
 	);
@@ -182,6 +182,11 @@ $wp_list_table->prepare_items();
 wp_enqueue_script('inline-edit-post');
 wp_enqueue_script('heartbeat');
 
+if ( 'wp_block' === $post_type ) {
+	wp_enqueue_script( 'wp-list-reusable-blocks' );
+	wp_enqueue_style( 'wp-list-reusable-blocks' );
+}
+
 $title = $post_type_object->labels->name;
 
 if ( 'post' == $post_type ) {
@@ -285,6 +290,13 @@ $bulk_messages['page'] = array(
 	'trashed'   => _n( '%s page moved to the Trash.', '%s pages moved to the Trash.', $bulk_counts['trashed'] ),
 	'untrashed' => _n( '%s page restored from the Trash.', '%s pages restored from the Trash.', $bulk_counts['untrashed'] ),
 );
+$bulk_messages['wp_block'] = array(
+	'updated'   => _n( '%s block updated.', '%s blocks updated.', $bulk_counts['updated'] ),
+	'locked'    => ( 1 == $bulk_counts['locked'] ) ? __( '1 block not updated, somebody is editing it.' ) : _n( '%s block not updated, somebody is editing it.', '%s blocks not updated, somebody is editing them.', $bulk_counts['locked'] ),
+	'deleted'   => _n( '%s block permanently deleted.', '%s blocks permanently deleted.', $bulk_counts['deleted'] ),
+	'trashed'   => _n( '%s block moved to the Trash.', '%s blocks moved to the Trash.', $bulk_counts['trashed'] ),
+	'untrashed' => _n( '%s block restored from the Trash.', '%s blocks restored from the Trash.', $bulk_counts['untrashed'] ),
+);
 
 /**
  * Filters the bulk action updated messages.
@@ -350,6 +362,11 @@ $_SERVER['REQUEST_URI'] = remove_query_arg( array( 'locked', 'skipped', 'updated
 
 <input type="hidden" name="post_status" class="post_status_page" value="<?php echo !empty($_REQUEST['post_status']) ? esc_attr($_REQUEST['post_status']) : 'all'; ?>" />
 <input type="hidden" name="post_type" class="post_type_page" value="<?php echo $post_type; ?>" />
+
+<?php if ( ! empty( $_REQUEST['author'] ) ) { ?>
+<input type="hidden" name="author" value="<?php echo esc_attr( $_REQUEST['author'] ); ?>" />
+<?php } ?>
+
 <?php if ( ! empty( $_REQUEST['show_sticky'] ) ) { ?>
 <input type="hidden" name="show_sticky" value="1" />
 <?php } ?>

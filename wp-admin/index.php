@@ -15,8 +15,7 @@ require_once(ABSPATH . 'wp-admin/includes/dashboard.php');
 wp_dashboard_setup();
 
 wp_enqueue_script( 'dashboard' );
-if ( current_user_can( 'edit_theme_options' ) )
-	wp_enqueue_script( 'customize-loader' );
+
 if ( current_user_can( 'install_plugins' ) ) {
 	wp_enqueue_script( 'plugin-install' );
 	wp_enqueue_script( 'updates' );
@@ -109,7 +108,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 
 	$option = get_user_meta( get_current_user_id(), 'show_welcome_panel', true );
 	// 0 = hide, 1 = toggled to show or single site creator, 2 = multisite site owner
-	$hide = 0 == $option || ( 2 == $option && wp_get_current_user()->user_email != get_option( 'admin_email' ) );
+	$hide = '0' === $option || ( '2' === $option && wp_get_current_user()->user_email != get_option( 'admin_email' ) );
 	if ( $hide )
 		$classes .= ' hidden'; ?>
 
@@ -138,4 +137,6 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 </div><!-- wrap -->
 
 <?php
+wp_print_community_events_templates();
+
 require( ABSPATH . 'wp-admin/admin-footer.php' );
