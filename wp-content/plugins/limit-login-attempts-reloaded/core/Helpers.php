@@ -39,13 +39,15 @@ class LLA_Helpers {
                             'username' => $user_name,
                             'counter'  => $info['counter'],
                             'gateway'  => ( isset( $info['gateway'] ) ) ? $info['gateway'] : '-',
+                            'unlocked' => !empty( $info['unlocked'] ),
                         );
                     } else { // For old plugin version
                         $new_log[0] = array(
                             'ip'       => $ip,
                             'username' => $user_name,
                             'counter'  => $info,
-                            'gateway'  => '-'
+                            'gateway'  => '-',
+                            'unlocked' => false,
                         );
                     }
 

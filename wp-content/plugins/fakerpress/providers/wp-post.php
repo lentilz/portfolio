@@ -1,6 +1,6 @@
 <?php
 namespace Faker\Provider;
-use FakerPress;
+use \FakerPress;
 
 class WP_Post extends Base {
 
@@ -17,7 +17,7 @@ class WP_Post extends Base {
 	}
 
 	public function post_type( $haystack = array() ) {
-		if ( empty( $haystack ) ){
+		if ( empty( $haystack ) ) {
 			// Later on we will remove the Attachment rule
 			$haystack = array_diff( get_post_types( array( 'public' => true, 'show_ui' => true ), 'names' ), array( 'attachment' ) );
 		}
@@ -26,7 +26,7 @@ class WP_Post extends Base {
 	}
 
 	public function post_status( $haystack = array( 'draft', 'publish', 'private' ) ) {
-		if ( empty( $haystack ) ){
+		if ( empty( $haystack ) ) {
 			$haystack = array_values( get_post_stati() );
 		}
 
@@ -45,7 +45,7 @@ class WP_Post extends Base {
 			$min = $min->startOfDay();
 		}
 
-		if ( ! empty( $interval ) ){
+		if ( ! empty( $interval ) ) {
 			// Unfortunatelly there is not such solution to this problem, we need to try and catch with DateTime
 			try {
 				$max = new \Carbon\Carbon( array_shift( $interval ) );
@@ -61,7 +61,7 @@ class WP_Post extends Base {
 		// If max has no Time set it to the end of the day
 		$max_has_time = array_filter( array( $max->hour, $max->minute, $max->second ) );
 		$max_has_time = ! empty( $max_has_time );
-		if ( ! $max_has_time ){
+		if ( ! $max_has_time ) {
 			$max = $max->endOfDay();
 		}
 
@@ -71,17 +71,46 @@ class WP_Post extends Base {
 	}
 
 	public function post_content( $html = true, $args = array() ) {
-		if ( true === $html ){
+		$defaults = array(
+			'qty' => array( 5, 15 ),
+		);
+		$args = wp_parse_args( $args, $defaults );
+
+		if ( true === $html ) {
 			$content = implode( "\n", $this->generator->html_elements( $args ) );
 		} else {
-			$content = implode( "\r\n\r\n", $this->generator->paragraphs( $this->generator->randomDigitNotNull() ) );
+			$content = implode( "\r\n\r\n", $this->generator->paragraphs( FakerPress\Utils::instance()->get_qty_from_range( $args['qty'] ) ) );
 		}
 
 		return $content;
 	}
 
+	/**
+	 * Configures a Excerpt for the Post
+	 *
+	 * @since  0.4.9
+	 *
+	 * @param  array|int  $qty     How many words we should generate (range with Array)
+	 * @param  boolean    $html    Should use HTML or not (currently not used)
+	 * @param  integer    $weight  Percentage of times where we will setup a Excerpt
+	 *
+	 * @return string
+	 */
+	public function post_excerpt( $qty = array( 25, 75 ), $html = false, $weight = 60 ) {
+		$words = FakerPress\Utils::instance()->get_qty_from_range( $qty );
+		$paragraphs = $this->generator->randomElement( array( 1, 1, 1, 1, 1, 2, 2, 2, 3, 4 ) );
+
+		for ( $i = 0; $i < $paragraphs; $i++ ) {
+			$excerpt[ $i ] = $this->generator->sentence( $words );
+		}
+
+		$excerpt = implode( "\n\n", $excerpt );
+
+		return $this->generator->optional( $weight, '' )->randomElement( (array) $excerpt );
+	}
+
 	public function post_author( $haystack = array() ) {
-		if ( empty( $haystack ) ){
+		if ( empty( $haystack ) ) {
 			$haystack = get_users(
 				array(
 					'blog_id' => get_current_blog_id(),
@@ -99,7 +128,7 @@ class WP_Post extends Base {
 	}
 
 	public function ping_status( $haystack = array() ) {
-		if ( empty( $haystack ) ){
+		if ( empty( $haystack ) ) {
 			$haystack = static::$default['ping_status'];
 		}
 
@@ -107,7 +136,7 @@ class WP_Post extends Base {
 	}
 
 	public function comment_status( $haystack = array() ) {
-		if ( empty( $haystack ) ){
+		if ( empty( $haystack ) ) {
 			$haystack = static::$default['comment_status'];
 		}
 
@@ -115,7 +144,7 @@ class WP_Post extends Base {
 	}
 
 	public function menu_order( $haystack = array() ) {
-		if ( empty( $haystack ) ){
+		if ( empty( $haystack ) ) {
 			return 0;
 		}
 
@@ -123,7 +152,7 @@ class WP_Post extends Base {
 	}
 
 	public function post_password( $generator = null, $args = array() ) {
-		if ( is_null( $generator ) ){
+		if ( is_null( $generator ) ) {
 			return '';
 		}
 
@@ -132,7 +161,7 @@ class WP_Post extends Base {
 
 	public function tax_input( $config = null ) {
 		$output = array();
-		if ( is_null( $config ) ){
+		if ( is_null( $config ) ) {
 			return $output;
 		}
 
@@ -147,10 +176,10 @@ class WP_Post extends Base {
 		$ranges = apply_filters( 'fakerpress/provider/WP_Post/tax_input.ranges', array(
 			'category' => array( 1, 3 ),
 			'post_tag' => array( 0, 15 ),
-			'__default' => array( 0, 3 )
+			'__default' => array( 0, 3 ),
 		) );
 
-		foreach ( $config as $settings ){
+		foreach ( $config as $settings ) {
 			$settings = (object) $settings;
 
 			if ( ! empty( $settings->taxonomies ) && is_string( $settings->taxonomies ) ) {

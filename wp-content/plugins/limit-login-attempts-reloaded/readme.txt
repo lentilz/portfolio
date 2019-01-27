@@ -1,11 +1,11 @@
 === Limit Login Attempts Reloaded ===
 Contributors: wpchefgadget
-Tags: login, security, authentication, Limit Login Attempts, Limit Login Attempts Reloaded, Limit Login Attempts Revamped, Limit Login Attempts Renovated, Limit Login Attempts Updated, Better Limit Login Attempts, Limit Login Attempts Renewed, Limit Login Attempts Upgraded
+Tags: login, security, authentication, Limit Login Attempts, GDPR, brute-force attack, brute force, login abuse, ddos protection
 Requires at least: 3.0
-Tested up to: 4.7.2
-Stable tag: 2.5.0
+Tested up to: 4.9.7
+Stable tag: 2.7.1
 
-Reloaded version of the original Limit Login Attempts plugin for Login Protection by a team of WordPress developers.
+Reloaded version of the original Limit Login Attempts plugin for Login Protection by a team of WordPress developers. GDPR compliant.
 
 == Description ==
 
@@ -21,9 +21,11 @@ Features:
 * Optional logging and optional email notification.
 * Handles server behind the reverse proxy.
 * It is possible to whitelist/blacklist IPs and Usernames.
+* Sucuri Website Firewall compatibility.
 * **XMLRPC** gateway protection.
 * **Woocommerce** login page protection.
 * **Multi-site** compatibility with extra MU settings.
+* **GDPR** compliant. With this feature turned on, all logged IPs get obfuscated (md5-hashed).
 
 = Upgrading from the old Limit Login Attempts plugin =
 1. Go to the Plugins section in your site's backend.
@@ -48,6 +50,33 @@ Based on the original code from Limit Login Attemps plugin by Johan Eenfeldt.
 3. Administration interface in WordPress 4.5.3
 
 == Changelog ==
+
+= 2.7.1 =
+* A security issue inherited from the ancestor plugin Limit Login Attempts has been fixed.
+
+= 2.7.0 =
+* GDPR compliance implemented.
+
+* Fixed: ip_in_range() loop $ip overrides itself causing invalid results.
+https://wordpress.org/support/topic/ip_in_range-loop-ip-overrides-itself-causing-invalid-results/
+
+* Fixed: the plugin was locking out the same IP address multiple times, each with a different port.
+https://wordpress.org/support/topic/same-ip-different-port/
+
+= 2.6.3 =
+* Added support of Sucuri Website Firewall.
+
+= 2.6.2 =
+* Fixed the issue with backslashes in usernames.
+
+= 2.6.1 =
+* Plugin returns the 403 Forbidden header after the limit of login attempts via XMLRPC is reached.
+
+* Added support of IP ranges in white/black lists.
+
+* Lockouts now can be released selectively.
+
+* Fixed the issue with encoding of special symbols in email notifications.
 
 = 2.5.0 =
 * Added Multi-site Compatibility and additional MU settings. https://wordpress.org/support/topic/multisite-compatibility-47/

@@ -7,7 +7,7 @@ FakerPress is a clean way to generate fake and dummy content to your WordPress, 
 **Contributors:** [bordoni](http://profiles.wordpress.org/bordoni)  
 **Tags:** [generator](http://wordpress.org/plugins/tags/generator), [dummy content](http://wordpress.org/plugins/tags/dummy content), [dummy data](http://wordpress.org/plugins/tags/dummy data), [lorem ipsun](http://wordpress.org/plugins/tags/lorem ipsun), [admin](http://wordpress.org/plugins/tags/admin), [exemples](http://wordpress.org/plugins/tags/exemples), [testing](http://wordpress.org/plugins/tags/testing), [images](http://wordpress.org/plugins/tags/images), [attachments](http://wordpress.org/plugins/tags/attachments), [featured image](http://wordpress.org/plugins/tags/featured image), [taxonomies](http://wordpress.org/plugins/tags/taxonomies), [users](http://wordpress.org/plugins/tags/users), [post type](http://wordpress.org/plugins/tags/post type), [faker](http://wordpress.org/plugins/tags/faker), [fake data](http://wordpress.org/plugins/tags/fake data), [random](http://wordpress.org/plugins/tags/random), [developer](http://wordpress.org/plugins/tags/developer), [dev](http://wordpress.org/plugins/tags/dev), [development](http://wordpress.org/plugins/tags/development), [test](http://wordpress.org/plugins/tags/test), [tests](http://wordpress.org/plugins/tags/tests)  
 **Requires at least:** 3.7  
-**Tested up to:** 4.6  
+**Tested up to:** 4.9.4  
 **Stable tag:** trunk (master)  
 **License:** [GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)  
 
@@ -33,6 +33,7 @@ Our goal with this plugin is to fill this gap where you have problem with a good
 * Tags
 * Categories
 * Comments
+* Custom Comment Types
 
 ### Creating Dummy Content ###
 Normally a WordPress developer will need to perform the task of filling up an empty theme with dummy content, and doing this manually can be really time consuming, the main reasons this plugin was create was to speed up this process.
@@ -97,6 +98,30 @@ Thank you for wanting to make FakerPress better for everyone! [We salute you](ht
 
 
 ## Changelog ##
+
+### 0.4.11 &mdash; 25 of February, 2018 ###
+* Fix: Prevent fatals from oversight with Namespace and Classnames for User and Post generation &mdash; Thanks [@radgh](https://wordpress.org/support/topic/fakerpress-generate-users-fails/) & [@johny-dotpad](https://wordpress.org/support/topic/post-generation-fails/)
+* Fix: Rollback change to `file_get_contents` it was making peoples servers hang to long &mdash; Thanks [@bilimokur](https://wordpress.org/support/topic/most-images-are-corrupted/)
+
+### 0.4.10 &mdash; 11 of February, 2018 ###
+* Feature: Added size control to Post Content, Comment Content and User Description
+* Fix: On image and attachment download we try one more time using `file_get_contents` &mdash; Thanks [@lazlo-toth](https://wordpress.org/support/topic/most-of-the-featured-image-links-appear-to-be-invalid/)
+* Fix: Resolve Quantity Min and Max fields weird interaction &mdash; Thanks [@rahmantanvir](https://github.com/bordoni/fakerpress/issues/124)
+
+### 0.4.9 &mdash; 07 of August, 2017 ###
+* Feature: Allow Attachments to be generated with a given Width and Height range &mdash; Thanks [@COLABORATI](https://github.com/bordoni/fakerpress/issues/86)
+* Feature: Generate `post_excerpt` for Posts (how I forgot that is beyond me) &mdash; Thanks [@njbarrett](https://github.com/bordoni/fakerpress/issues/104)
+* Fix: Meta field rules were not respecting Configurations due to a JavaScript bug on indexing the fields &mdash; Thanks [@ckpicker](https://github.com/bordoni/fakerpress/issues/115)
+* Fix: Resolve problems where attachments wouldn't get setup correctly and throw an Empty Message &mdash; Thanks [@r083r7 and @oyvind_skjelstad](https://wordpress.org/support/topic/featured-image-not-showing-up-6)
+* Fix: Allow Term Meta to generate the fields correctly again &mdash; Thanks [@stratboy](https://github.com/bordoni/fakerpress/issues/105)
+* Tweak: Prevent `_encloseme` and `_pingme` for FakerPress generated Posts
+
+### 0.4.8 &mdash; 18 of July, 2017 ###
+* Feature: Now Comments can be generated with different types, allowing for WooCommerce Notes for example - Thanks [@dibbyo456](https://wordpress.org/support/topic/can-i-create-custom-comments/)
+* Feature: Comments for Custom Post Types - Thanks [@jasondevine](https://github.com/bordoni/fakerpress/issues/109)
+* Tweak: Added two new filters to Filter Meta Value `fakerpress.module.meta.value` and `fakerpress.module.meta.{$key}.value` - Thanks [@Mte90](https://github.com/bordoni/fakerpress/pull/111)
+* Fix: Resolve problems on failed Meta generation - Thanks [@Mte90](https://github.com/bordoni/fakerpress/pull/110)
+* Fix: Typo on Provider text for Attachment Meta - Thanks [@codiceovvio](https://github.com/bordoni/fakerpress/pull/103)
 
 ### 0.4.7 &mdash; 2 of October, 2016 ###
 * Feature: Image Attachment Meta Field to allow more Flexibility all around the plugin

@@ -35,13 +35,72 @@ class Utils {
 
 	}
 
+	/**
+	 * Remove the Period on the end of the Setence from Faker
+	 *
+	 * @param  string  $sentence  Which sentence we should remove the period from
+	 * @return string
+	 */
+	public function remove_sentence_period( $sentence ) {
+		return rtrim( $sentence, '.' );
+	}
+
+	/**
+	 * Determines if the provided value should be regarded as 'true'.
+	 *
+	 * @since  0.4.10
+	 *
+	 * @param  mixed $var
+	 *
+	 * @return bool
+	 */
+	public function is_truthy( $var ) {
+		if ( is_bool( $var ) ) {
+			return $var;
+		}
+
+		/**
+		 * Provides an opportunity to modify strings that will be
+		 * deemed to evaluate to true.
+		 *
+		 * @since  0.4.10
+		 *
+		 * @param  array $truthy_strings
+		 */
+		$truthy_strings = (array) apply_filters( 'fakerpress.is_truthy_strings', array(
+			'1',
+			'enable',
+			'enabled',
+			'on',
+			'y',
+			'yes',
+			'true',
+		) );
+		// Makes sure we are dealing with lowercase for testing
+		if ( is_string( $var ) ) {
+			$var = strtolower( $var );
+		}
+
+		// If $var is a string, it is only true if it is contained in the above array
+		if ( in_array( $var, $truthy_strings, true ) ) {
+			return true;
+		}
+
+		// All other strings will be treated as false
+		if ( is_string( $var ) ) {
+			return false;
+		}
+
+		// For other types (ints, floats etc) cast to bool
+		return (bool) $var;
+	}
 
 	/**
 	 * From range return a random Integer
-	 * Providing the $elements param will limit the returning integer to the total number of elements
+	 * Providing the $total param will limit the returning integer to the total number of elements
 	 *
-	 * @param  array|int $qty   The range or integer
-	 * @param  null|int|array $elements {
+	 * @param  array|int       $qty   The range or integer
+	 * @param  null|int|array  $total {
 	 *      @example null  Will not limit the Range to a maximum int
 	 *      @example int   Limits the range to this maximum
 	 *      @example array Counts the elements in array and limit to that
