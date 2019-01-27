@@ -1,6 +1,8 @@
 <?php
 /**
- * @package WPSEO\admin|google_search_console
+ * WPSEO plugin file.
+ *
+ * @package WPSEO\admin\google_search_console
  */
 
 /**
@@ -99,7 +101,7 @@ class WPSEO_GSC {
 			array(
 				'type'         => Yoast_Notification::WARNING,
 				'id'           => 'wpseo-dismiss-gsc',
-				'capabilities' => 'manage_options',
+				'capabilities' => 'wpseo_manage_options',
 			)
 		);
 	}
@@ -115,7 +117,7 @@ class WPSEO_GSC {
 	 * Function that outputs the redirect page
 	 */
 	public function display() {
-		require_once WPSEO_PATH . '/admin/google_search_console/views/gsc-display.php';
+		require_once WPSEO_PATH . 'admin/google_search_console/views/gsc-display.php';
 	}
 
 	/**
@@ -142,11 +144,13 @@ class WPSEO_GSC {
 		$asset_manager = new WPSEO_Admin_Asset_Manager();
 		$asset_manager->enqueue_script( 'admin-gsc' );
 		$asset_manager->enqueue_style( 'metabox-css' );
-		add_screen_option( 'per_page', array(
+
+		$screen_options = array(
 			'label'   => __( 'Crawl errors per page', 'wordpress-seo' ),
 			'default' => 50,
 			'option'  => 'errors_per_page',
-		) );
+		);
+		add_screen_option( 'per_page', $screen_options );
 	}
 
 	/**
@@ -159,7 +163,7 @@ class WPSEO_GSC {
 	 * @return mixed
 	 */
 	public function set_screen_option( $status, $option, $value ) {
-		if ( 'errors_per_page' == $option ) {
+		if ( 'errors_per_page' === $option ) {
 			return $value;
 		}
 	}
@@ -233,7 +237,6 @@ class WPSEO_GSC {
 		// Do the redirect.
 		wp_redirect( $url );
 		exit;
-
 	}
 
 	/**
@@ -270,20 +273,20 @@ class WPSEO_GSC {
 	 */
 	private function set_dependencies() {
 		// Setting the service object.
-		$this->service         = new WPSEO_GSC_Service( WPSEO_GSC_Settings::get_profile() );
+		$this->service = new WPSEO_GSC_Service( WPSEO_GSC_Settings::get_profile() );
 
 		// Setting the platform.
-		$this->platform        = WPSEO_GSC_Mapper::get_current_platform( 'tab' );
+		$this->platform = WPSEO_GSC_Mapper::get_current_platform( 'tab' );
 
 		// Loading the issue counter.
-		$issue_count           = new WPSEO_GSC_Count( $this->service );
+		$issue_count = new WPSEO_GSC_Count( $this->service );
 		$issue_count->fetch_counts();
 
 		// Loading the category filters.
 		$this->category_filter = new WPSEO_GSC_Category_Filters( $issue_count->get_platform_counts( $this->platform ) );
 
 		// Setting the current category.
-		$this->category        = $this->category_filter->get_category();
+		$this->category = $this->category_filter->get_category();
 
 		// Listing the issues.
 		$issue_count->list_issues( $this->platform, $this->category );

@@ -1,5 +1,7 @@
 <?php
 /**
+ * WPSEO plugin file.
+ *
  * @package WPSEO\Admin\ConfigurationUI
  */
 
@@ -12,8 +14,8 @@ class WPSEO_Configuration_Endpoint {
 	const ENDPOINT_RETRIEVE = 'configurator';
 	const ENDPOINT_STORE = 'configurator';
 
-	const CAPABILITY_RETRIEVE = 'manage_options';
-	const CAPABILITY_STORE = 'manage_options';
+	const CAPABILITY_RETRIEVE = 'wpseo_manage_options';
+	const CAPABILITY_STORE = 'wpseo_manage_options';
 
 	/** @var WPSEO_Configuration_Service Service to use */
 	protected $service;
@@ -32,30 +34,20 @@ class WPSEO_Configuration_Endpoint {
 	 */
 	public function register() {
 		// Register fetch config.
-		register_rest_route( self::REST_NAMESPACE, self::ENDPOINT_RETRIEVE, array(
+		$route_args = array(
 			'methods'             => 'GET',
-			'callback'            => array(
-				$this->service,
-				'get_configuration',
-			),
-			'permission_callback' => array(
-				$this,
-				'can_retrieve_data',
-			),
-		) );
+			'callback'            => array( $this->service, 'get_configuration' ),
+			'permission_callback' => array( $this, 'can_retrieve_data' ),
+		);
+		register_rest_route( self::REST_NAMESPACE, self::ENDPOINT_RETRIEVE, $route_args );
 
 		// Register save changes.
-		register_rest_route( self::REST_NAMESPACE, self::ENDPOINT_STORE, array(
+		$route_args = array(
 			'methods'             => 'POST',
-			'callback'            => array(
-				$this->service,
-				'set_configuration',
-			),
-			'permission_callback' => array(
-				$this,
-				'can_save_data',
-			),
-		) );
+			'callback'            => array( $this->service, 'set_configuration' ),
+			'permission_callback' => array( $this, 'can_save_data' ),
+		);
+		register_rest_route( self::REST_NAMESPACE, self::ENDPOINT_STORE, $route_args );
 	}
 
 	/**

@@ -1,6 +1,8 @@
 <?php
 /**
- * @package WPSEO\Admin|Google_Search_Console
+ * WPSEO plugin file.
+ *
+ * @package WPSEO\Admin\Google_Search_Console
  */
 
 /**
@@ -11,7 +13,7 @@ class WPSEO_GSC_Modal {
 	/** @var string */
 	protected $view;
 
-	/** @var int  */
+	/** @var int */
 	protected $height;
 
 	/** @var array */
@@ -25,8 +27,8 @@ class WPSEO_GSC_Modal {
 	 * @param array  $view_vars The attributes to use in the view.
 	 */
 	public function __construct( $view, $height, array $view_vars = array() ) {
-		$this->view   = $view;
-		$this->height = $height;
+		$this->view      = $view;
+		$this->height    = $height;
 		$this->view_vars = $view_vars;
 	}
 
@@ -47,9 +49,9 @@ class WPSEO_GSC_Modal {
 	public function load_view( $unique_id ) {
 		extract( $this->view_vars );
 
-		echo '<div id="redirect-' . $unique_id . '" class="hidden">';
+		echo '<div id="' . esc_attr( 'redirect-' . $unique_id ) . '" class="hidden">';
 		echo '<div class="form-wrap wpseo_content_wrapper">';
-		require( $this->view );
+		require $this->view;
 		echo '</div>';
 		echo '</div>';
 	}

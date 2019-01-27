@@ -1,7 +1,9 @@
 <?php
 /**
+ * WPSEO plugin file.
+ *
  * @package WPSEO\Admin
- * @since      1.5.0
+ * @since   1.5.0
  */
 
 if ( ! defined( 'WPSEO_VERSION' ) ) {
@@ -10,16 +12,15 @@ if ( ! defined( 'WPSEO_VERSION' ) ) {
 	exit();
 }
 
-$options = get_option( 'wpseo' );
-
 $wpseo_bulk_titles_table      = new WPSEO_Bulk_Title_Editor_List_Table();
 $wpseo_bulk_description_table = new WPSEO_Bulk_Description_List_Table();
 
-get_current_screen()->set_screen_reader_content( array(
+$yoast_free_screen_reader_content = array(
 	'heading_views'      => __( 'Filter posts list', 'wordpress-seo' ),
 	'heading_pagination' => __( 'Posts list navigation', 'wordpress-seo' ),
 	'heading_list'       => __( 'Posts list', 'wordpress-seo' ),
-) );
+);
+get_current_screen()->set_screen_reader_content( $yoast_free_screen_reader_content );
 
 // If type is empty, fill it with value of first tab (title).
 $_GET['type'] = ( ! empty( $_GET['type'] ) ) ? $_GET['type'] : 'title';
@@ -31,15 +32,27 @@ if ( ! empty( $_REQUEST['_wp_http_referer'] ) ) {
 
 /**
  * Outputs a help center.
- *
- * @param string $id The id for the tab.
  */
-function render_help_center( $id ) {
-	$helpcenter_tab = new WPSEO_Option_Tab( 'bulk-' . $id, __( 'Bulk editor', 'wordpress-seo' ),
-		array( 'video_url' => 'https://yoa.st/screencast-tools-bulk-editor' ) );
+function wpseo_render_help_center() {
+	$tabs = new WPSEO_Option_Tabs( '', '' );
 
-	$helpcenter = new WPSEO_Help_Center( 'bulk-editor' . $id, $helpcenter_tab );
-	$helpcenter->output_help_center();
+	$bulk_editor_tab_title = new WPSEO_Option_Tab(
+		'title',
+		__( 'Bulk editor', 'wordpress-seo' ),
+		array( 'video_url' => WPSEO_Shortlinker::get( 'https://yoa.st/screencast-tools-bulk-editor' ) )
+	);
+	$tabs->add_tab( $bulk_editor_tab_title );
+
+	$bulk_editor_tab_description = new WPSEO_Option_Tab(
+		'description',
+		__( 'Bulk editor', 'wordpress-seo' ),
+		array( 'video_url' => WPSEO_Shortlinker::get( 'https://yoa.st/screencast-tools-bulk-editor' ) )
+	);
+	$tabs->add_tab( $bulk_editor_tab_description );
+
+	$helpcenter = new WPSEO_Help_Center( '', $tabs, WPSEO_Utils::is_yoast_seo_premium() );
+	$helpcenter->localize_data();
+	$helpcenter->mount();
 }
 
 /**
@@ -48,11 +61,10 @@ function render_help_center( $id ) {
  * @param WPSEO_Bulk_List_Table $table The table to render.
  * @param string                $id    The id for the tab.
  */
-function get_rendered_tab( $table, $id ) {
+function wpseo_get_rendered_tab( $table, $id ) {
 	?>
-	<div id="<?php echo $id ?>" class="wpseotab">
+	<div id="<?php echo esc_attr( $id ); ?>" class="wpseotab">
 		<?php
-		render_help_center( $id );
 		$table->show_page();
 		?>
 	</div>
@@ -61,7 +73,10 @@ function get_rendered_tab( $table, $id ) {
 
 ?>
 <script>
-	var wpseo_bulk_editor_nonce = '<?php echo wp_create_nonce( 'wpseo-bulk-editor' ); ?>';
+	var wpseoBulkEditorNonce = <?php echo wp_json_encode( wp_create_nonce( 'wpseo-bulk-editor' ) ); ?>;
+
+	// eslint-disable-next-line
+	var wpseo_bulk_editor_nonce = wpseoBulkEditorNonce;
 </script>
 
 <br/><br/>
@@ -69,13 +84,15 @@ function get_rendered_tab( $table, $id ) {
 <div class="wpseo_table_page">
 
 	<h2 class="nav-tab-wrapper" id="wpseo-tabs">
-		<a class="nav-tab" id="title-tab" href="#top#title"><?php _e( 'Title', 'wordpress-seo' ); ?></a>
+		<a class="nav-tab" id="title-tab" href="#top#title"><?php esc_html_e( 'Title', 'wordpress-seo' ); ?></a>
 		<a class="nav-tab" id="description-tab"
-		   href="#top#description"><?php _e( 'Description', 'wordpress-seo' ); ?></a>
+			href="#top#description"><?php esc_html_e( 'Description', 'wordpress-seo' ); ?></a>
 	</h2>
 
+	<?php wpseo_render_help_center(); ?>
+
 	<div class="tabwrapper">
-		<?php get_rendered_tab( $wpseo_bulk_titles_table, 'title' )?>
-		<?php get_rendered_tab( $wpseo_bulk_description_table, 'description' )?>
+		<?php wpseo_get_rendered_tab( $wpseo_bulk_titles_table, 'title' ); ?>
+		<?php wpseo_get_rendered_tab( $wpseo_bulk_description_table, 'description' ); ?>
 	</div>
 </div>

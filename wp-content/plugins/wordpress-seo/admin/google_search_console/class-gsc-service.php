@@ -1,6 +1,8 @@
 <?php
 /**
- * @package WPSEO\Admin|Google_Search_Console
+ * WPSEO plugin file.
+ *
+ * @package WPSEO\Admin\Google_Search_Console
  */
 
 /**
@@ -79,6 +81,7 @@ class WPSEO_GSC_Service {
 		$crawl_error_counts = $this->get_crawl_error_counts( $this->profile );
 
 		$return = array();
+		// Ignore coding standards for object properties.
 		if ( ! empty( $crawl_error_counts->countPerTypes ) ) {
 			foreach ( $crawl_error_counts->countPerTypes as $category ) {
 				$return[ $category->platform ][ $category->category ] = array(

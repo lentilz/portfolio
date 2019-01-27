@@ -1,7 +1,9 @@
 <?php
 /**
- * @package    WPSEO\Admin\Notifications
- * @since      1.5.3
+ * WPSEO plugin file.
+ *
+ * @package WPSEO\Admin\Notifications
+ * @since   1.5.3
  */
 
 /**
@@ -9,11 +11,29 @@
  */
 class Yoast_Notification {
 
+	/**
+	 * @var string Type of capability check.
+	 */
 	const MATCH_ALL = 'all';
+
+	/**
+	 * @var string Type of capability check.
+	 */
 	const MATCH_ANY = 'any';
 
+	/**
+	 * @var string Notification type.
+	 */
 	const ERROR = 'error';
+
+	/**
+	 * @var string Notification type.
+	 */
 	const WARNING = 'warning';
+
+	/**
+	 * @var string Notification type.
+	 */
 	const UPDATED = 'updated';
 
 	/**
@@ -42,7 +62,15 @@ class Yoast_Notification {
 		'dismissal_key'    => null,
 		'capabilities'     => array(),
 		'capability_check' => self::MATCH_ALL,
+		'yoast_branding'   => false,
 	);
+
+	/**
+	 * The message for the notification.
+	 *
+	 * @var string
+	 */
+	private $message;
 
 	/**
 	 * Notification class constructor.
@@ -233,6 +261,15 @@ class Yoast_Notification {
 	 * @return string
 	 */
 	public function __toString() {
+		return $this->render();
+	}
+
+	/**
+	 * Renders the notification as a string.
+	 *
+	 * @return string The rendered notification.
+	 */
+	public function render() {
 		$attributes = array();
 
 		// Default notification classes.
@@ -253,8 +290,38 @@ class Yoast_Notification {
 		// Combined attribute key and value into a string.
 		array_walk( $attributes, array( $this, 'parse_attributes' ) );
 
+		$message = null;
+		if ( $this->options['yoast_branding'] ) {
+			$message = $this->wrap_yoast_seo_icon( $this->message );
+		}
+
+		if ( $message === null ) {
+			$message = wpautop( $this->message );
+		}
+
 		// Build the output DIV.
-		return '<div ' . implode( ' ', $attributes ) . '>' . wpautop( $this->message ) . '</div>' . PHP_EOL;
+		return '<div ' . implode( ' ', $attributes ) . '>' . $message . '</div>' . PHP_EOL;
+	}
+
+	/**
+	 * Wraps the message with a Yoast SEO icon.
+	 *
+	 * @param string $message The message to wrap.
+	 *
+	 * @return string The wrapped message.
+	 */
+	private function wrap_yoast_seo_icon( $message ) {
+		$out  = sprintf(
+			'<img src="%1$s" height="%2$d" width="%3$d" class="yoast-seo-icon" />',
+			esc_url( plugin_dir_url( WPSEO_FILE ) . 'images/Yoast_SEO_Icon.svg' ),
+			60,
+			60
+		);
+		$out .= '<div class="yoast-seo-icon-wrap">';
+		$out .= $message;
+		$out .= '</div>';
+
+		return $out;
 	}
 
 	/**
@@ -285,7 +352,7 @@ class Yoast_Notification {
 
 		// Set default capabilities when not supplied.
 		if ( empty( $options['capabilities'] ) || array() === $options['capabilities'] ) {
-			$options['capabilities'] = array( 'manage_options' );
+			$options['capabilities'] = array( 'wpseo_manage_options' );
 		}
 
 		return $options;

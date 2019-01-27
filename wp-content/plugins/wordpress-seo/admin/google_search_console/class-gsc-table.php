@@ -1,10 +1,12 @@
 <?php
 /**
- * @package WPSEO\Admin|Google_Search_Console
+ * WPSEO plugin file.
+ *
+ * @package WPSEO\Admin\Google_Search_Console
  */
 
 if ( ! class_exists( 'WP_List_Table' ) ) {
-	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 
 /**
@@ -84,7 +86,8 @@ class WPSEO_GSC_Table extends WP_List_Table {
 	public function prepare_items() {
 		// Get variables needed for pagination.
 		$this->per_page     = $this->get_items_per_page( 'errors_per_page', $this->per_page );
-		$this->current_page = intval( ( $paged = filter_input( INPUT_GET, 'paged' ) ) ? $paged : 1 );
+		$paged              = filter_input( INPUT_GET, 'paged' );
+		$this->current_page = intval( ( ! empty( $paged ) ) ? $paged : 1 );
 
 		$this->setup_columns();
 		$this->views();
@@ -171,7 +174,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 	 * @return string
 	 */
 	protected function column_last_crawled( $item ) {
-		return date_i18n( get_option( 'date_format' ), strtotime( $item['last_crawled'] ) );
+		return date_i18n( get_option( 'date_format' ), (int) $item['last_crawled_raw'] );
 	}
 
 	/**
@@ -182,7 +185,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 	 * @return string
 	 */
 	protected function column_first_detected( $item ) {
-		return date_i18n( get_option( 'date_format' ), strtotime( $item['first_detected'] ) );
+		return date_i18n( get_option( 'date_format' ), (int) $item['first_detected_raw'] );
 	}
 
 	/**
@@ -204,7 +207,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		}
 
 		$actions['view']        = '<a href="' . home_url( $item['url'] ) . '" target="_blank">' . __( 'View', 'wordpress-seo' ) . '</a>';
-		$actions['markasfixed'] = '<a href="javascript:wpseo_mark_as_fixed(\'' . urlencode( $item['url'] ) . '\');">' . __( 'Mark as fixed', 'wordpress-seo' ) . '</a>';
+		$actions['markasfixed'] = '<a href="javascript:wpseoMarkAsFixed(\'' . urlencode( $item['url'] ) . '\');">' . __( 'Mark as fixed', 'wordpress-seo' ) . '</a>';
 
 		return sprintf(
 			'<span class="value">%1$s</span> %2$s',
@@ -226,7 +229,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 	 * @return bool
 	 */
 	private function can_create_redirect() {
-		return in_array( $this->current_view, array( 'soft_404', 'not_found', 'access_denied' ) );
+		return in_array( $this->current_view, array( 'soft_404', 'not_found', 'access_denied' ), true );
 	}
 
 	/**
@@ -236,11 +239,13 @@ class WPSEO_GSC_Table extends WP_List_Table {
 	 * @param int $posts_per_page Number of items per page.
 	 */
 	private function set_pagination( $total_items, $posts_per_page ) {
-		$this->set_pagination_args( array(
+		$pagination_args = array(
 			'total_items' => $total_items,
 			'total_pages' => ceil( ( $total_items / $posts_per_page ) ),
 			'per_page'    => $posts_per_page,
-		) );
+		);
+
+		$this->set_pagination_args( $pagination_args );
 	}
 
 	/**
@@ -308,11 +313,14 @@ class WPSEO_GSC_Table extends WP_List_Table {
 	 * @return int
 	 */
 	private function do_reorder( $a, $b ) {
+		$orderby = filter_input( INPUT_GET, 'orderby' );
+		$order   = filter_input( INPUT_GET, 'order' );
+
 		// If no sort, default to title.
-		$orderby = ( $orderby = filter_input( INPUT_GET, 'orderby' ) ) ? $orderby : 'url';
+		$orderby = ( ! empty( $orderby ) ) ? $orderby : 'url';
 
 		// If no order, default to asc.
-		$order = ( $order = filter_input( INPUT_GET, 'order' ) ) ? $order : 'asc';
+		$order = ( ! empty( $order ) ) ? $order : 'asc';
 
 		// When there is a raw field of it, sort by this field.
 		if ( array_key_exists( $orderby . '_raw', $a ) && array_key_exists( $orderby . '_raw', $b ) ) {
@@ -357,8 +365,8 @@ class WPSEO_GSC_Table extends WP_List_Table {
 	 * @param string $platform Platform (desktop, mobile, feature phone).
 	 */
 	private function show_fields( $platform ) {
-		echo "<input type='hidden' name='wpseo_gsc_nonce' value='" . wp_create_nonce( 'wpseo_gsc_nonce' ) . "' />";
-		echo "<input id='field_platform' type='hidden' name='platform' value='{$platform}' />";
-		echo "<input id='field_category' type='hidden' name='category' value='{$this->current_view}' />";
+		echo '<input type="hidden" name="wpseo_gsc_nonce" value="' . esc_attr( wp_create_nonce( 'wpseo_gsc_nonce' ) ) . '" />';
+		echo '<input id="field_platform" type="hidden" name="platform" value="' . esc_attr( $platform ) . '" />';
+		echo '<input id="field_category" type="hidden" name="category" value="' . esc_attr( $this->current_view ) . '" />';
 	}
 }
