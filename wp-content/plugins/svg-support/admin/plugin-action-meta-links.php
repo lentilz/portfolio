@@ -11,7 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function bodhi_svgs_plugin_action_links( $links ) {
 
-	$links[] = '<a href="'. get_admin_url( null, 'options-general.php?page=svg-support' ) .'">Settings</a>';
+	return array_merge(
+
+		array(
+			'<a href="' . admin_url( 'options-general.php?page=svg-support' ) . '" title="' . __( 'SVG Support Settings', 'svg-support' ) . '">' . __( 'Settings', 'svg-support') . '</a>'
+		), $links
+	);
 
 	return $links;
 

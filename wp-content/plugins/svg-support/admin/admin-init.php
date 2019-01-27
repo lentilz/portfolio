@@ -11,13 +11,18 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function bodhi_svgs_admin_menu() {
 
-	add_options_page(
-		__('SVG Support Options and Instructions', 'svg-support'),
+	$bodhi_svgs_options_page = add_options_page(
+		__('SVG Support Settings and Usage', 'svg-support'),
 		__('SVG Support', 'svg-support'),
 		'manage_options',
 		'svg-support',
 		'bodhi_svg_support_settings_page'
-		);
+	);
+
+	// load the help menu on the SVG Support settings page
+	add_action( 'load-' . $bodhi_svgs_options_page, 'bodhi_svgs_help_tab' );
+
+	require( BODHI_SVGS_PLUGIN_PATH . 'admin/svgs-settings-page-help.php' );
 
 }
 add_action( 'admin_menu', 'bodhi_svgs_admin_menu' );
@@ -83,7 +88,6 @@ function bodhi_svgs_specific_pages_settings() {
 	$screen = get_current_screen();
 
 	// check if we're on SVG Support settings page
-
 	if ( is_object($screen) && $screen->id == 'settings_page_svg-support' ) {
 
 		return true;

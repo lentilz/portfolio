@@ -48,8 +48,13 @@ function bodhi_svgs_save_featured_image_meta( $post_id, $post, $update ) {
 		$value = 1;
 	}
 
-	// set meta value to either 1 or 0
-	update_post_meta( $post_id, 'inline_featured_image', $value );
+	// Check if post type supports 'thumbnail' (Featured Image)
+	if ( post_type_supports( get_post_type( $post_id ), 'thumbnail' ) ) {
+
+		// set meta value to either 1 or 0
+		update_post_meta( $post_id, 'inline_featured_image', $value );
+
+	}
 
 }
 add_action( 'save_post', 'bodhi_svgs_save_featured_image_meta', 10, 3 );
@@ -61,7 +66,7 @@ function bodhi_svgs_add_class_to_thumbnail( $thumb ) {
 
 	$inline_featured_image = get_post_meta( get_the_ID(), 'inline_featured_image' );
 
-	if ( in_array( 1, $inline_featured_image ) ) {
+	if ( is_array( $inline_featured_image ) && in_array( 1, $inline_featured_image ) ) {
 
 		global $bodhi_svgs_options;
 
