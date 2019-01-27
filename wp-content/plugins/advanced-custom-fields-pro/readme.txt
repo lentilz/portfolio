@@ -1,110 +1,291 @@
 === Advanced Custom Fields Pro ===
 Contributors: elliotcondon
-Tags: acf, advanced, custom, field, fields, custom field, custom fields, simple fields, magic fields, more fields, repeater, edit
-Requires at least: 3.6.0
-Tested up to: 4.8.0
+Tags: acf, advanced, custom, field, fields, form, repeater, content
+Requires at least: 4.4.0
+Tested up to: 4.9.9
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Customise WordPress with powerful, professional and intuitive fields
+Customize WordPress with powerful, professional and intuitive fields.
 
 == Description ==
 
-Advanced Custom Fields is the perfect solution for any WordPress website which needs more flexible data like other Content Management Systems. 
+Use the Advanced Custom Fields plugin to take full control of your WordPress edit screens & custom field data.
 
-* Visually create your Fields
-* Select from multiple input types (text, textarea, wysiwyg, image, file, page link, post object, relationship, select, checkbox, radio buttons, date picker, true / false, repeater, flexible content, gallery and more to come!)
-* Assign your fields to multiple edit pages (via custom location rules)
-* Easily load data through a simple and friendly API
-* Uses the native WordPress custom post type for ease of use and fast processing
-* Uses the native WordPress metadata for ease of use and fast processing
+**Add fields on demand.** Our field builder allows you to quickly and easily add fields to WP edit screens with only the click of a few buttons!
 
-= Field Types =
-* Text (type text, api returns text)
-* Text Area (type text, api returns text)
-* Number (type number, api returns integer)
-* Email (type email, api returns text)
-* Password (type password, api returns text)
-* WYSIWYG (a WordPress wysiwyg editor, api returns html)
-* Image (upload an image, api returns the url)
-* File (upload a file, api returns the url)
-* Select (drop down list of choices, api returns chosen item)
-* Checkbox (tickbox list of choices, api returns array of choices)
-* Radio Buttons ( radio button list of choices, api returns chosen item)
-* True / False (tick box with message, api returns true or false)
-* Page Link (select 1 or more page, post or custom post types, api returns the selected url)
-* Post Object (select 1 or more page, post or custom post types, api returns the selected post objects)
-* Relationship (search, select and order post objects with a tidy interface, api returns the selected post objects)
-* Taxonomy (select taxonomy terms with options to load, display and save, api returns the selected term objects)
-* User (select 1 or more WP users, api returns the selected user objects)
-* Google Maps (interactive map, api returns lat,lng,address data)
-* Date Picker (jquery date picker, options for format, api returns string)
-* Color Picker (WP color swatch picker)
-* Tab (Group fields into tabs)
-* Message (Render custom messages into the fields)
-* Repeater (ability to create repeatable blocks of fields!)
-* Flexible Content (ability to create flexible blocks of fields!)
-* Gallery (Add, edit and order multiple images in 1 simple field)
-* [Custom](https://www.advancedcustomfields.com/resources/tutorials/creating-a-new-field-type/) (Create your own field type!)
+**Add them anywhere.** Fields can be added all over WP including posts, users, taxonomy terms, media, comments and even custom options pages!
 
-= Tested on =
-* Mac Firefox 	:)
-* Mac Safari 	:)
-* Mac Chrome	:)
-* PC Safari 	:)
-* PC Chrome		:)
-* PC Firefox	:)
-* iPhone Safari :)
-* iPad Safari 	:)
-* PC ie7		:S
+**Show them everywhere.** Load and display your custom field values in any theme template file with our hassle free developer friendly functions!
 
-= Website =
-https://www.advancedcustomfields.com/
+= Features =
+* Simple & Intuitive
+* Powerful Functions
+* Over 30 Field Types
+* Extensive Documentation
+* Millions of Users
 
-= Documentation =
-* [Getting Started](https://www.advancedcustomfields.com/resources/#getting-started)
-* [Field Types](https://www.advancedcustomfields.com/resources/#field-types)
-* [Functions](https://www.advancedcustomfields.com/resources/#functions)
-* [Actions](https://www.advancedcustomfields.com/resources/#actions)
-* [Filters](https://www.advancedcustomfields.com/resources/#filters)
-* [How to guides](https://www.advancedcustomfields.com/resources/#how-to)
-* [Tutorials](https://www.advancedcustomfields.com/resources/#tutorials)
+= Links =
+* [Website](https://www.advancedcustomfields.com)
+* [Documentation](https://www.advancedcustomfields.com/resources/)
+* [Support](https://support.advancedcustomfields.com)
+* [ACF PRO](https://www.advancedcustomfields.com/pro/)
 
-= Bug Submission and Forum Support =
-http://support.advancedcustomfields.com/
-
-= Please Vote and Enjoy =
-Your votes really make a difference! Thanks.
+= PRO =
+The Advanced Custom Fields plugin is also available in a professional version which includes more fields, more functionality, and more flexibility! [Learn more](https://www.advancedcustomfields.com/pro/)
 
 
 == Installation ==
 
-1. Upload 'advanced-custom-fields' to the '/wp-content/plugins/' directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Click on the new menu item "Custom Fields" and create your first Custom Field Group!
-4. Your custom field group will now appear on the page / post / template you specified in the field group's location rules!
-5. Read the documentation to display your data: 
+From your WordPress dashboard
+
+1. **Visit** Plugins > Add New
+2. **Search** for "Advanced Custom Fields"
+3. **Activate** Advanced Custom Fields from your Plugins page
+4. **Click** on the new menu item "Custom Fields" and create your first Custom Field Group!
+5. **Read** the documentation to [get started](https://www.advancedcustomfields.com/resources/getting-started-with-acf/)
 
 
 == Frequently Asked Questions ==
 
-= Q. I have a question =
-A. Chances are, someone else has asked it. Check out the support forum at: 
-http://support.advancedcustomfields.com/
+= What kind of support do you provide? =
+
+**Help Desk.** Support is currently provided via our email help desk. Questions are generally answered within 24 hours, with the exception of weekends and holidays. We answer questions related to ACF, its usage and provide minor customization guidance. We cannot guarantee support for questions which include custom theme code, or 3rd party plugin conflicts & compatibility. [Open a Support Ticket](https://www.advancedcustomfields.com/support/)
+
+**Support Forums.** Our Community Forums provide a great resource for searching and finding previously answered and asked support questions. You may create a new thread on these forums, however, it is not guaranteed that you will receive an answer from our support team. This is more of an area for developers to talk to one another, post ideas, plugins and provide basic help. [View the Support Forum](https://support.advancedcustomfields.com/)
 
 
 == Screenshots ==
 
-1. Creating the Advanced Custom Fields
+1. Simple & Intuitive
 
-2. Adding the Custom Fields to a page and hiding the default meta boxes
+2. Made for developers
 
-3. The Page edit screen after creating the Advanced Custom Fields
-
-4. Simple and intuitive API. Read the documentation at: https://www.advancedcustomfields.com/resources/
+3. All about fields
 
 
 == Changelog ==
+
+= 5.7.10 =
+*Release Date - 16 January 2019*
+
+* Fix - Fixed bug preventing metaboxes from saving if validation fails within Gutenberg.
+* Fix - Fixed bug causing unload prompt to show incorrectly within Gutenberg.
+* Fix - Fixed JS error when selecting taxonomy terms within Gutenberg.
+* Fix - Fixed bug causing jQuery sortable issues within other plugins.
+* Tweak - Improved loading translations by adding fallback from region to country when .mo file does not exit.
+* Tweak - Improved punctuation throughout admin notices.
+* Tweak - Improved performance and accuracy when loading a user field value.
+* Dev - Added filter 'acf/get_locale' to customize the locale used to load translations.
+* Dev - Added filter 'acf/allow_unfiltered_html' to customize if current user can save unfiltered HTML.
+* Dev - Added new data storage functions `acf_register_store()` and `acf_get_store()`.
+* Dev - Moved from .less to .scss and minified all css.
+* i18n - Updated French translation thanks to Maxime Bernard-Jacquet.
+* i18n - Updated Czech translation thanks to David Rychly.
+
+= 5.7.9 =
+*Release Date - 17 December 2018*
+
+* Fix - Added custom metabox location (acf_after_title) compatibility with Gutenberg.
+* Fix - Added dynamic metabox check compatibility with Gutenberg.
+* Fix - Fixed bug causing required date picker fields to prevent form submit.
+* Fix - Fixed bug preventing multi-input values from saving correctly within media modals.
+* Fix - Fixed bug where `acf_form()` redirects to an incorrect URL for sub-sites.
+* Fix - Fixed bug where breaking out of a sub `have_rows()` loop could produce undesired results.
+* Dev - Added filter 'acf/connect_attachment_to_post' to prevent connecting attachments to posts.
+* Dev - Added JS filter 'google_map_autocomplete_args' to customize Google Maps autocomplete settings.
+
+= 5.7.8 =
+*Release Date - 7 December 2018*
+
+* Fix - Fixed vulnerability allowing author role to save unfiltered HTML values.
+* Fix - Fixed all metaboxes appearing when editing a post in WP 5.0.
+* i18n - Updated Polish translation thanks to Dariusz Zielonka.
+* i18n - Updated Czech translation thanks to Veronika Hanzlíková.
+* i18n - Update Turkish translation thanks to Emre Erkan.
+* i18n - Updated Portuguese language thanks to Pedro Mendonça.
+
+= 5.7.7 =
+*Release Date - 1 October 2018*
+
+* Fix - Fixed various plugin update issues.
+* Tweak - Added 'language' to Google Maps API url.
+* Dev - Major improvements to the `acf.models.Postbox` model.
+* Dev - Added JS filter 'check_screen_args'.
+* Dev - Added JS action 'check_screen_complete'.
+* Dev - Added action 'acf/options_page/submitbox_before_major_actions'.
+* Dev - Added action 'acf/options_page/submitbox_major_actions'.
+* i18n - Updated Portuguese language thanks to Pedro Mendonça
+
+= 5.7.6 =
+*Release Date - 12 September 2018*
+
+* Fix - Fixed unload prompt not working.
+* Dev - Reduced number of queries needed to populate the relationship field taxonomy filter.
+* Dev - Added 'nav_menu_item_id' and 'nav_menu_item_depth' to get_field_groups() query.
+* Dev - Reordered various actions and filters for more usefulness.
+* i18n - Updated Polish language thanks to Dariusz Zielonka
+
+= 5.7.5 =
+*Release Date - 6 September 2018*
+
+* Fix - Fixed bug causing multisite login redirect issues.
+* Fix - Fixed bug causing validation issues in older versions of Firefox.
+* Fix - Fixed bug causing duplicate Select2 instances when adding a widget via drag/drop.
+* Dev - Improved WPML compatibility by using `$sitepress->get_current_language()` instead of `ICL_LANGUAGE_CODE`.
+* Dev - Improved validation JS with new Validator model and logic.
+
+= 5.7.4 =
+*Release Date - 30 August 2018*
+
+* Fix - Fixed bug causing field groups to disappear when selecting a taxonomy term with WPML active.
+* Tweak - Added more Dark Mode styles.
+* Tweak - Improved DB upgrade prompt, functions and AJAX logic.
+* Tweak - Improved the "What's New" admin page seen after DB Upgrade.
+* Dev - Added new location rules filters.
+
+= 5.7.3 =
+*Release Date - 20 August 2018*
+
+* New - Added Dark Mode styles for the [Dark Mode Plugin](https://en-au.wordpress.org/plugins/dark-mode/).
+* New - Added "Value Contains" condition to the Select field type.
+* New - Added support for the WooCommerce product type dropdown to trigger "update metaboxes".
+* Tweak - Improved acf.screen model responsible for "updating metaboxes" when changing post data.
+* Tweak - Removed user fields from the multisite "Add New User" page. 
+* Fix - Fixed bug preventing some tinymce customizations from working.
+* Fix - Fixed JS bug throwing "preference" error in console.
+* Dev - Added action 'acf/enqueue_uploader' triggered after the hidden "ACF Content" editor is rendered.
+
+= 5.7.2 =
+*Release Date - 6 August 2018*
+
+* Fix - Fixed bug preventing the Google Maps Field address from being customized.
+* Fix - Improved logic to request and cache plugin update information.
+* Fix - Fixed bug preventing JS initialization when editing widgets in accessibility mode.
+* Fix - Added missing $parent argument to term_exists() function when adding a new term via taxonomy field popup.
+* Fix - Fixed bug where nested Group Fields did not delete their values.
+* Fix - Fixed JS error thrown by localStorage if cookies are not enabled.
+* Dev - Bumped minimum WP version requirement to 4.4.
+* Dev - Added action 'wp_nav_menu_item_custom_fields' for compatibility with other plugins modifying the menu walker class.
+* Dev - Added 'multiple' to the allowed attributes for an email field.
+* Dev - Added new ACF_Ajax class for upcoming features.
+
+= 5.7.1 =
+* Core: Minor fixes and improvements
+
+= 5.7.0 =
+* Core: Major JavaScript updates
+* Core: Improved conditional logic with new types and more supported fields
+* Core: Improved localization and internationalization
+* Repeater field: Improved logic that remembers collapsed row states
+* Repeater field: Added support to collapse multiple rows (hold shift)
+* API: Improved lookup to find fields without a reference value
+* Language: Added Croatian translation - Thanks to Vlado Bosnjak
+* Language: Updated Italian translation - thanks to Davide Pantè
+* Language: Updated Romanian translation - thanks to Ionut Staicu
+* Language: Updated German translation - thanks to Ralf Koller
+* Language: Updated Arabic translation - thanks to Karim Ramadan
+* Language: Updated Portuguese translation - thanks to Pedro Mendonça
+
+= 5.6.10 =
+* Core: Minor fixes and improvements
+
+= 5.6.9 =
+* User field: Added new 'Return Format' setting (Array, Object, ID)
+* Core: Added basic compatibility with Gutenberg - values now save
+* Core: Fixed bug affecting the loading of fields on new Menu Items
+* Core: Removed private ('show_ui' => false) post types from the 'Post Type' location rule choices
+* Core: Minor fixes and improvements
+* Language: Updated French translation - thanks to Maxime Bernard-Jacquet
+
+= 5.6.8 =
+* API: Fixed bug causing have_rows() to fail with PHP 7.2
+* Core: Fixed bug causing "Add new term" form to hide after submit
+* Core: Minor fixes and improvements
+* Language: Updated German translation - thanks to Ralf Koller
+* Language: Updated Portuguese translation - thanks to Pedro Mendonça
+* Language: Updated Arabic translation - thanks to Karim Ramadan
+* Language: Updated Spanish translation - thanks to Luis Rull Muñoz
+* Language: Updated Persian translation - thanks to Majix
+
+= 5.6.7 =
+* Fixed an assortment of bugs found in 5.6.6
+
+= 5.6.6 =
+* Accordion field: Added new field type
+* Tab field: Added logic to remember active tabs
+* WYSIWYG field: Fixed JS error in quicktags initialization
+* Core: Fixed issue preventing conditional logic for menu item fields
+* Core: Fixed issue preventing JS initialization for newly added menu items.
+* Core: Allow whitespace in input value (previously trimmed)
+* Core: Minor fixes and improvements
+* Language: Updated Italian translation - thanks to Davide Pantè
+* Language: Updated Brazilian Portuguese translation - thanks to Rafael Ribeiro
+* Language: Updated Dutch translation - thanks to Derk Oosterveld
+* Language: Updated Portuguese translation - thanks to Pedro Mendonça
+* Language: Updated Persian translation - thanks to Kamel Kimiaei
+* Language: Updated Swiss German translation - thanks to Raphael Hüni
+* Language: Updated Arabic translation - thanks to Karim Ramadan
+
+= 5.6.5 =
+* API: Added new 'kses' setting to the `acf_form()` function
+* Core: Added new 'Admin Tools' framework (includes design refresh)
+* Core: Minor fixes and improvements
+* Language: Update Ukrainian translation - thanks to Jurko Chervony
+* Language: Update Russian translation - thanks to Andriy Toniyevych
+* Language: Update Hebrew translation - thanks to Itamar Megged
+
+= 5.6.4 =
+* Google Map field: Fixed bug causing invalid url to JavaScript library
+* WYSIWYG field: Fixed minor z-index and drag/drop bugs
+* Group field: Fixed bug causing incorrect export settings
+* Core: Fixed bug in 'Post Taxonomy' location rule ignoring selected terms during AJAX callback
+* Core: Fixed bug preventing a draft to validate with required fields
+* Language: Updated Italian translation - thanks to Davide Pantè
+* Language: Update Turkish translation - thanks to Emre Erkan
+* Language: Updated Chinese translation - thanks to Wang Hao
+* Language: Update Hebrew translation - thanks to Itamar Megged
+
+= 5.6.3 =
+* Button Group field: Added new field type
+* Range field: Added missing 'step' attribute to number input
+* Range field: Added width to number input based on max setting
+* Basic fields: Added missing 'required' attribute to inputs
+* Basic fields: Removed empty attributes from inputs
+* API: Fixed `get_fields()` bug ignoring fields starting with an underscore
+* Core: Minor fixes and improvements
+* Language: Updated Portuguese translation - thanks to Pedro Mendonça
+* Language: Updated French translation - thanks to Maxime Bernard-Jacquet
+* Language: Updated Finnish translation - thanks to Sauli Rajala
+* Language: Updated German translation - thanks to Ralf Koller
+
+= 5.6.2 =
+* Range field: Added new field type
+* Clone field: Fixed bug causing value update issues for 'seamless' + widgets / nave menu items
+* Location: Added parent theme's post templates to 'post template' location rule
+* Location: Fixed bug causing 'nav menu' location rule to fail during AJAX (add new item)
+* Core: Fixed PHP errors in customizer when editing non ACF panels
+* Core: Fixed bug casing backslash character to break fields / field groups
+* Core: Many minor bug fixes
+* Language: Updated Romanian translation - thanks to Ionut Staicu
+* Language: Updated Italian translation - thanks to Davide Pantè
+* Language: Update Turkish translation - thanks to Emre Erkan
+* Language: Updated Russian translation - Thanks to Алекс Яровиков
+* Language: Updated French translation - Thanks to Julie Arrigoni
+
+= 5.6.1 =
+* Fixed an assortment of bugs found in 5.6.0
+
+= 5.6.0 =
+* Link field: Added new field type
+* Group field: Added new field type
+* API: Improved `have_rows()` function to work with clone and group field values
+* Core: Added new location for Menus
+* Core: Added new location for Menu Items
+* Core: Added types to Attachment location rule - thanks to Jan Thomas
+* Core: Added "Confirm Remove" tooltips
+* Core: Updated Select2 JS library to v4
+* Core: Minor fixes and improvements
 
 = 5.5.14 =
 * Core: Minor bug fixes
@@ -203,7 +384,7 @@ http://support.advancedcustomfields.com/
 
 = 5.5.1 =
 * Select field: Fixed bug preventing some field settings from being selected
-* Date picker field: Improved compatibility with customised values
+* Date picker field: Improved compatibility with customized values
 * Core: Added new 'enqueue_datepicker' setting which can be used to prevent the library from being enqueued
 * Core: Added new 'enqueue_datetimepicker' setting which can be used to prevent the library from being enqueued
 * Core: Minor fixes and improvements
@@ -304,7 +485,7 @@ View full changelog: https://www.advancedcustomfields.com/changelog/
 == Upgrade Notice ==
 
 = 5.2.7 =
-* Field class names have changed slightly in v5.2.7 from `field_type-{$type}` to `acf-field-{$type}`. This change was introduced to better optimise JS performance. The previous class names can be added back in with the following filter: https://www.advancedcustomfields.com/resources/acfcompatibility/
+* Field class names have changed slightly in v5.2.7 from `field_type-{$type}` to `acf-field-{$type}`. This change was introduced to better optimize JS performance. The previous class names can be added back in with the following filter: https://www.advancedcustomfields.com/resources/acfcompatibility/
 
 = 3.0.0 =
 * Editor is broken in WordPress 3.3
