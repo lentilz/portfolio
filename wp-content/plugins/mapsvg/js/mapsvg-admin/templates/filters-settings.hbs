@@ -1,0 +1,49 @@
+<script type="text/x-handlebars-template" data-name="main">
+    <form class="form-horizontal mapsvg-view-padding">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Filters</label>
+            <div class="col-sm-9">
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" class="mapsvg-onoff" name="filters[on]"  {{#if filters.on}}checked{{/if}}  data-live="change" />
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="form-group">-->
+            <!--<label class="col-sm-3 control-label">Filters in a </label>-->
+            <!--<div class="col-sm-9">-->
+                <!--<div style="margin-bottom: 10px;">-->
+                    <!--<input type="checkbox" class="mapsvg-onoff" name="filters[collapsable]"  {{#if filters.collapsable}}checked{{/if}}  data-live="change" />-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="form-group">-->
+            <!--<label class="col-sm-3 control-label">Filters window location</label>-->
+            <!--<div class="col-sm-9">-->
+                <!--<div class="radio">-->
+                    <!--<label>-->
+                        <!--<input type="radio" name="detailsView[location]" value="top" {{#ifeq filters.location 'top'}}checked{{/ifeq}} data-live="change"/>-->
+                        <!--Above directory and map-->
+                    <!--</label>-->
+                    <!--<p class="help-block">-->
+                        <!--If you set <em>filters</em> width the same as <em>directory</em> then-->
+                        <!--<em>filters</em> will cover only <em>directory</em>.-->
+                        <!--If you set <em>filters</em> width = 100%, it will cover both <em>directory</em> and <em>map</em>.-->
+                    <!--</p>-->
+                <!--</div>-->
+                <!--<div class="radio">-->
+                    <!--<label>-->
+                        <!--<input type="radio" name="filters[location]" value="near" {{#ifeq filters.location 'near'}}checked{{/ifeq}} data-live="change"/>-->
+                        <!--Above map-->
+                    <!--</label>-->
+                    <!--<p class="help-block">-->
+                        <!--If you set <em>filters</em> width = 100% then-->
+                        <!--it would fully cover the map - but directory would stay visible.-->
+                    <!--</p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+    </form>
+</script>

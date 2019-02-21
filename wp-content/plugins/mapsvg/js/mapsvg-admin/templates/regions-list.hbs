@@ -1,0 +1,60 @@
+<script type="text/x-handlebars-template" data-name="main">
+    <!--<div class="table-responsive">-->
+        <table class="table mapsvg-data-list-table" id="mapsvg-regions-list-table">
+            <thead>
+            <tr>
+                {{#each fields}}
+                    <th>{{name}}</th>
+                {{/each}}
+                <th style="width: 40px;"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each data}}
+                {{>regionsListItemPartial fields=../fields params=this}}
+            {{/each}}
+            </tbody>
+        </table>
+    <!--</div>-->
+</script>
+
+<script type="text/x-handlebars-template" data-name="item" data-partial="true">
+    <tr id="mapsvg-region-{{id_no_spaces}}" data-region-id="{{id}}" class="mapsvg-data-row">
+        {{#each fields}}
+            {{#ifeq type 'image'}}
+                <td>{{getThumbs ../params name}}</td>
+            {{/ifeq}}
+            {{#ifnoteq type 'image'}}
+                {{#if options}}
+                    {{#ifeq type 'status'}}
+                        <td class="mapsvg-status">
+                            <div class="dropdown">
+                                <button type="button" id="dLabel" class="btn btn-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="mapsvg-status-text">{{getStatusText optionsDict ../params name}}</span> <span class="caret"></span></button>
+                                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                    {{#each options}}
+                                        <li><a href="#" data-set-status="{{value}}">{{label}}</a></li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </td>
+                    {{/ifeq}}
+                    {{#ifnoteq type 'status'}}
+                        <td>{{getLabel optionsDict ../params name}}</td>
+                    {{/ifnoteq}}
+                {{/if}}
+                {{#unless options}}
+                        <td>{{lookup ../params name}}</td>
+                {{/unless}}
+            {{/ifnoteq}}
+        {{/each}}
+        <td>
+            <button class="btn btn-default btn-sm region-cpicker toggle-tooltip" title="Color" style="background: {{fill}}"><i class="fa fa-paint-brush"></i></button>
+            <!--<div class="btn-group" data-toggle="buttons">-->
+            <!--<label class="btn btn-default btn-sm {{#if disabled}}active{{/if}} toggle-tooltip" title="Disable" >-->
+            <!--<input type="checkbox" class="region_disable  mapsvg-region-disabled" name="regions[{{id}}][disabled]" {{#if disabled}}checked{{/if}} data-live="change"/><i class="fa fa-ban"></i>-->
+            <!--</label>-->
+            <!--</div>-->
+        </td>
+
+    </tr>
+</script>

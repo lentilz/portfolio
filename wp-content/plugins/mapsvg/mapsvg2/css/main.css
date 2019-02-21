@@ -1,0 +1,504 @@
+.mapsvg {
+    /*margin: 0 auto;*/
+}
+body {
+    background-color: transparent;
+    overflow-x: hidden;
+}
+body.mapsvg-edit-screen #wpfooter {
+    display: none;
+}
+body.wp-admin.mapsvg-edit-screen #wpcontent {
+    padding-left: 0;
+    position: relative;
+}
+body.wp-admin.mapsvg-edit-screen #wpbody-content> {
+    padding: 0;
+    margin: 0;
+}
+#wpbody-content > * {
+    display: none !important;
+}
+#wpbody-content > #stretchIframe {
+    display: block !important;
+}
+#wpbody-content > .mapsvg-dashboard {
+    display: block !important;
+    padding-right: 20px;
+}
+body.wp-admin.mapsvg-edit-screen #wpbody-content>.mapsvg-dashboard {
+    padding: 0;
+}
+
+.mapsvg-dashboard > h1 {
+    font-size: 23px;
+    font-weight: 400;
+    margin: 10px 0 20px 0;
+    padding: 9px 15px 4px 0;
+    line-height: 29px;
+    font-family: "Open Sans",sans-serif;
+}
+#mapsvg-nav-header > h2 {
+    font-family: "Open Sans",sans-serif;
+    font-weight: 600;
+    display: inline-block;
+
+}
+#mapsvg-nav-header > h2 .label {
+    background-color: #aaaaaa;
+    font-weight: 300;
+    font-size: 60%;
+    top: -3px;
+}
+.mapsvg-dashboard  > h1 sup, #mapsvg-nav-header > h2 sup {
+    font-size: 12px;
+    color: #888;
+    top: -8px;
+}
+#mapsvg-nav-header > h2 sup {
+    font-size: 11px;
+    top: -7px;
+}
+
+#mapsvg-tabs .tab-pane {
+    display: block !important;
+    position: fixed;
+    right: -9999px;
+    width: 100%;
+}
+#mapsvg-tabs .tab-pane.active {
+    position: relative;
+    left: 0;
+}
+#mapsvg {
+    position: relative;
+}
+#mapsvg.fixed {
+    position: fixed;
+    top: 200px;
+} 
+#mapsvg-fixed-header {
+    height: 60px;
+    position: fixed; 
+    width: 100%; 
+    top: 32px; 
+    background-color: #dcdcdc;
+    margin-left: -20px;
+    padding-left: 20px;
+    z-index: 1000;
+}
+#mapsvg-fixed-header h3 {
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    #mapsvg.fixed {
+        position: static;
+    }
+}
+#mapsvg.hidden, #mapsvg-viewbox-edit.hidden {
+    position: absolute;
+    top: -9999px;
+}
+legend:first-child {
+    margin-top: 0;
+}
+label.checkbox {
+    display: inline-block;
+}
+label {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+div.tab-content {
+    margin-top: -1px;            
+    padding: 15px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+}
+.form-horizontal .form-actions {
+    background-color: #ddd;
+    padding-left: 180px;
+}
+
+#myTab {
+    padding: 10px 0 0 14px;
+    background: #f8f8f8;
+    /*z-index: 900;*/
+    /*position: fixed;*/
+    width: 100%;
+}
+.mapsvg-panels {
+    /*padding-top: 60px;*/
+}
+.input-group-addon .checkbox {
+    min-height: 0;
+    padding-top: 0;
+    height: 20px;
+}
+.input-group-addon .checkbox {
+    font-size: 12px;
+}
+.input-group-addon .checkbox label {
+    min-height: 0;
+}
+.mapsvg-region-id {
+   font-weight: bold;
+}
+.mapsvg-region-title {
+   color: #3A3A3A;
+}
+.mapsvg-region-id, .mapsvg-region-title {
+    width: 150px;
+    overflow: hidden;
+}
+.mapsvg-function-textarea {
+    margin-top: 15px;
+}
+.mapsvg-function-radio-extra {
+    display: none;
+}
+
+#mapsvg-mapform-container.stretch {
+    top: 52px;
+    /*overflow: scroll;*/
+}
+
+#mapsvg-auto-id-warning{
+    display: none;
+    text-align: left; position: absolute; width: 96%; z-index: 3000; box-sizing: border-box; top: 40px;
+}
+
+#table-markers td:first-child{
+    width: 166px;
+}
+#table-regions tr:hover {
+    cursor: pointer;
+    background-color: #eee;
+}
+#table-regions tr.active:hover {
+    cursor: default;
+    background-color: inherit;
+}
+.mapsvg-region-row {
+    overflow: hidden;
+    clear: both;
+}
+.mapsvg-region-names {
+    float: left;
+}
+
+.mapsvg-region-names div {
+    display: inline;
+}
+.mapsvg-region-row.active .mapsvg-region-names div {
+    display: block;
+}
+.mapsvg-region-row .mapsvg-region-fields {
+    float: right;
+    width: 70%;
+}
+
+#mapsvg-nav-header {
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #e5e5e5;
+    border-bottom: 1px solid #ccc;
+    height: 40px;
+}
+#mapsvg-nav-header h2 {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+#mapsvg-nav-header #mapsvg-save {
+    position: absolute;
+    right: 8px;
+    top: 5px;
+}
+.stretch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#mapsvg-panels.stretch {
+    top: 40px;
+}
+
+.stretch.mapsvg-panel-left {
+    background-color: #f5f5f5;
+    right: 50%;
+    width:50%;
+    height: 100%;
+    border-right: 1px solid #ddd;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.stretch.mapsvg-panel-right {
+    left: 50%;
+    background-color: #ffffff;
+}
+.stretch.mapsvg-scrollable-content {
+    top: 40px;
+}
+#mapsvg-admin.fixed {
+    position: fixed;
+    top: 32px;
+    bottom: 0;
+    left: 160px;
+    right: 0;
+}
+#mapsvg-map-mode {
+    top: 10px;
+    right: 20px;
+    position: absolute;
+    z-index: 100;
+}
+#mapsvg-container {
+    /*display: table;*/
+    /*position: relative;*/
+    padding: 10px;
+    text-align: center;
+}
+#mapsvg-container #mapsvg {
+    /*display: table-cell;*/
+    /*vertical-align: middle;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*top: 50%;*/
+    /*margin-top: -25%;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*text-align: center;*/
+    /*width: auto;*/
+    /*margin-top: 50%;*/
+    /*position: absolute;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+    max-width: 100%;
+    max-height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+#mapsvg svg {
+    /*max-width: 100%;*/
+    /*max-height: 100%;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*max-width: 100%;*/
+    /*max-height: 100%;*/
+}
+.nav-tabs a, .nav-tabs li {
+    outline: none !important;
+    outline-color: transparent !important;
+    outline-width: 0 !important;
+    -moz-appearance: none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+select {
+    outline: none !important;
+}
+.mapsvg-event-set{
+    margin-top: 8px;
+}
+
+.mapsvg-region-gauge-container {
+    display: none;
+}
+.mapsvg-gauge-on .mapsvg-region-gauge-container {
+    display: block;
+
+}
+.line-error {
+    background: #FBC2C4 !important;
+    color: #8a1f11 !important;
+}
+.bold {
+    font-weight: bold;
+}
+
+.twitter-typeahead {
+    width: 100%;
+}
+.tt-input,
+.tt-hint {
+    width: 100%;
+    outline: none;
+}
+
+.tt-input {
+}
+
+.tt-hint {
+    color: #999;
+}
+
+.tt-menu {
+    width: 100%;
+    margin-top: 0px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+    padding: 3px 15px;
+}
+
+.tt-suggestion.tt-cursor, .tt-suggestion.tt-selectable:hover {
+    color: #fff;
+    background-color: #0097cf;
+    cursor: pointer;
+}
+.tt-suggestion p {
+    margin: 0;
+}
+
+#mapsvg-geocode {
+    display: none;
+}
+#mapsvg-admin.mapsvg-is-geo #mapsvg-geocode {
+    display: block;
+    width: 100%;
+}
+#mapsvg-search-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.8);
+    padding: 15px;
+    z-index: 10;
+    display: none;
+}
+#mapsvg-mapform-container.nano-shift-regions #mapsvg-search-placeholder {
+    height: 64px;
+    display: block;
+}
+#mapsvg-mapform-container.nano-shift-markers #mapsvg-search-placeholder {
+    height: 64px;
+    display: block;
+}
+#mapsvg-admin.mapsvg-is-geo #mapsvg-mapform-container.nano-shift-markers #mapsvg-search-placeholder {
+    height: 108px;
+    display: block;
+}
+
+#mapsvg-mapform-container.nano-shift-regions .nano-content {
+    padding-top: 65px;
+}
+#mapsvg-mapform-container.nano-shift-regions .nano-pane {
+    top: 65px;
+}
+#mapsvg-mapform-container.nano-shift-markers .nano-content {
+    padding-top: 65px;
+}
+#mapsvg-mapform-container.nano-shift-markers .nano-pane {
+    top: 65px;
+}
+#mapsvg-admin.mapsvg-is-geo #mapsvg-mapform-container.nano-shift-markers .nano-content {
+    padding-top: 108px;
+}
+#mapsvg-admin.mapsvg-is-geo #mapsvg-mapform-container.nano-shift-markers .nano-pane {
+    top: 109px;
+}
+
+#mapsvg-regions-search, #mapsvg-markers-search {
+    display: none;
+}
+#mapsvg-mapform-container.nano-shift-markers #mapsvg-markers-search {
+    display: block;
+}
+#mapsvg-mapform-container.nano-shift-regions #mapsvg-regions-search {
+    display: block;
+}
+#mapsvg-global-tooltips .CodeMirror,#mapsvg-global-popovers .CodeMirror {
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+#tab_regions .form-group, #tab_markers .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+.mapsvg.mapsvg-edit-regions .mapsvg-marker {
+    display: none;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.stretcher-bar {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: rgb(221,221,221) !important;
+}
+.select2-container--default .select2-selection--multiple {
+    border-color: rgb(221,221,221) !important;
+    height: 34px;
+}
+.select2-container .select2-selection--single {
+    height: 34px !important;
+    padding: 3px 0;
+    outline: none;
+    border-color: #ccc !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 32px !important;
+}

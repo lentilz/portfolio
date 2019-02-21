@@ -1,0 +1,244 @@
+<script type="text/x-handlebars-template" data-name="main">
+    <form class="form-horizontal mapsvg-view-padding">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Directory</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="menu[on]" class="mapsvg-onoff" {{#if menu.on}}checked{{/if}} data-live="change"/>
+
+                <p class="help-block">
+                    Please note that directory preview isn't available in MapSVG Builder. You can see the directory on a WordPress page
+                    after you insert the shortcode into it.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Data source</label>
+            <div class="col-sm-9">
+                <div class="btn-group" data-toggle="buttons" id="mapsvg-directory-data-source">
+                    <label class="btn btn-default {{#ifeq menu.source 'regions'}}active{{/ifeq}}">
+                        <input type="radio" name="menu[source]" value="regions"  {{#ifeq menu.source 'regions'}}checked{{/ifeq}} data-live="change"/>
+                        Regions
+                    </label>
+                    <!--<label class="btn btn-default {{#ifeq menu.source 'markers'}}active{{/ifeq}}">-->
+                        <!--<input type="radio" name="menu[source]" value="markers"  {{#ifeq menu.source 'markers'}}checked{{/ifeq}} data-live="change"/>-->
+                        <!--Markers-->
+                    <!--</label>-->
+                    <label class="btn btn-default {{#ifeq menu.source 'database'}}active{{/ifeq}}">
+                        <input type="radio" name="menu[source]" value="database"  {{#ifeq menu.source 'database'}}checked{{/ifeq}} data-live="change"/>
+                        Database
+                    </label>
+                </div>
+                <p class="help-block">
+                    <em><span id="mapsvg-dir-object-2">Database Object</span></em> is being passed into <em><a href="#" class="mapsvg-template-link" data-template="directoryItem">Directory item template</a></em>.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group" id="mapsvg-directory-filterout">
+            <label class="col-sm-3 control-label">Filter out</label>
+            <div class="col-sm-9">
+                <p class="help-block">
+                    Objects matching the following criteria will be excluded from the directory:
+                </p>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <select id="mapsvg-directory-filter-control" class="form-control" name="menu[filterout][field]" data-live="change">
+                            <option>id</option>
+                        </select>
+                    </div>
+                    <div id="mapsvg-filterout-extra" style="display: none">
+                        <div class="col-xs-1" style="text-align: center;line-height: 34px;">
+                            =
+                        </div>
+                        <div class="col-xs-5">
+                            <input id="mapsvg-directory-filter-value-control"  type="text" class="form-control" value="{{menu.filterout.val}}" name="menu[filterout][val]"  data-live="keyup" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" id="mapsvg-directory-custom-container">
+            <label class="col-sm-3 control-label">Container</label>
+            <div class="col-sm-9">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default {{#unless menu.customContainer}}active{{/unless}}">
+                        <input type="radio" class="mapsvg-toggle-visibility"  data-toggle-visibility-reverse="#mapsvg-directory-container-id" name="menu[customContainer]" value="0"  {{#unless menu.customContainer}}checked{{/unless}} data-live="change"/>
+                        Default
+                    </label>
+                    <label class="btn btn-default {{#if menu.customContainer}}active{{/if}}">
+                        <input type="radio" class="mapsvg-toggle-visibility"  data-toggle-visibility="#mapsvg-directory-container-id" name="menu[customContainer]" value="1" {{#if menu.customContainer}}checked{{/if}} data-live="change"/>
+                        Custom
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" id="mapsvg-directory-container-id" style="{{#unless menu.customContainer}}display:none{{/unless}}">
+            <label class="col-sm-3 control-label">Container ID</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <div class="input-group-addon">#</div>
+                    <input class="form-control" name="menu[containerId]" value="{{menu.containerId}}" data-live="keyup"/>
+                </div>
+            </div>
+        </div>
+
+        <div id="mapsvg-directory-container-default" style="{{#if menu.customContainer}}display:none{{/if}}">
+            <div class="form-group" >
+                <label class="col-sm-3 control-label">Position</label>
+                <div class="col-sm-9">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default {{#ifeq menu.position 'left'}}active{{/ifeq}}">
+                            <input type="radio" name="menu[position]" value="left"  {{#ifeq menu.position 'left'}}checked{{/ifeq}} data-live="change"/>
+                            Left
+                        </label>
+                        <label class="btn btn-default {{#ifeq menu.position 'right'}}active{{/ifeq}}">
+                            <input type="radio" name="menu[position]" value="right"  {{#ifeq menu.position 'right'}}checked{{/ifeq}} data-live="change"/>
+                            Right
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Width</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" value="{{menu.width}}" name="menu[width]" data-live="keyup" />
+                    <p class="help-block">
+                        Enter value in pixels (example: 200px) or in percents (example: 100%).
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Mobile: show first</label>
+            <div class="col-sm-9">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default {{#ifeq menu.showFirst "map"}}active{{/ifeq}}">
+                        <input type="radio" name="menu[showFirst]" value="map"  {{#ifeq menu.showFirst "map"}}checked{{/ifeq}} data-live="change"/>
+                        Map
+                    </label>
+                    <label class="btn btn-default {{#ifeq menu.showFirst "directory"}}active{{/ifeq}}">
+                        <input type="radio" name="menu[showFirst]" value="directory"  {{#ifeq menu.showFirst "directory"}}checked{{/ifeq}} data-live="change"/>
+                        Directory
+                    </label>
+                </div>
+                <p class="help-block">
+                    On mobile devices, if default directory container is used - only the map or the directory
+                    is shown - not both at once. The view can be switched with buttons at the bottom.
+                    Choose what should be shown first.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Mobile: directory min-height</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{menu.minHeight}}" name="menu[minHeight]" data-live="keyup" />
+                Enter value in pixels (example: 400)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Mobile: switch to map view on click on a directory item</label>
+            <div class="col-sm-9">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default {{#if menu.showMapOnClick}}active{{/if}}">
+                        <input type="radio" name="menu[showMapOnClick]" value="1"  {{#if menu.showMapOnClick}}checked{{/if}} data-live="change"/>
+                        On
+                    </label>
+                    <label class="btn btn-default {{#if menu.showMapOnClick}}active{{/if}}">
+                        <input type="radio" name="menu[showMapOnClick]" value="0"  {{#if menu.showMapOnClick}}checked{{/if}} data-live="change"/>
+                        Off
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Sort by</label>
+            <div class="col-sm-9">
+                <select id="mapsvg-directory-sort-control" class="form-control" name="menu[sortBy]" data-live="change" >
+                    <option>id</option>
+                </select>
+            </div>
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="col-sm-3 control-label">Sort method</label>-->
+            <!--<div class="col-sm-9">-->
+                <!--<div class="btn-group" data-toggle="buttons" id="mapsvg-directory-data-source">-->
+                    <!--<label class="btn btn-default {{#ifeq menu.sortMethod 'alphabetical'}}active{{/ifeq}}">-->
+                        <!--<input type="radio" name="menu[sortMethod]" value="alphabetical"  {{#ifeq menu.sortMethod 'alphabetical'}}checked{{/ifeq}} data-live="change"/>-->
+                        <!--Alphabetical-->
+                    <!--</label>-->
+                    <!--<label class="btn btn-default {{#ifeq menu.sortMethod 'numeric'}}active{{/ifeq}}">-->
+                        <!--<input type="radio" name="menu[sortMethod]" value="numeric"  {{#ifeq menu.sortMethod 'numeric'}}checked{{/ifeq}} data-live="change"/>-->
+                        <!--Numeric-->
+                    <!--</label>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Sort direction</label>
+            <div class="col-sm-9">
+                <div class="btn-group" data-toggle="buttons" id="mapsvg-directory-data-source">
+                    <label class="btn btn-default {{#ifeq menu.sortDirection 'asc'}}active{{/ifeq}}">
+                        <input type="radio" name="menu[sortDirection]" value="asc"  {{#ifeq menu.sortDirection 'asc'}}checked{{/ifeq}} data-live="change"/>
+                        A ... Z
+                    </label>
+                    <label class="btn btn-default {{#ifeq menu.sortDirection 'desc'}}active{{/ifeq}}">
+                        <input type="radio" name="menu[sortDirection]" value="desc"  {{#ifeq menu.sortDirection 'desc'}}checked{{/ifeq}} data-live="change"/>
+                        Z ... A
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Search</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="menu[search]" class="mapsvg-onoff" {{#if menu.search}}checked{{/if}} data-live="change"/>
+                <p class="help-block">Adds search field into a directory container. Mark your Database/Region fields as <em>Searchable</em> if you want them to be used in the search. </p>
+
+                <p class="help-block">
+                    <b>Note:</b>
+                    MapSVG uses MySQL "fulltext" search engine by default - which is fast and effective but it may require you to change 2 options in MySQL <em>my.cnf</em> settings file:
+                    <br /><br />
+                    - <em>ft_min_word_len</em> (min-word length): <b>{{fulltext_min_word_len}}</b> (current value)<br />
+                    - <em>ft_stopword_file</em> (list of ignored "stop-words"): <b><a target="_blank" href="https://dev.mysql.com/doc/refman/5.5/en/fulltext-stopwords.html">see default list</a></b> (your list could be different)
+                    <br /><br />
+                    If you for some reason can't change MySQL settings and default "fulltext" search doesn't work for you as expected - then turn on <em>Search Fallback</em> option. Less smart and slower MySQL search would be used then (LIKE '...%'</em>) - but the slowdown may be not noticable if you have small database.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Search fallback</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="menu[searchFallback]" class="mapsvg-onoff" {{#if menu.searchFallback}}checked{{/if}} data-live="change"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Search placeholder</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" autocomplete="off" name="menu[searchPlaceholder]" value="{{menu.searchPlaceholder}}" data-live="keyup" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">"No results found" text</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" autocomplete="off" name="menu[noResultsText]" value="{{menu.noResultsText}}" data-live="keyup" />
+            </div>
+        </div>
+    </form>
+
+</script>

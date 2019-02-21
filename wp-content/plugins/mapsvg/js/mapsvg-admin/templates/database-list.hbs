@@ -1,0 +1,67 @@
+<script type="text/x-handlebars-template" data-name="main">
+    <table class="table mapsvg-data-list-table" id="mapsvg-data-list-table">
+        <thead>
+        <tr>
+            {{#each fields}}
+                <th>{{name}}</th>
+            {{/each}}
+            <th style="width: 20px;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each data}}
+            {{>databaseListItemPartial fields=../fields params=this}}
+        {{/each}}
+        </tbody>
+    </table>
+
+    <div class="mapsvg-pagination-container">
+    </div>
+
+    <div class="mapsvg-view-padding" id="mapsvg-setup-database-msg" style="display: none;">
+        <div class="well">
+            <p class="help-block">You need to set up your Database fields first. Click on <span class="label label-default" style="font-size: 14px;"><i class="fa fa-columns"></i></span>  <i>Edit fields</i> icon in the toolbar.</p>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-handlebars-template" data-name="item" data-partial="true">
+    <tr id="mapsvg-data-{{params.id}}" data-id="{{params.id}}" class="mapsvg-data-row">
+        {{#each fields}}
+            {{#ifeq type 'image'}}
+                <td>{{getThumbs ../params name}}</td>
+            {{/ifeq}}
+            {{#ifeq type 'marker'}}
+                <td>{{getMarkerImage ../params name}}</td>
+            {{/ifeq}}
+            {{#ifnoteq type 'image'}}
+                {{#ifnoteq type 'marker'}}
+                    {{#if options}}
+                        {{#ifeq type 'region'}}
+                            <td>{{getRegions ../params name}}</td>
+                        {{/ifeq}}
+                        {{#ifnoteq type 'region'}}
+                            {{#ifjson ../params name}}
+                                <td>{{getSelectedOptions ../params name}}</td>
+                            {{/ifjson}}
+                            {{#ifnotjson ../params name}}
+                                <td>{{getLabel optionsDict ../params name}}</td>
+                            {{/ifnotjson}}
+                        {{/ifnoteq}}
+                    {{/if}}
+                    {{#unless options}}
+                        <td>{{lookup ../params name}}</td>
+                    {{/unless}}
+                {{/ifnoteq}}
+            {{/ifnoteq}}
+        {{/each}}
+        <td>
+            <button class="btn btn-sm btn-default mapsvg-data-copy toggle-tooltip" title="Copy">
+                <i class="fa fa-clone"></i>
+            </button>
+            <button class="btn btn-sm btn-default mapsvg-data-delete toggle-tooltip" title="Delete">
+                <i class="fa fa-trash"></i>
+            </button>
+        </td>
+    </tr>
+</script>

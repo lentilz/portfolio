@@ -1,0 +1,85 @@
+<script type="text/x-handlebars-template" data-name="main">
+    <form class="form-horizontal mapsvg-view-padding">
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Location</label>
+            <div class="col-sm-9">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="detailsView[location]" value="top" {{#ifeq detailsView.location 'top'}}checked{{/ifeq}} data-live="change"/>
+                        Over the directory & map
+                    </label>
+                    <p class="help-block">
+                        If you set <em>details view</em> width the same as <em>directory</em> -
+                        <em>details view</em> will cover only <em>directory</em>.
+                        If you set <em>details view</em> width = 100%, it will cover both <em>directory</em> and <em>map</em>.
+                    </p>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="detailsView[location]" value="near" {{#ifeq detailsView.location 'near'}}checked{{/ifeq}} data-live="change"/>
+                        Over the map
+                    </label>
+                    <p class="help-block">
+                        If you set <em>details view</em> width = 100%,
+                        it will cover the map - but the directory remains visible.
+                    </p>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="detailsView[location]" value="custom" {{#ifeq detailsView.location 'custom'}}checked{{/ifeq}} data-live="change"/>
+                        Custom container
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" id="mapsvg-directory-container-id">
+            <label class="col-sm-3 control-label">Custom container ID</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <div class="input-group-addon">#</div>
+                    <input class="form-control" name="detailsView[containerId]" value="{{detailsView.containerId}}" data-live="keyup"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Width</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" value="{{detailsView.width}}" name="detailsView[width]" data-live="keyup" />
+                <p class="help-block">Enter value in pixels (example: <i>200px</i>) or in percents (example: <i>100%</i>).</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Auto height</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="detailsView[autoresize]" class="mapsvg-onoff" {{#if detailsView.autoresize}}checked{{/if}}  data-live="change" />
+            </div>
+        </div>
+
+        <div class="form-group" id="mapsvg-directory-container-id">
+            <label class="col-sm-3 control-label">Margin</label>
+            <div class="col-sm-9">
+                <input class="form-control" name="detailsView[margin]" value="{{detailsView.margin}}" data-live="keyup"/>
+                <p class="help-block">
+                    Margins in CSS format. Examples: <br />
+                    "10px" (all margins 10px)<br />
+                    "5%" (all margins 5%)<br />
+                    "10px 20px" (top-bottom: 10px, left-right: 20px)<br />
+                    "10px 20px 10px 20px" (left 10px, top 20px, right 10px, bottom 20px)
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Fullscreen on mobile devices</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="detailsView[mobileFullscreen]" class="mapsvg-onoff" {{#if detailsView.mobileFullscreen}}checked{{/if}}  data-live="change" />
+            </div>
+        </div>
+
+    </form>
+
+</script>

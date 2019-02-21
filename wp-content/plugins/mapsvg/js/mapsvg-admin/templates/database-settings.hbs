@@ -1,0 +1,48 @@
+<script type="text/x-handlebars-template" data-name="main">
+    <form class="form-horizontal mapsvg-view-padding">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Pagination</label>
+            <div class="col-sm-9">
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" class="mapsvg-onoff" name="database[pagination][on]"  {{#if database.pagination.on}}checked{{/if}}  data-live="change" />
+                </div>
+
+                <p class="help-block">If you turn off pagination, all data would be loaded from MySQL database into MapSVG at map start. Use with caution - large data sets could take a long time to load.</p>
+                <p class="help-block">
+                    Pagination has effect on how many items is being shown in the Directory
+                    if source:Database is chosen for the Directory. Also pagination defines how many markers is being shown
+                    on the map (even if Directory is switched off, Markers on the map still can be paginated).
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Items per page</label>
+            <div class="col-sm-9">
+                <input type="text" autocomplete="off" class="form-control" name="database[pagination][perpage]" value="{{database.pagination.perpage}}" data-live="keyup"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">"Next page" text</label>
+            <div class="col-sm-9">
+                <input type="text" autocomplete="off" class="form-control" name="database[pagination][next]" value="{{database.pagination.next}}" data-live="keyup"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">"Previous page" text</label>
+            <div class="col-sm-9">
+                <input type="text" autocomplete="off" class="form-control" name="database[pagination][prev]" value="{{database.pagination.prev}}" data-live="keyup"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Clear the database</label>
+            <div class="col-sm-9">
+                <button id="mapsvg-clear-database-btn" class="btn btn-danger"><i class="fa fa-trash"></i> Clear the database</button>
+            </div>
+        </div>
+
+    </form>
+</script>

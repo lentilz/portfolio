@@ -1,0 +1,28 @@
+<script type="text/x-handlebars-template" data-name="main">
+
+    <div id="mapsvg-draw-tools">
+
+        <div class="btn-group-vertical" data-toggle="buttons" id="mapsvg-draw-mode">
+            <label class="btn btn-default btn-sm active" data-mode="preview" data-hint="Edit shapes">
+                <input type="radio" name="mapsvg_map_mode" value="edit" autocomplete="off"> <i class="fa fa-mouse-pointer"></i>
+            </label>
+            <label class="btn btn-default btn-sm" data-mode="draw" data-hint="Draw shapes">
+                <input type="radio" name="mapsvg_map_mode" value="draw" autocomplete="off" >  <i class="fa fa-pencil"></i>
+            </label>
+        </div>
+
+        <div class="btn-group-vertical" data-toggle="buttons" id="mapsvg-draw-options">
+            <label class="btn btn-default btn-sm active" data-hint="Snap points">
+                <input type="checkbox" id="mapsvg-draw-btn-magnet" name="mapsvg-draw-btn-magnet" value="edit" autocomplete="off" checked> <i class="fa fa-magnet"></i>
+            </label>
+        </div>
+
+        <div class="btn-group-vertical" id="mapsvg-draw-buttons">
+            <button class="btn btn-sm btn-default" id="mapsvg-draw-undo" data-hint="Undo"> <i class="fa fa-undo"></i> </button>
+        </div>
+
+    </div>
+
+    <div id="mapsvg-draw-status-line"><code>Click on shape</code>: edit. <code>Spacebar (hold)</code>: scroll.</div>
+
+</script>

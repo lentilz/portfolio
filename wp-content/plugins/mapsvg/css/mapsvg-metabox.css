@@ -1,0 +1,220 @@
+#mapsvg-metabox {
+    padding: 7px 0 0 0;
+    display: flex;
+    flex-flow: row;
+}
+#mapsvg-metabox .mapsvg-metabox-map {
+    flex: 1;
+}
+#mapsvg-metabox .mapsvg-metabox-form {
+    flex: 1;
+    padding-right: 20px;
+}
+.form-horizontal .control-label.with-name {
+    line-height: 18px;
+    padding-top: 0;
+}
+.field-name {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    color: #bbb;
+}
+.has-error .field-name {
+    color: #a00;
+}
+input.typeahead.form-control.tt-input {
+    background-color: #fff !important;
+}
+.mapsvg-data-thumbnail {
+    max-width: 32px;
+    /*box-sizing: border-box;*/
+    float: left;
+    padding: 2px;
+    border-radius: 5px;
+}
+.mapsvg-thumbnail-wrap {
+    max-width: 50px;
+    /*box-sizing: border-box;*/
+    float: left;
+    position: relative;
+}
+.mapsvg-thumbnail-wrap i {
+    display: none;
+    color: red;
+}
+.mapsvg-thumbnail-wrap:hover i {
+    padding: 4px;
+    display: block;
+    color: #f55;
+    cursor: pointer;
+    background-color: rgba(255,255,255,.6);
+}
+.mapsvg-thumbnail-wrap:hover i:hover {
+    background-color: rgba(255,255,255,.8);
+}
+.mapsvg-thumbnail-wrap:active i {
+    display: none;
+}
+#mapsvg-data-form-view .mapsvg-data-thumbnail {
+    max-width: 50px;
+}
+
+.mapsvg-thumbnail-wrap .mapsvg-data-thumbnail {
+    float: none;
+}
+.mapsvg-thumbnail-wrap i {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    /*width: 8px;*/
+    /*height: 8px;*/
+}
+.mapsvg-data-images {
+    cursor: move;
+}
+.sortable-drag {
+    padding: 20px;
+}
+.mapsvg-data-images {
+    margin: 10px -2px 10px -2px;
+}
+.mapsvg-data-images .sortable-drag {
+    border: 0;
+}
+.mapsvg-data-images .sortable-ghost {
+    opacity: .4;
+    border: 0;
+}
+.mapsvg-data-images .sortable-ghost i,
+.mapsvg-data-images .sortable-drag i
+{
+    display: none;
+}
+
+.sortable-ghost {
+    color: #ccc;
+    background-color: #000;
+}
+.sortable-chosen {
+    background-color: #eee !important;
+}
+.mapsvg-new-marker-form .typeahead {
+    background-color: #fff;
+}
+.twitter-typeahead {
+    display: block !important;
+}
+.mapsvg-new-marker {
+    margin-top: 10px;
+}
+.twitter-typeahead {
+    width: 100%;
+}
+.tt-input,
+.tt-hint {
+    width: 100%;
+    outline: none;
+}
+
+.tt-input {
+}
+
+.tt-hint {
+    color: #999;
+}
+
+.tt-menu {
+    width: 100%;
+    margin-top: 0px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+    padding: 3px 15px;
+}
+
+.tt-suggestion.tt-cursor, .tt-suggestion.tt-selectable:hover {
+    color: #fff;
+    background-color: #0097cf;
+    cursor: pointer;
+}
+.tt-suggestion p {
+    margin: 0;
+}
+.mapsvg-marker-image-btn img {
+    max-width: 16px;
+    max-height: 16px;
+}
+
+.mapsvg-markers-list .btn {
+    margin: 2px;
+}
+.mapsvg-markers-list {
+    width: 232px;
+    /*transform: translateX(-10px);*/
+}
+.mapsvg-markers-list {
+    border: 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .3) !important;
+}
+.mapsvg-markers-list .arrow {
+    border-bottom-color: #fff !important;
+
+}
+.mapsvg-data-image-counter {
+    height: 32px;
+    color: #aaa;
+    line-height: 32px;
+    font-size: 13px;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: rgb(221,221,221) !important;
+}
+.select2-container--default .select2-selection--multiple {
+    border-color: rgb(221,221,221) !important;
+    height: 34px;
+}
+.select2-container .select2-selection--single {
+    height: 34px !important;
+    padding: 3px 0;
+    outline: none;
+    border-color: #ccc !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 32px !important;
+}
+.mapsvg-region-controls {
+    float: right;
+    width: 50%;
+    /*overflow: hidden;*/
+}
+.mapsvg-marker-controls {
+    float: right;
+    width: 30%;
+    /*overflow: hidden;*/
+}
+.mapsvg-region-controls > button,
+.mapsvg-region-controls > div,
+.mapsvg-region-controls > input
+{
+    float: right;
+    margin: 0 3px;
+}
+.mapsvg-marker-names {
+    font-weight: bold;
+}
+.mapsvg-region-names, .mapsvg-marker-names, .mapsvg-marker-names-expand {
+    float: left;
+}
+
+.mapsvg-region-row.active .mapsvg-region-names div {
+    display: block;
+}
+.mapsvg-marker-row.active .mapsvg-marker-names div {
+    display: none;
+}

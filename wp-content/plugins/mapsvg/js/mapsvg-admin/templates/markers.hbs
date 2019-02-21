@@ -1,0 +1,46 @@
+<script type="text/x-handlebars-template" data-name="toolbar">
+    <div id="mapsvg-markers-search">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-search"></i></span>
+            <input id="mapsvg-markers-search-1" onClick="this.select();" type="text" class="form-control" placeholder="Search markers by ID" aria-describedby="basic-addon2" autocomplete="off"/>
+        </div>
+        <div id="mapsvg-geocode">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button class="btn btn-default mapsvg-marker-image-btn-trigger mapsvg-marker-image-btn"><img src="" /> <span class="caret"></span></button>
+                </div>
+                <input type="text" class="form-control typeahead" placeholder="New marker: enter address or coordinates"/>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-handlebars-template" data-name="main">
+    <div id="mapsvg-search-markers-no-matches" class="well well-sm" style="display: none;">No matches</div>
+    <table class="table table-striped" id="table-markers">
+        <tbody>
+        {{#each markers}}
+            {{>markersPartial}}
+        {{/each}}
+        </tbody>
+    </table>
+</script>
+
+<script type="text/x-handlebars-template" data-name="item" data-partial="true">
+    <tr id="mapsvg-marker-{{id}}" data-marker-id="{{id}}" class="mapsvg-marker-row">
+        <td>
+            <div class="mapsvg-marker-names">
+                <div class="mapsvg-marker-id"><a href="#" class="editable" data-field="id">{{id}}</a></div>
+                <div class="mapsvg-marker-geocoords"><a href="#" class="editable" data-field="geoCoords">{{#if geoCoords}}{{geoCoords.[0]}}, {{geoCoords.[1]}}{{/if}}</a></div>
+            </div>
+            <div class="mapsvg-region-controls">
+                <button class="btn btn-default btn-sm mapsvg-marker-delete toggle-tooltip" title="Delete"><i class="fa fa-trash"></i> </button>
+                <div class="hidden-input-wrap">
+                    <button class="btn btn-default btn-sm mapsvg-link-btn {{#if link}}active{{/if}} toggle-tooltip" title="Link" ><i class="fa fa-link"></i> </button>
+                </div>
+                <button class="btn btn-default btn-sm toggle-tooltip mapsvg-data-btn" title="Data"><i class="fa fa-database"></i> </button>
+                <button class="btn btn-default btn-sm mapsvg-marker-image-btn-trigger mapsvg-marker-image-btn toggle-tooltip" data-marker-id="{{id}}" title="Image"><img src="{{src}}" /> </button>
+            </div>
+        </td>
+    </tr>
+</script>

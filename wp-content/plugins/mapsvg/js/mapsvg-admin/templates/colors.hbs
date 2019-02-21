@@ -1,0 +1,185 @@
+<script type="text/x-handlebars-template" data-name="main">
+    <form class="form-horizontal mapsvg-view-padding">
+
+        <legend>Containers</legend>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Map background</label>
+            <div class="col-sm-9">
+                <div class="input-group cpicker" data-color-name="background">
+                    <span class="input-group-addon"><i></i></span>
+                    <input type="text" autocomplete="off" class=" form-control" name="colors[background]" value="{{colors.background}}"  data-live="change"/>
+                </div>
+                <!--<p class="help-block">Enter "transparent" for transparent background.</p>-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Directory</label>
+            <div class="col-sm-9">
+                <div class="input-group cpicker" data-color-name="directory">
+                    <span class="input-group-addon"><i></i></span>
+                    <input type="text" autocomplete="off" class=" form-control" name="colors[directory]" value="{{colors.directory}}"  data-live="change"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Search and filters</label>
+            <div class="col-sm-9">
+                <div class="input-group cpicker" data-color-name="directory">
+                    <span class="input-group-addon"><i></i></span>
+                    <input type="text" autocomplete="off" class=" form-control" name="colors[directorySearch]" value="{{colors.directorySearch}}"  data-live="change"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Details view</label>
+            <div class="col-sm-9">
+                <div class="input-group cpicker" data-color-name="directory">
+                    <span class="input-group-addon"><i></i></span>
+                    <input type="text" autocomplete="off" class=" form-control" name="colors[detailsView]" value="{{colors.detailsView}}"  data-live="change"/>
+                </div>
+            </div>
+        </div>
+
+
+
+        <legend>Regions</legend>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Base</label>
+            <div class="col-sm-9">
+                <div class="input-group cpicker" data-color-name="base">
+                    <span class="input-group-addon"><i></i></span>
+                    <input type="text" autocomplete="off" class=" form-control" name="colors[base]" value="{{colors.base}}"  data-live="change"/>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="form-group">-->
+        <!--<label class="col-sm-3 control-label">Disabled</label>-->
+        <!--<div class="col-sm-9">-->
+        <!--<div class="input-group cpicker" data-color-name="disabled">-->
+        <!--<span class="input-group-addon"><i></i></span>-->
+        <!--<input class=" form-control" type="text" autocomplete="off" name="colors[disabled]" value="{{colors.disabled}}"  data-live="change"/>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Borders</label>
+            <div class="col-sm-9">
+
+                <div class="input-group cpicker" data-color-name="stroke">
+                    <span class="input-group-addon"><i></i></span>
+                    <input class=" form-control" type="text" autocomplete="off" name="colors[stroke]" value="{{colors.stroke}}"  data-live="change"/>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group" id="mapsvg-colors-hover">
+            <label class="col-sm-3 control-label">Hover</label>
+            <div class="col-sm-9">
+                <div class="btn-group mapsvg-color-brightness" data-object="options" data-toggle="buttons" style="margin-bottom: 15px;">
+                    <label class="btn btn-default {{#if_string colors.hover}}active{{/if_string}}">
+                        <input type="radio" name="hoverMode" value="color" {{#if_string colors.hover}}checked{{/if_string}}/>
+                        Color
+                    </label>
+                    <label class="btn btn-default {{#if_number colors.hover}}active{{/if_number}}">
+                        <input type="radio" name="hoverMode" value="brightness" {{#if_number colors.hover}}checked{{/if_number}}/>
+                        Brightness
+                    </label>
+                </div>
+
+                <div class="input-group cpicker" data-color-name="hover" {{#if_number colors.hover}}style="display:none;"{{/if_number}}>
+                    <span class="input-group-addon"><i></i></span>
+                    <input class="form-control" type="text" autocomplete="off" name="colors[hover]" value="{{#if_string colors.hover}}{{colors.hover}}{{/if_string}}"  data-live="change"/>
+                </div>
+
+                <input {{#if_string colors.hover}}style="display:none;"{{/if_string}} class="mapsvg-brightness-slider" id="mapsvg-controls-hover-brightness" type="text" autocomplete="off" name="colors[hover]" value="{{#if_number colors.hover}}colors.hover{{/if_number}}"  data-live="change"/>
+
+            </div>
+        </div>
+
+        <div class="form-group" id="mapsvg-colors-selected">
+            <label class="col-sm-3 control-label">Selected</label>
+            <div class="col-sm-9">
+                <div class="btn-group mapsvg-color-brightness" data-object="options" data-toggle="buttons"  id="mapsvg-controls-selected" style="margin-bottom: 15px;">
+                    <label class="btn btn-default  {{#if_string colors.selected}}active{{/if_string}}">
+                        <input type="radio" name="selectedMode" value="color" {{#if_string colors.selected}}checked{{/if_string}}/>
+                        Color
+                    </label>
+                    <label class="btn btn-default {{#if_number colors.selected}}active{{/if_number}}">
+                        <input type="radio" name="selectedMode" value="brightness" {{#if_number colors.selected}}checked{{/if_number}} />
+                        Brightness
+                    </label>
+                </div>
+
+                <div class="input-group cpicker" data-color-name="selected" {{#if_number colors.selected}}style="display:none;"{{/if_number}}>
+                    <span class="input-group-addon"><i></i></span>
+                    <input class="form-control" type="text" autocomplete="off" name="colors[selected]" value="{{#if_string colors.selected}}{{colors.selected}}{{/if_string}}" data-live="change"/>
+                </div>
+
+                <input {{#if_string colors.selected}}style="display:none;"{{/if_string}} class="mapsvg-brightness-slider" id="mapsvg-controls-selected-brightness" type="text" autocomplete="off" name="colors[selected]" value="{{#if_number colors.selected}}{{colors.selected}}{{/if_number}}" data-live="change"/>
+            </div>
+        </div>
+
+        <legend>Choropleth map</legend>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Low</label>
+            <div class="col-sm-9">
+                <div class="input-group cpicker" data-color-name="gaugeColorLow">
+                    <span class="input-group-addon"><i></i></span>
+                    <input class=" form-control" type="text" autocomplete="off" name="gauge[colors][low]" value="{{gauge.colors.low}}" data-live="change"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">High</label>
+            <div class="col-sm-9">
+                <div class="input-group cpicker" data-color-name="gaugeColorHigh">
+                    <span class="input-group-addon"><i></i></span>
+                    <input class=" form-control" type="text" autocomplete="off" name="gauge[colors][high]" value="{{gauge.colors.high}}" data-live="change"/>
+                </div>
+            </div>
+        </div>
+
+        <!--<legend>Buttons</legend>-->
+        <!--<div class="form-group">-->
+        <!--<label class="col-sm-3 control-label">Map</label>-->
+        <!--<div class="col-sm-9">-->
+        <!--<div class="input-group cpicker" data-color-name="directory">-->
+        <!--<span class="input-group-addon"><i></i></span>-->
+        <!--<input type="text" autocomplete="off" class=" form-control" name="colors[detailsView]" value="{{colors.detailsView}}"  data-live="change"/>-->
+        <!--</div>-->
+        <!--<p class="help-block">-->
+        <!--Shown on mobile devices, used to show the map-->
+        <!--</p>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="form-group">-->
+        <!--<label class="col-sm-3 control-label">List</label>-->
+        <!--<div class="col-sm-9">-->
+        <!--<div class="input-group cpicker" data-color-name="directory">-->
+        <!--<span class="input-group-addon"><i></i></span>-->
+        <!--<input type="text" autocomplete="off" class=" form-control" name="colors[detailsView]" value="{{colors.detailsView}}"  data-live="change"/>-->
+        <!--</div>-->
+        <!--<p class="help-block">-->
+        <!--Shown on mobile devices, used to show the directory-->
+        <!--</p>-->
+        <!--</div>-->
+        <!--</div>-->
+
+
+
+        <!--SPACER FOR COLOR PICKER-->
+        <div style="height: 100px;"></div>
+
+    </form>
+</script>

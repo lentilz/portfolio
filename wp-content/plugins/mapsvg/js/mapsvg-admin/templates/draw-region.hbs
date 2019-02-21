@@ -1,0 +1,96 @@
+<script type="text/x-handlebars-template" data-name="main">
+</script>
+
+<script type="text/x-handlebars-template" data-name="path">
+
+    <form class="form mapsvg-view-padding">
+
+        <div class="form-group">
+            <label class=" control-label">ID</label>
+            <div class="">
+                <input class="form-control" type="text" autocomplete="off" name="id" value="{{id}}" data-live="keyup" />
+                <p class="help-block">
+                    Objects with empty ID don't get into Regions list. If you remove ID from existing Region - all its data will be lost.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class=" control-label">Title</label>
+            <div class="">
+                <input class="form-control" type="text" autocomplete="off" name="title" value="{{title}}"  data-live="keyup"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class=" control-label">Fill</label>
+            <div class="">
+                <div class="input-group cpicker" data-color-name="directory">
+                    <span class="input-group-addon"><i></i></span>
+                    <input type="text" autocomplete="off" class=" form-control" name="style[fill]" value="{{style.fill}}"  data-live="change"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class=" control-label">Stroke</label>
+            <div class="">
+                <div class="input-group cpicker" data-color-name="directory">
+                    <span class="input-group-addon"><i></i></span>
+                    <input type="text" autocomplete="off" class=" form-control" name="style[stroke]" value="{{style.stroke}}"  data-live="change"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class=" control-label">Stroke-width</label>
+            <div class="">
+                <input class="form-control" type="text" autocomplete="off" name="style[stroke-width]" value="{{style.stroke-width}}"  data-live="keyup"/>
+            </div>
+        </div>
+
+    </form>
+
+</script>
+
+
+
+<script type="text/x-handlebars-template" data-name="image">
+
+    <form class="form mapsvg-view-padding">
+
+        <div class="form-group">
+            <label class=" control-label">Image</label>
+            <div class="">
+                <div class="btn btn-default btn-file" data-loading-text="Uploading...">
+                    Upload & Replace <input type="file" name="xlink:href" class="mapsvg-draw-image-upload"/>
+                </div>
+                <input type="hidden" name="upload_image" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class=" control-label">Width</label>
+            <div class="">
+                <input class="form-control" type="text" autocomplete="off" name="width" value="{{width}}"  data-live="keyup"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class=" control-label">Height</label>
+            <div class="">
+                <input class="form-control" type="text" autocomplete="off" name="height" value="{{height}}"  data-live="keyup"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class=" control-label">X</label>
+            <div class="">
+                <input class="form-control" type="text" autocomplete="off" name="x" value="{{x}}"  data-live="keyup"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class=" control-label">Y</label>
+            <div class="">
+                <input class="form-control" type="text" autocomplete="off" name="y" value="{{y}}"  data-live="keyup"/>
+            </div>
+        </div>
+    </form>
+
+</script>

@@ -1,0 +1,52 @@
+<script type="text/x-handlebars-template" data-name="toolbar">
+    <div id="mapsvg-data-toolbar">
+        <div class="row">
+            <div class="col-xs-5">
+                <ul class="nav nav-pills" id="mapsvg-data-menu">
+                    <li role="presentation" class="active"><a href="#mapsvg-data-list" class="toggle-tooltip" title="List"><i class="fa fa-database"></i></a></li>
+                    <li role="presentation"><a id="mapsvg-btn-database-structure" href="#mapsvg-data-structure" class="toggle-tooltip" title="Edit&nbsp;fields"><i class="fa fa-columns"></i></a></li>
+                    <li role="presentation"><a href="#mapsvg-data-settings" class="toggle-tooltip" title="Settings"><i class="fa fa-cog"></i></a></li>
+                    <li role="presentation"><a id="mapsvg-btn-csv-import" href="#mapsvg-data-csv" class="toggle-tooltip" title="CSV import"><i class="fa fa-upload"></i></a></li>
+                </ul>
+            </div>
+            <div class="mapsvg-toolbar-buttons col-xs-7">
+
+                <table style="width: 100%">
+                    <tr>
+                        <td style="padding-right: 5px;">
+                            <div class="input-group" style="width: 100%;">
+                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+                                <input id="mapsvg-data-search" onClick="this.select();" type="text" class="form-control" placeholder="Search..." aria-describedby="basic-addon2" autocomplete="off"/>
+                            </div>
+                        </td>
+                        <td style="width: 98px;">
+                            <div class="btn-group">
+                                <button class="btn btn-default dropdown-toggle toggle-tooltip" title="Show/hide columns" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-eye"></i> <span class="caret"></span></button>
+                                <ul class="dropdown-menu dropdown-menu-right mapsvg-data-cols"></ul>
+                            </div>
+                            <button  style="margin-right: 5px;" class="btn btn-default toggle-tooltip" title="Add data" id="mapsvg-btn-data-add"><i class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="mapsvg-toolbar-filters"></div>
+    </div>
+</script>
+
+<script type="text/x-handlebars-template" data-name="main">
+    <div class="tab-content full-flex">
+        <div class="tab-pane full-flex active" id="mapsvg-data-list" data-controller="list">
+
+        </div>
+        <div class="tab-pane full-flex" id="mapsvg-data-structure" data-controller="structure">
+
+        </div>
+        <div class="tab-pane full-flex" id="mapsvg-data-settings" data-controller="settings">
+
+        </div>
+        <div class="tab-pane full-flex" id="mapsvg-data-csv" data-controller="csv">
+
+        </div>
+    </div>
+</script>

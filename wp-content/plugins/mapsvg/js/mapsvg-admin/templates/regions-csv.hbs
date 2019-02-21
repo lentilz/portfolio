@@ -1,0 +1,32 @@
+<script type="text/x-handlebars-template" data-name="main">
+    <form class="form-horizontal mapsvg-view-padding">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">File</label>
+            <div class="col-sm-9">
+                <input type="file" id="mapsvg-r-csv-file" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label"></label>
+            <div class="col-sm-9">
+                <button data-loading-text="Uploading..." class="btn btn-default" id="mapsvg-btn-r-csv-upload">Upload</button>
+                <p class="help-block">
+                    How to format the file: first line must contain field names, "id" field must be present (containing region IDs as defined in the SVG file).<br /><br />
+                    Field separator and line separator are detected automatically.<br /><br />
+                    How to format the fields (by field type):<br />
+                    <em>Marker</em>: "lat,lon" (Example: "55.8367,48.1239")<br />
+                    <em>Select / Radio</em>: "option value" (Example: "1") OR "option label" (Example: "Option one")<br /><br />
+                    <em>Checkbox</em>: "value" (Example: "1" or "0")
+
+                    Incorrect values for Select / Radio / Status fields are ignored and don't get imported.<br />
+                </p>
+                <p class="help-block">
+                CSV Example: <br />
+                    <pre><code>id,status,description
+"US-TX","0","Hello World"
+"US-CA","1","Foo bar"</code></pre>
+                </p>
+            </div>
+        </div>
+    </form>
+</script>

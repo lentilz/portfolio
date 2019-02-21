@@ -1,0 +1,578 @@
+<script type="text/x-handlebars-template" data-name="main">
+    <form class="form-horizontal mapsvg-view-padding">
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">File</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input class="form-control" type="text" autocomplete="off" disabled="true" value="{{svgFilename}}"/>
+                    <input class="form-control" type="hidden" value="{{svgFilename}}"/>
+                    <input type="hidden" name="mapfile" value="{{svgFilename}}"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="mapsvg-controls-file-change">Change</button>
+                        <button class="btn btn-default" id="mapsvg-controls-file-reload">Reload</button>
+                        <button class="btn btn-default" id="mapsvg-controls-file-remove">Remove</button>
+                    </span>
+                </div>
+                <div id="mapsvg-hidden-file-select">
+                    <select class="form-control mapsvg-select2" id="mapsvg-select2-map">
+                        <option value="">...</option>
+                        {{#each svgFiles}}
+                            <option data-package="{{package}}" data-path="{{path_true}}">{{path_fake}}</option>
+                        {{/each}}
+                    </select>
+                    <p class="help-block"><a href="#" class="editable" id="mapsvg-controls-file-hide">Hide</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="display: none;">
+            <label class="col-sm-3 control-label">Extension</label>
+            <div class="col-sm-9">
+                <input class="form-control" type="text" name="extension" autocomplete="off" value="{{extension}}" data-live="keyup" />
+                <p class="help-block">
+                    Leave blank if you didn't order MapSVG extension with custom functionality.
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Title</label>
+            <div class="col-sm-9">
+                <input class="form-control" type="text" autocomplete="off" name="title" value="{{title}}" data-live="keyup" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Preloader text</label>
+            <div class="col-sm-9">
+                <input type="text" autocomplete="off" class="form-control" id="mapsvg-controls-preloader-text" name="loadingText" value="{{loadingText}}" data-live="keyup"/>
+            </div>
+        </div>
+
+
+
+
+        <legend>Size</legend>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Responsive</label>
+            <div class="col-sm-9">
+                <div class="btn-group mapsvg-toggle-visibility"  data-object="options" data-toggle="buttons"  id="mapsvg-controls-responsive">
+
+                    <input type="checkbox" name="responsive" value="1"  class="mapsvg-onoff" {{#if responsive}}checked{{/if}} data-live="change" />
+
+
+
+                    <!--<label class="btn btn-default {{#if responsive}}active{{/if}}">-->
+                        <!--<input type="radio" name="responsive" value="1"  {{#if responsive}}checked{{/if}} data-live="change" />-->
+                        <!--On-->
+                    <!--</label>-->
+                    <!--<label class="btn btn-default {{#unless responsive}}active{{/unless}}">-->
+                        <!--<input type="radio" name="responsive" value="0"  {{#unless responsive}}checked{{/unless}} data-live="change"/>-->
+                        <!--Off-->
+                    <!--</label>-->
+                </div>
+            </div>
+        </div>
+
+
+        <!--<div id="mapsvg-width-height-resp" {{#unless responsive}}style="display:none;"{{/unless}}>-->
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label">Max-width</label>-->
+                <!--<div class="col-sm-9">-->
+                    <!--<input class="form-control" id="mapsvg-controls-max-width" type="text" autocomplete="off" name="maxWidth" value="{{maxWidth}}" />-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label">Max-height</label>-->
+                <!--<div class="col-sm-9">-->
+                    <!--<input  class="form-control" id="mapsvg-controls-max-height" type="text" autocomplete="off" name="maxHeight" value="{{maxHeight}}" />-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label">Min-width</label>-->
+                <!--<div class="col-sm-9">-->
+                    <!--<input class="form-control" id="mapsvg-controls-min-width" type="text" autocomplete="off" name="minWidth" value="{{minWidth}}" />-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label">Min-height</label>-->
+                <!--<div class="col-sm-9">-->
+                    <!--<input  class="form-control" id="mapsvg-controls-min-height" type="text" autocomplete="off" name="minHeight" value="{{minHeight}}" />-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div id="mapsvg-width-height">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Width</label>
+                <div class="col-sm-9">
+                    <input class="form-control" id="mapsvg-controls-width" type="text" autocomplete="off" name="width" value="{{width}}" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Height</label>
+                <div class="col-sm-9">
+                    <input  class="form-control" id="mapsvg-controls-height" type="text" autocomplete="off" name="height" value="{{height}}" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default {{#if lockAspectRatio}}active{{/if}}">
+                            <input name="lockAspectRatio" data-live="change" type="checkbox" id="mapsvg-controls-ratio" autocomplete="off" {{#if lockAspectRatio}}checked{{/if}} /> <i class="fa fa-lock"></i> Lock aspect ratio
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Padding</label>
+            <div class="col-sm-9">
+                <table class="mapsvg-padding-table">
+                    <tr>
+                        <td>
+                            <div class="input-group" >
+                                <span class="input-group-addon" id="basic-addon1">&larr;</span>
+                                <input type="text" class="form-control" autocomplete="off" name="padding[left]" value="{{padding.left}}" data-live="keyup">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">&rarr;</span>
+                                <input type="text" class="form-control" autocomplete="off" name="padding[right]" value="{{padding.right}}" data-live="keyup">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">&uarr;</span>
+                                <input type="text" class="form-control" autocomplete="off" name="padding[top]" value="{{padding.top}}" data-live="keyup">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">&darr;</span>
+                                <input type="text" class="form-control"  autocomplete="off" name="padding[bottom]" value="{{padding.bottom}}" data-live="keyup">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        -->
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Start position</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input data-live="change" name="initialViewBox" class="form-control" type="text" autocomplete="off" disabled="" id="mapsvg-controls-viewbox" value="{{#each viewBox}}{{this}} {{/each}}"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="mapsvg-controls-set-viewbox">Set current</button>
+                        <button class="btn btn-default" id="mapsvg-controls-reset-viewbox">Reset</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        <legend>Scroll</legend>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Scroll</label>
+            <div class="col-sm-9">
+                <div class="btn-group" data-toggle="buttons" id="mapsvg-controls-scroll">
+                    <input type="checkbox" name="scroll[on]" class="mapsvg-onoff mapsvg-toggle-visibility" data-toggle-visibility="#mapsvg-controls-scroll-options"  {{#if scroll.on}}checked{{/if}} data-live="change"/>
+                </div>
+            </div>
+        </div>
+
+        <div id="mapsvg-controls-scroll-options" {{#unless scroll.on}}style="display:none"{{/unless}}>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Limit scroll to boundaries</label>
+                <div class="col-sm-9">
+                    <input type="checkbox" name="scroll[limit]" class="mapsvg-onoff" {{#if scroll.limit}}checked{{/if}} data-live="change" />
+                </div>
+            </div>
+        </div>
+
+        <legend>Zoom</legend>
+
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Zoom</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="zoom[on]" class="mapsvg-onoff mapsvg-toggle-visibility" data-toggle-visibility="#mapsvg-controls-zoom-options" {{#if zoom.on}}checked{{/if}} data-live="change" />
+            </div>
+        </div>
+
+        <div id="mapsvg-controls-zoom-options" {{#unless zoom.on}}style="display:none"{{/unless}}>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Zoom by mousewheel</label>
+                <div class="col-sm-9">
+                    <input type="checkbox" name="zoom[mousewheel]" class="mapsvg-onoff" {{#if zoom.mousewheel}}checked{{/if}} data-live="change"/>
+                </div>
+            </div>
+
+            {{#if objects.0.shop_logo.0.medium}}
+                <img class="pop-over-img" src="{{objects.0.shop_logo.0.medium}}" /><br />
+            {{/if}}
+            {{#unless objects.0.shop_logo.0.medium}}
+                <img class="pop-over-img" src="{{objects.0.shop_logo.0.full}}" /><br />
+            {{/unless}}
+
+
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Zoom Buttons</label>
+                <div class="col-sm-9">
+                    <div class="btn-group" data-toggle="buttons" id="mapsvg-controls-zoom-buttons">
+                        <label class="btn btn-default {{#ifeq zoom.buttons.location 'hide'}}active{{/ifeq}}">
+                            <input type="radio" name="zoom[buttons][location]" value="hide" {{#ifeq zoom.buttons.location 'hide'}}checked{{/ifeq}} data-live="change"/>
+                            Hide
+                        </label>
+                        <label class="btn btn-default {{#ifeq zoom.buttons.location 'left'}}active{{/ifeq}}">
+                            <input type="radio" name="zoom[buttons][location]" value="left" {{#ifeq zoom.buttons.location 'left'}}checked{{/ifeq}} data-live="change"/>
+                            Left
+                        </label>
+                        <label class="btn btn-default {{#ifeq zoom.buttons.location 'right'}}active{{/ifeq}}">
+                            <input type="radio" name="zoom[buttons][location]" value="right" {{#ifeq zoom.buttons.location 'right'}}checked{{/ifeq}} data-live="change"/>
+                            Right
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Zoom Limits</label>
+                <div class="col-sm-9">
+                    <input id="mapsvg-controls-zoomlimit" type="text" autocomplete="off" autocomplete="off" name="zoom[limit]" value="{{zoom.limit.[0]}};{{zoom.limit.[1]}}" data-live="change"/>
+                </div>
+            </div>
+        </div>
+
+        <legend>Tooltips</legend>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Tooltips</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="tooltips[on]" class="mapsvg-onoff mapsvg-toggle-visibility" data-toggle-visibility="#mapsvg-tooltips-extra" {{#if tooltips.on}}checked{{/if}}  data-live="change" />
+                <p class="help-block">Set up templates:
+                    <i><a href="#" class="mapsvg-template-link" data-template="tooltipRegion">Region tooltip template</a></i> and
+                    <i><a href="#" class="mapsvg-template-link" data-template="tooltipMarker">DB Object (Marker) template</a></i>
+                </p>
+            </div>
+        </div>
+
+        <div id="mapsvg-tooltips-extra" {{#unless tooltips.on}}style="display: none"{{/unless}}>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Tooltips position</label>
+                <div class="col-sm-9">
+                    <select name="tooltips[position]" data-live="change" class="mapsvg-select2">
+                        <option value="left" {{#ifeq tooltips.position 'left'}}selected{{/ifeq}}>Left</option>
+                        <option value="top-left" {{#ifeq tooltips.position 'top-left'}}selected{{/ifeq}}>Top-left</option>
+                        <option value="top" {{#ifeq tooltips.position 'top'}}selected{{/ifeq}}>Top</option>
+                        <option value="top-right" {{#ifeq tooltips.position 'top-right'}}selected{{/ifeq}}>Top-right</option>
+                        <option value="right" {{#ifeq tooltips.position 'right'}}selected{{/ifeq}}>Right</option>
+                        <option value="bottom-right" {{#ifeq tooltips.position 'bottom-right'}}selected{{/ifeq}}>Bottom-Right</option>
+                        <option value="bottom" {{#ifeq tooltips.position 'bottom'}}selected{{/ifeq}}>Bottom</option>
+                        <option value="bottom-left" {{#ifeq tooltips.position 'bottom-left'}}selected{{/ifeq}}>Bottom-left</option>
+                    </select>
+                    <p class="help-block">
+                        Please note that Tooltips are shown on mouseover event on desktop devices but there's no such event on touch-devices. If you need
+                        to show info from the tooltip on touch - you can copy Tooltip template to Popover template and set up Popovers
+                        to show only on touch in <em>MapSVG > Actions</em>.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <legend>Popovers</legend>
+
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Width</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input class="form-control" name="popovers[width]" type="text" autocomplete="off" value="{{popovers.width}}" data-live="keyup" />
+                    <span class="input-group-addon">px</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Max-width</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input class="form-control" name="popovers[maxWidth]" type="text" autocomplete="off" value="{{popovers.maxWidth}}" data-live="keyup" />
+                    <span class="input-group-addon">%</span>
+                </div>
+                <p class="help-block">Relative to map width</p>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Max-height</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input class="form-control" name="popovers[maxHeight]" type="text" autocomplete="off" value="{{popovers.maxHeight}}" data-live="keyup" />
+                    <span class="input-group-addon">%</span>
+                </div>
+                <p class="help-block">Relative to map height</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Center map on popovers</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="popovers[centerOn]" class="mapsvg-onoff" {{#if popovers.centerOn}}checked{{/if}}  data-live="change" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Reset map position on popover close</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="popovers[resetViewboxOnClose]" class="mapsvg-onoff" {{#if popovers.resetViewboxOnClose}}checked{{/if}}  data-live="change" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Fullscreen on mobile devices</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="popovers[mobileFullscreen]" class="mapsvg-onoff" {{#if popovers.mobileFullscreen}}checked{{/if}}  data-live="change" />
+            </div>
+        </div>
+
+        <legend>Groups</legend>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Groups control</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="layersControl[on]" class="mapsvg-onoff mapsvg-toggle-visibility" data-toggle-visibility="#mapsvg-layers-extra" {{#if layersControl.on}}checked{{/if}}  data-live="change" />
+            </div>
+        </div>
+
+        <div id="mapsvg-layers-extra" {{#unless layersControl.on}}style="display: none"{{/unless}}>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Position</label>
+                <div class="col-sm-9">
+                    <select name="layersControl[position]" data-live="change" class="mapsvg-select2" style="width: 150px;">
+                        <option value="top-left" {{#ifeq layersControl.position 'top-left'}}selected{{/ifeq}}>Top-left</option>
+                        <option value="top-right" {{#ifeq layersControl.position 'top-right'}}selected{{/ifeq}}>Top-right</option>
+                        <option value="bottom-right" {{#ifeq layersControl.position 'bottom-right'}}selected{{/ifeq}}>Bottom-Right</option>
+                        <option value="bottom-left" {{#ifeq layersControl.position 'bottom-left'}}selected{{/ifeq}}>Bottom-left</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Expanded on start</label>
+                <div class="col-sm-9">
+                    <input type="checkbox" name="layersControl[expanded]" class="mapsvg-onoff" {{#if layersControl.expanded}}checked{{/if}} data-live="change" />
+                </div>
+            </div>
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label">Max-height</label>-->
+                <!--<div class="col-sm-9">-->
+                    <!--<input type="text" class="form-control" name="layersControl[maxHeight]" data-live="keyup" />-->
+                    <!--<p class="help-block">Enter height in percents (example: "100%") or pixels (example: "200px")</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Label</label>
+                <div class="col-sm-9">
+                        <input class="form-control" type="text" name="layersControl[label]" autocomplete="off" value="{{layersControl.label}}" data-live="keyup" />
+                </div>
+            </div>
+        </div>        
+        
+        
+        <!--<legend>Floors</legend>-->
+
+        <!--<div class="form-group" id="mapsvg-global-tooltips">-->
+            <!--<label class="col-sm-3 control-label">Floors control</label>-->
+            <!--<div class="col-sm-9">-->
+                <!--<input type="checkbox" name="floorsControl[on]" class="mapsvg-onoff mapsvg-toggle-visibility" data-toggle-visibility="#mapsvg-floors-extra" {{#if floorsControl.on}}checked{{/if}}  data-live="change" />-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div id="mapsvg-floors-extra" {{#unless floorsControl.on}}style="display: none"{{/unless}}>-->
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label">Position</label>-->
+                <!--<div class="col-sm-9">-->
+                    <!--<select name="floorsControl[position]" data-live="change" class="mapsvg-select2" style="width: 150px;">-->
+                        <!--<option value="top-left" {{#ifeq floorsControl.position 'top-left'}}selected{{/ifeq}}>Top-left</option>-->
+                        <!--<option value="top" {{#ifeq floorsControl.position 'top'}}selected{{/ifeq}}>Top</option>-->
+                        <!--<option value="top-right" {{#ifeq floorsControl.position 'top-right'}}selected{{/ifeq}}>Top-right</option>-->
+                        <!--<option value="left" {{#ifeq floorsControl.position 'left'}}selected{{/ifeq}}>Left</option>-->
+                        <!--<option value="right" {{#ifeq floorsControl.position 'right'}}selected{{/ifeq}}>Right</option>-->
+                        <!--<option value="bottom-right" {{#ifeq floorsControl.position 'bottom-right'}}selected{{/ifeq}}>Bottom-Right</option>-->
+                        <!--<option value="bottom" {{#ifeq floorsControl.position 'bottom'}}selected{{/ifeq}}>Bottom</option>-->
+                        <!--<option value="bottom-left" {{#ifeq floorsControl.position 'bottom-left'}}selected{{/ifeq}}>Bottom-left</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label">Expanded on start</label>-->
+                <!--<div class="col-sm-9">-->
+                    <!--<input type="checkbox" name="floorsControl[expanded]" class="mapsvg-onoff" {{#if floorsControl.expanded}}checked{{/if}} data-live="change" />-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                <!--&lt;!&ndash;<label class="col-sm-3 control-label">Max-height</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="col-sm-9">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="text" class="form-control" name="floorsControl[maxHeight]" data-live="keyup" />&ndash;&gt;-->
+                    <!--&lt;!&ndash;<p class="help-block">Enter height in percents (example: "100%") or pixels (example: "200px")</p>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label">Label</label>-->
+                <!--<div class="col-sm-9">-->
+                        <!--<input class="form-control" type="text" name="floorsControl[label]" autocomplete="off" value="{{floorsControl.label}}" data-live="keyup" />-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <legend>Regions</legend>
+
+        <div class="form-group" id="mapsvg-prefix-hidden">
+            <label class="col-sm-3 control-label">Region ID prefix</label>
+            <div class="col-sm-9">
+
+                <div class="input-group">
+                    <input class="form-control" type="text" name="regionPrefix" autocomplete="off" value="{{regionPrefix}}" data-live="keyup" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="mapsvg-set-prefix-btn">Update</button>
+                    </span>
+                </div><!-- /input-group -->
+
+                <p class="help-block">
+                    If not empty then then only objects with
+                    provided prefix in ID get into "Regions" list. <b>Warning!</b> Changing ID prefix resets all Region settings &amp; data.
+
+                    <a href="#" class="mapsvg-toggle-visibility" data-toggle-visibility="#mapsvg-help-prefix">Read more</a>
+
+                    <span id="mapsvg-help-prefix" style="display: none;">
+                    <br /><br />
+                    This is useful when you create a custom SVG file with many small graphic details (for example a floorplan)
+                        which shouldn't be interactive and you want to
+                    filter out those details from "Regions" (interactive objects) list.<br /><br />
+
+                    Example of IDs in SVG file with <i>"region_"</i> prefix: <i>region_ABC, region_DFE</i>.<br /><br />
+
+                    And this is how you would see the same IDs in MapSVG: <i>ABC, DFE</i>.<br /><br />
+
+                    If you work in Adobe Illustrator, layer names can be converted into IDs when you
+                        export the file to SVG format - such option is abailable in Adobe Illustrator SVG export settings.<br /><br />
+
+                    If you work in InkScape, right-click on an object, choose "Object Properties" to set an ID.<br /><br />
+                    </span>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Cursor</label>
+            <div class="col-sm-9">
+                <div class="btn-group" data-toggle="buttons" id="mapsvg-controls-cursor">
+                    <label class="btn btn-default  {{#ifeq cursor 'default'}}active{{/ifeq}}">
+                        <input type="radio" name="cursor" value="default" {{#ifeq cursor 'default'}}checked{{/ifeq}} data-live="change"/>
+                        <i class="fa fa-mouse-pointer"></i>
+                    </label>
+                    <label class="btn btn-default  {{#ifeq cursor 'pointer'}}active{{/ifeq}}">
+                        <input type="radio" name="cursor" value="pointer" {{#ifeq cursor 'pointer'}}checked{{/ifeq}} data-live="change"/>
+                        <i class="fa fa-hand-pointer-o"></i>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Multi Select</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="multiSelect" class="mapsvg-onoff" {{#if multiSelect}}checked{{/if}} data-live="change"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Disable all regions</label>
+            <div class="col-sm-9">
+                <div class="btn-group" data-toggle="buttons" id="mapsvg-controls-disableAll">
+                    <input type="checkbox" name="disableAll" class="mapsvg-onoff" {{#if disableAll}}checked{{/if}} data-live="change"/>
+                </div>
+            </div>
+        </div>
+
+
+
+        <legend>Choropleth map</legend>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Choropleth</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="gauge[on]" class="mapsvg-onoff mapsvg-toggle-visibility" data-toggle-visibility="#mapsvg-gauge-options"  {{#if gauge.on}}checked{{/if}} data-live="change"/>
+            </div>
+        </div>
+
+        <div id="mapsvg-gauge-options" {{#unless gauge.on}}style="display:none"{{/unless}}>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Region field</label>
+                <div class="col-sm-9">
+                    <select class="mapsvg-select2" style="width: 100%;" id="mapsvg-region-data-fields" name="regionChoroplethField" data-live="change">
+                    </select>
+                    <p class="help-block">Choose a field containing number values which should be represented as color shades on choropleth map.</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Gradient labels</label>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Low</span>
+                                <input data-key="low" name="gauge[labels][low]" type="text" autocomplete="off" class="form-control" autocomplete="off" value="{{gauge.labels.low}}" data-live="keyup"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon2">High</span>
+                                <input data-key="high" name="gauge[labels][high]" type="text" autocomplete="off" class="form-control" autocomplete="off" value="{{gauge.labels.high}}" data-live="keyup"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <legend>Mobile devices</legend>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Map button label</label>
+            <div class="col-sm-9">
+                <input  name="mobileView[labelMap]" type="text" autocomplete="off" class="form-control" value="{{mobileView.labelMap}}" data-live="keyup"/>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Directory button label</label>
+            <div class="col-sm-9">
+                <input  name="mobileView[labelList]" type="text" autocomplete="off" class="form-control" value="{{mobileView.labelList}}" data-live="keyup"/>
+            </div>
+        </div>
+
+
+    </form>
+</script>
