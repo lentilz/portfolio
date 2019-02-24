@@ -2274,6 +2274,14 @@ hr {
   height: 5px;
   margin: 0 auto; }
 
+.svg-filter {
+  height: 0;
+  left: -9999em;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 0; }
+
 h1, .page-title, .h1 {
   font-family: "Playfair Display", serif;
   font-weight: 900;
@@ -2391,7 +2399,8 @@ a {
     .page-content {
       padding-bottom: 40px;
       padding-bottom: 4rem; } }
-  .layout--interior .page-content {
+  .layout--interior .page-content,
+  .layout--single .page-content {
     padding-bottom: 0; }
 
 .page-footer {
@@ -2824,15 +2833,50 @@ img {
 
 .section {
   padding: 20px;
-  padding: 2rem;
   width: 100%; }
   @media (min-width: 1024px) {
     .section {
-      padding: 60px 20px;
-      padding: 6rem 2rem; } }
+      padding: 60px 20px; } }
 
 .section--gray {
   background-color: #ebebeb; }
+
+.section--black {
+  background-color: #212121; }
+
+.section--banner {
+  background-color: #0063a3;
+  color: #fff;
+  padding: 9.5vw 20px 9.25vw;
+  position: relative;
+  text-align: center; }
+  .section--banner .row {
+    position: relative;
+    z-index: +1; }
+  .section--banner .rte {
+    font-size: 20px;
+    font-weight: 600; }
+  .section--banner p:last-of-type {
+    margin-bottom: 0; }
+  .section--banner .banner-heading {
+    font-family: "Overpass", sans-serif;
+    font-size: 5vw;
+    font-weight: 900;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(191, 0, 146, 0.5); }
+
+.section--banner__image {
+  background-attachment: fixed;
+  background-color: #EBAA20;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: url("#theme_complimentary_filter");
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%; }
 
 .pagination-block {
   padding: 30px 20px;

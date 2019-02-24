@@ -36,10 +36,12 @@
     }
   }
 }
+
 .page-header__logo {
   max-width: 200px;
   margin: 0 auto;
 }
+
 .page-content {
   background: $white;
   min-height: 75vh;
@@ -49,10 +51,12 @@
     @include rem(padding-bottom, 40px);
   }
 
-  .layout--interior & {
+  .layout--interior &,
+  .layout--single & {
     padding-bottom: 0;
   }
 }
+
 .page-footer {
   background: $black;
   text-align: center;

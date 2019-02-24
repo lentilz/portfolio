@@ -77,8 +77,8 @@ class PortfolioSite extends TimberSite {
 
 new PortfolioSite();
 
-// Custom Shortcodes
-// require_once(get_template_directory() . '/includes/shortcodes.php');
+// Customize TinyMCE settings
+require_once(get_template_directory() . '/custom_settings/theme_editor.php');
 
 // Create Global Options page
 if( function_exists('acf_add_options_page') ) {

@@ -11,18 +11,23 @@
 {% endblock %}
 
 {% block content %}
-<article id="post-{{post.ID}}" class="page-content" role="article">
-  <div class="row">
-    <div class="col-padding column rte">
-      <h1 class="page-title">{{post.title}}</h1>
+<div class="page-content">
+  <article id="post-{{post.ID}}" role="article">
+    <div class="row">
+      <div class="col-padding column rte">
+        <h1 class="page-title">{{post.title}}</h1>
 
-      {% if post.get_thumbnail %}
-      <div class="featured-image"></div> <!-- /.featured-image -->
-      {% endif %}
+        {% if post.get_thumbnail %}
+        <div class="featured-image"></div> <!-- /.featured-image -->
+        {% endif %}
 
+        {{post.content}}
+      </div> <!-- /.content -->
+    </div> <!-- /.row -->
+  </article> <!-- /.page-content -->
 
-      {{post.content}}
-    </div> <!-- /.content -->
-  </div> <!-- /.row -->
-</article> <!-- /.page-content -->
+  {% for module in post.get_field('modules') %}
+    {% include ['includes/module-'~module.acf_fc_layout~'.twig'] ignore missing %}
+  {% endfor %}
+</div> <!-- /.page-content -->
 {% endblock %}

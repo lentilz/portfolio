@@ -1,0 +1,9 @@
+<section class="section section--map section--black">
+  <div class="row">
+    {% if module.featured_map %}
+    <div class="section__mapsvg">
+      {{function('do_shortcode', '[mapsvg id="' ~ (module.featured_map.ID) ~ '"]')}}
+    </div>
+    {% endif %}
+  </div> <!--/.row -->
+</section> <!-- /.section map -->

@@ -1,0 +1,36 @@
+<style>
+  .banner-image-{{ loop.index }} {
+    background-image: url('{{ module.background_image.sizes.large }}');
+  }
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-filter">
+  <filter id="theme_complimentary_filter">
+    <!--
+    a bright peach/orange filter to contrast the blue accent color -->
+    <feColorMatrix type="matrix" result="grayscale"
+      values="1 0 0 0 0
+              1 0 0 0 0
+              1 0 0 0 0
+              0 0 0 1 0" />
+
+    <feComponentTransfer color-interpolation-filters="sRGB" result="duotone_magenta_gold">
+      <feFuncR type="table" tableValues="0.7411764706 0.9882352941"></feFuncR>
+      <feFuncG type="table" tableValues="0.0431372549 0.7333333333"></feFuncG>
+      <feFuncB type="table" tableValues="0.568627451 0.05098039216"></feFuncB>
+      <feFuncA type="table" tableValues="0 1"></feFuncA>
+    </feComponentTransfer>
+  </filter>
+</svg>
+
+<section class="section section--banner">
+  <div class="section--banner__image banner-image-{{ loop.index }}"></div>
+  <div class="row">
+    <div class="col-padding column">
+      <h2 class="banner-heading">{{ module.heading }}</h2>
+      <div class="rte">
+        {{ module.summary }}
+      </div>
+    </div>
+  </div> <!--/.row -->
+</section> <!-- /.section banner -->
