@@ -24,9 +24,15 @@
     </li>
     {% endif %}
 
-    {% if options.social_url_instagram %}
+    {% if options.social_url_twitter %}
     <li class="footer-link-item">
-      <a href="{{options.social_url_instagram}}" class="social-icon fa fa-futbol-o" target="_blank"> <span class="hide">instagram</span> </a>
+      <a href="{{options.social_url_twitter}}" class="social-icon fa fa-twitter" target="_blank"> <span class="hide">twitter</span> </a>
+    </li>
+    {% endif %}
+
+    {% if options.social_url_soccer %}
+    <li class="footer-link-item">
+      <a href="{{options.social_url_soccer}}" class="social-icon fa fa-futbol-o" target="_blank"> <span class="hide">soccer</span> </a>
     </li>
     {% endif %}
   </ul>

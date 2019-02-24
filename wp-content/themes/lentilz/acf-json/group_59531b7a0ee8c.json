@@ -70,8 +70,24 @@
         },
         {
             "key": "field_59531c9f0ae2b",
-            "label": "Social URL Instagram",
-            "name": "social_url_instagram",
+            "label": "Social URL Twitter",
+            "name": "social_url_twitter",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5c731f2cf8d09",
+            "label": "Social URL Soccer",
+            "name": "social_url_soccer",
             "type": "url",
             "instructions": "",
             "required": 0,
@@ -102,5 +118,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1498619221
+    "modified": 1551048519
 }
