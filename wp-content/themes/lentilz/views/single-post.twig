@@ -51,7 +51,7 @@
         <div class="browser-content">
           {% if post.port_featured_video %}
           <div class="flex-video desktop-media">
-            <video autoplay="true" loop="true" preload="preload" poster="{{ post.thumbnail.src|resize(800) }}">
+            <video autoplay="true" loop="true" preload="preload" poster="{{ post.thumbnail.src|resize(800) }}" muted>
               <source src="{{ post.get_field('port_featured_video').url }}" type="video/mp4">
             </video>
           </div>
