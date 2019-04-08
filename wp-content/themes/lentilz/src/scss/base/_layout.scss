@@ -45,14 +45,9 @@
 .page-content {
   background: $white;
   min-height: 75vh;
-  @include rem(padding-bottom, 20px);
+  padding-bottom: 60px;
 
-  @include desktop {
-    @include rem(padding-bottom, 40px);
-  }
-
-  .layout--interior &,
-  .layout--single & {
+  .layout--interior & {
     padding-bottom: 0;
   }
 }

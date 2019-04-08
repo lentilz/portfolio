@@ -2221,6 +2221,41 @@ template {
   margin: 0 auto;
   max-width: 100%; }
 
+button,
+.button,
+input[type="submit"],
+input[type="button"] {
+  background: #0072bc;
+  background: linear-gradient(135deg, #00a1bc 2%, #0072bc 47%, #0063a3 93%);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Overpass", sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  padding: 15px 30px;
+  text-transform: uppercase;
+  transition: all 200ms ease; }
+  button:hover,
+  .button:hover,
+  input[type="submit"]:hover,
+  input[type="button"]:hover {
+    background: linear-gradient(135deg, #0072bc 40%, #0063a3 80%); }
+  button:focus,
+  .button:focus,
+  input[type="submit"]:focus,
+  input[type="button"]:focus {
+    box-shadow: 1px 0px 3px 1px #00a1bc; }
+  button[disabled], button.disabled,
+  .button[disabled],
+  .button.disabled,
+  input[type="submit"][disabled],
+  input[type="submit"].disabled,
+  input[type="button"][disabled],
+  input[type="button"].disabled {
+    cursor: not-allowed;
+    opacity: 0.5; }
+
 *,
 *:before,
 *:after {
@@ -2393,14 +2428,8 @@ a {
 .page-content {
   background: #fff;
   min-height: 75vh;
-  padding-bottom: 20px;
-  padding-bottom: 2rem; }
-  @media (min-width: 1024px) {
-    .page-content {
-      padding-bottom: 40px;
-      padding-bottom: 4rem; } }
-  .layout--interior .page-content,
-  .layout--single .page-content {
+  padding-bottom: 60px; }
+  .layout--interior .page-content {
     padding-bottom: 0; }
 
 .page-footer {
@@ -2463,6 +2492,35 @@ a {
   margin-right: auto;
   max-width: 500px;
   text-align: center; }
+
+input.text,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  border: solid 1px #212121;
+  padding: 10px;
+  transition: all 200ms ease; }
+  input.text:focus,
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  textarea:focus {
+    box-shadow: 3px 3px 0px 0px #0072bc;
+    outline: none; }
+    .nf-error input.text:focus, .nf-error
+    input[type="text"]:focus, .nf-error
+    input[type="email"]:focus, .nf-error
+    input[type="password"]:focus, .nf-error
+    textarea:focus {
+      box-shadow: 3px 3px 0px 0px #c50000; }
+
+.nf-form-cont {
+  margin: 30px 0 0; }
+
+.nf-form-fields-required {
+  font-size: 14px;
+  margin: 0 0 10px; }
 
 .flex-video {
   height: 0;

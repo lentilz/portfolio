@@ -23,9 +23,11 @@ Description: Custom theme
 
 // Theme styles
 // =====================
+@import "base/buttons";
 @import "base/common";
 @import "base/typography";
 @import "base/layout";
+@import "components/forms";
 @import "components/media";
 @import "components/cta";
 @import "components/lists";

@@ -1,0 +1,28 @@
+// Form Elements
+input.text,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    border: solid 1px $black;
+    padding: 10px;
+    transition: all 200ms ease;
+
+    &:focus {
+        box-shadow: 3px 3px 0px 0px $blue;
+        outline: none;
+
+        .nf-error & {
+            box-shadow: 3px 3px 0px 0px $darkred;
+        }
+    }
+}
+
+// Ninja Forms
+.nf-form-cont {
+    margin: 30px 0 0;
+}
+.nf-form-fields-required {
+    font-size: 14px;
+    margin: 0 0 10px;
+}
