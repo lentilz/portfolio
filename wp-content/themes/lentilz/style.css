@@ -2373,6 +2373,7 @@ a {
       font-size: 55px;
       font-size: 5.5rem; } }
   .layout--single .page-title {
+    margin-bottom: 20px;
     margin-top: 20px;
     text-align: center; }
     @media (min-width: 1024px) {
@@ -2429,7 +2430,8 @@ a {
   background: #fff;
   min-height: 75vh;
   padding-bottom: 60px; }
-  .layout--interior .page-content {
+  .layout--interior .page-content,
+  .layout--single .page-content {
     padding-bottom: 0; }
 
 .page-footer {
@@ -2438,6 +2440,14 @@ a {
 
 .layout--interior .main {
   padding-top: 60px; }
+
+.layout--single article {
+  margin-bottom: 40px; }
+
+@media (min-width: 1024px) {
+  .layout--single p {
+    font-size: 18px;
+    line-height: 1.5; } }
 
 .layout--single .icon-link .arrow--left {
   height: 20px;

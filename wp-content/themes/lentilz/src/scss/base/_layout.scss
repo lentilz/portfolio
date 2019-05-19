@@ -47,7 +47,8 @@
   min-height: 75vh;
   padding-bottom: 60px;
 
-  .layout--interior & {
+  .layout--interior &,
+  .layout--single & {
     padding-bottom: 0;
   }
 }
@@ -64,6 +65,15 @@
 }
 
 .layout--single {
+  article {
+    margin-bottom: 40px;
+  }
+  p {
+    @include desktop {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+  }
   .icon-link .arrow--left {
     height: 20px;
     width: 35px;
