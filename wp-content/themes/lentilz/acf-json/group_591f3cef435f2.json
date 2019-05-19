@@ -44,7 +44,7 @@
             "key": "field_5950295d44aed",
             "label": "Project Type",
             "name": "port_project_type",
-            "type": "text",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -53,11 +53,20 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "choices": {
+                "website": "Website",
+                "design": "Design\/UX",
+                "article": "Article"
+            },
+            "default_value": [
+                "website"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "array",
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_591f3cf865be7",
@@ -259,7 +268,6 @@
     "instruction_placement": "label",
     "hide_on_screen": [
         "excerpt",
-        "custom_fields",
         "discussion",
         "comments",
         "revisions",
@@ -270,5 +278,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1502851904
+    "modified": 1558291046
 }

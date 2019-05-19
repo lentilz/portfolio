@@ -6,6 +6,7 @@
     flex-wrap: wrap;
   }
 }
+
 .panel {
   -webkit-align-items: center;
   align-items: center;
@@ -28,6 +29,10 @@
     }
   }
 
+  &.panel--full {
+    width: 100%;
+  }
+
   &:before {
     background: transparent 49.8% 50% fixed no-repeat;
     background-size: 75%;
@@ -47,6 +52,10 @@
   .row {
     max-width: 95%;
     position: relative;
+  }
+
+  a[target] .panel-link:after {
+    background-image: url('./assets/img/external-link.svg');
   }
 }
 
