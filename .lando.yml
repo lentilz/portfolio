@@ -1,0 +1,4 @@
+name: portfolio
+recipe: wordpress
+config:
+  webroot: /
