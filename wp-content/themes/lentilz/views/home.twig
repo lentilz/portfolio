@@ -36,7 +36,7 @@
     {% for project in work.project %}
     <article class="{% if project.get_field('port_project_type').value=='article' %}panel--full {% endif %}panel panel-showcase-{{ project.slug }}"{% for color in project.get_field('port_swatches')|slice(0, 1) %} style="background-color: {{ color.swatch }};"{% endfor %}>
       <div class="row row--narrow {% if not project.get_field('port_project_type').value == 'article' %}helper-padding{% endif %}">
-        <a {% if project.get_field('port_project_type').value=='article' %}href="{{ project.port_live_url}}" target="_blank"{% else %} href="{{ project.link}}"{% endif %} ><h2 class="panel-title panel-link js-reveal">{{ project.title }}</h2></a>
+        <a {% if project.get_field('port_project_type').value=='article' %}href="{{ project.port_live_url}}" rel="noopener noreferrer" target="_blank"{% else %} href="{{ project.link}}"{% endif %} ><h2 class="panel-title panel-link js-reveal">{{ project.title }}</h2></a>
       </div>
     </article> <!-- /.showcase-panel -->
     {% endfor%}
