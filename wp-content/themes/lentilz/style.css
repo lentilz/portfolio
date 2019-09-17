@@ -2352,7 +2352,7 @@ a {
     white-space: nowrap;
     z-index: 1; }
     .rte a:before {
-      background: #0072bc;
+      background: #212121;
       bottom: -3px;
       content: '';
       height: 3px;
